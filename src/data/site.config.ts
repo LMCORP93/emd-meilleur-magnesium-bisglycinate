@@ -149,7 +149,7 @@ const products: Product[] = [
 ];
 
 const config: SiteConfig = {
-  domain: 'https://meilleur-magnesium-bisglycinate.fr',
+  domain: 'https://emd-meilleur-magnesium-bisglycinate.pages.dev',
   isIndexable: false,
   siteName: 'Meilleur Magnésium Bisglycinate',
   brand: 'Pauser',
@@ -166,7 +166,7 @@ const config: SiteConfig = {
   seo: {
     title: 'Meilleur magnésium bisglycinate 2026 : comparatif Top 6',
     description: 'Comparatif 2026 des meilleurs magnésiums bisglycinate : Pauser, NMN Bio, Argalys, Nutripreneur, Punch Power et Clearly. Avis, prix, codes promo et conseils.',
-    ogImage: '/images/content/magnesium-bisglycinate-hero.webp',
+    ogImage: '/og-image.jpg',
   },
   breadcrumbs: [{ label: 'Accueil', href: '/' }],
   quickSummary: {
@@ -196,6 +196,7 @@ const config: SiteConfig = {
     { type: 'comparatif', label: 'Comparatif', slug: '/' },
     { type: 'blog', label: 'Avis', slug: '/avis-magnesium-bisglycinate/' },
     { type: 'blog', label: 'Pharmacie', slug: '/magnesium-bisglycinate-pharmacie/' },
+    { type: 'blog', label: 'Effets secondaires', slug: '/magnesium-bisglycinate-effets-secondaires/' },
   ],
 };
 

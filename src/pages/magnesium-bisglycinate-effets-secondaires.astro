@@ -1,0 +1,210 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import config from '@/data/site.config';
+
+const topProduct = config.products[0];
+const pageTitle = 'Magnésium bisglycinate effets secondaires : danger et précautions';
+const pageDescription = 'Effets secondaires du magnésium bisglycinate : digestion, contre-indications, grossesse, reins, traitements, dosage et précautions avant une cure.';
+const tocItems = [
+  { id: 'en-bref', label: 'En bref' },
+  { id: 'effets', label: 'Effets secondaires' },
+  { id: 'danger', label: 'Danger réel' },
+  { id: 'contre-indications', label: 'Contre-indications' },
+  { id: 'profils', label: 'Profils sensibles' },
+  { id: 'dosage', label: 'Dose et prise' },
+  { id: 'choisir', label: 'Choisir un produit' },
+  { id: 'faq', label: 'FAQ' },
+];
+const faq = [
+  { question: 'Le magnésium bisglycinate peut-il provoquer des effets secondaires ?', answer: 'Oui, même si cette forme est souvent choisie pour sa tolérance digestive. Les effets possibles sont surtout digestifs : inconfort, selles molles, nausées ou gêne abdominale, notamment si la dose est trop élevée ou si plusieurs compléments sont cumulés.' },
+  { question: 'Le magnésium bisglycinate est-il dangereux ?', answer: 'Chez un adulte en bonne santé, utilisé dans les doses recommandées, il n’est pas considéré comme dangereux. Le risque augmente surtout en cas de pathologie rénale, de traitement médical, de grossesse, d’allaitement ou de surdosage.' },
+  { question: 'Qui doit demander un avis médical avant une cure ?', answer: 'Les femmes enceintes ou allaitantes, les personnes sous traitement, les personnes avec maladie rénale, maladie chronique, troubles cardiaques, prise de diurétiques ou supplémentation multiple doivent demander un avis professionnel.' },
+  { question: 'Faut-il prendre le magnésium bisglycinate le soir ?', answer: 'Le soir est fréquent pour les routines détente, mais ce n’est pas obligatoire. Certaines formules anti-stress se prennent plutôt en journée. Le plus important est de respecter l’étiquette et de choisir un moment bien toléré.' },
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: pageTitle,
+  description: pageDescription,
+  author: { '@type': 'Person', name: config.author.name },
+  datePublished: '2026-04-27',
+  dateModified: '2026-04-27',
+  image: new URL('/images/content/magnesium-effets-secondaires.webp', config.domain).toString(),
+  mainEntityOfPage: `${config.domain}/magnesium-bisglycinate-effets-secondaires/`,
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} ogImage="/images/content/magnesium-effets-secondaires.webp">
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Le bisglycinate est souvent bien toléré, mais il n’est pas neutre pour tout le monde. Voici mon point clair sur les risques réels, les profils à surveiller et les bons réflexes avant achat."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="27 avril 2026"
+    readingTime="12 min de lecture"
+    breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Effets secondaires', href: '/magnesium-bisglycinate-effets-secondaires/' }]}
+    bannerImage="/images/content/magnesium-effets-secondaires.webp"
+    product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
+    heroButton={{ text: 'Voir les précautions', href: '#contre-indications' }}
+    showOfferBlock={false}
+  />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="en-bref" class="rich-text">
+          <h2>En bref : faut-il s’inquiéter ?</h2>
+          <p><strong>Le magnésium bisglycinate est généralement bien toléré</strong>, mais il peut quand même provoquer des effets secondaires chez certaines personnes. Le plus fréquent concerne la digestion : gêne abdominale, nausée légère, selles plus molles ou inconfort si la dose est trop élevée. Cela arrive surtout quand on commence trop fort, quand on cumule plusieurs produits ou quand la formule contient d’autres actifs.</p>
+          <p>Il faut aussi être clair sur le mot “danger”. Pour un adulte en bonne santé qui respecte les doses indiquées, le magnésium bisglycinate n’est pas un complément à diaboliser. En revanche, il devient un sujet sérieux chez certains profils : pathologie rénale, traitement médical, grossesse, allaitement, maladie chronique, troubles cardiaques, prise de diurétiques ou supplémentation déjà chargée.</p>
+          <p>Mon avis : la bonne approche n’est ni l’alarme, ni la promesse miracle. Le bisglycinate est une forme intéressante, souvent choisie pour sa tolérance, mais le choix du produit, la dose et votre contexte personnel restent essentiels. Si vous avez un doute santé, le bon réflexe reste de demander un avis médical ou pharmaceutique.</p>
+        </section>
+
+        <TableOfContents items={tocItems} />
+
+        <section class="promo-strip" aria-label="Choix prudent magnésium bisglycinate">
+          <div class="promo-strip__header">
+            <span class="promo-strip__eyebrow">Choix de Tim</span>
+            <h2>Le produit à considérer si votre besoin principal est le stress</h2>
+            <p>Pauser n’est pas un bisglycinate pur. C’est un complexe anti-stress avec magnésium bisglycinate. Je le recommande surtout si votre intention réelle est fatigue nerveuse, tension mentale et équilibre quotidien.</p>
+          </div>
+          <article class="promo-card promo-card--featured">
+            <div class="promo-card__image-col">
+              <span class="promo-card__badge">Recommandé</span>
+              <img src={topProduct.image} alt={topProduct.name} class="promo-card__image" loading="lazy" />
+            </div>
+            <div class="promo-card__content">
+              <div class="promo-card__topline"><h3>{topProduct.name}</h3><div class="promo-card__rating"><span>★</span> {topProduct.rating.toFixed(1)} <em>/10</em></div></div>
+              <div class="promo-card__rows">
+                <div class="promo-card__row"><span class="promo-card__icon">✦</span><span>Usage : <strong>Stress et équilibre quotidien</strong></span></div>
+                <div class="promo-card__row"><span class="promo-card__icon">◎</span><span>Marque : <strong>{topProduct.brand}</strong></span></div>
+                <div class="promo-card__row"><span class="promo-card__icon">🏷</span><span>-{Math.abs(topProduct.promoPercent)}% avec le code : <strong>{topProduct.promoCode}</strong></span></div>
+              </div>
+              <div class="promo-card__price"><span>À partir de :</span><del>{topProduct.originalPrice}</del><strong>{topProduct.discountPrice}</strong></div>
+              <div class="promo-card__actions"><div class="promo-card__coupon"><span>⧉</span><strong>{topProduct.promoCode}</strong><em>-{Math.abs(topProduct.promoPercent)}%</em></div><a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">Voir l’offre <span>→</span></a></div>
+              <p class="promo-card__verified">✅ À utiliser selon l’étiquette, sans cumul inutile avec d’autres apports en magnésium.</p>
+            </div>
+          </article>
+        </section>
+
+        <section id="effets" class="rich-text seo-guide">
+          <h2>Quels effets secondaires sont possibles ?</h2>
+          <p>Les effets secondaires du magnésium bisglycinate sont le plus souvent digestifs. On peut voir apparaître une gêne abdominale, une sensation de lourdeur, des selles molles, parfois une nausée ou une envie d’aller plus souvent aux toilettes. Cela ne veut pas dire que le produit est “mauvais”. Cela peut simplement indiquer une dose trop élevée pour vous, une prise mal placée dans la journée ou une sensibilité personnelle.</p>
+          <p>Le bisglycinate est souvent choisi parce qu’il est réputé plus doux que certaines formes comme l’oxyde ou parfois le citrate. Mais “mieux toléré” ne veut pas dire “toléré par 100% des gens”. Certaines personnes réagissent aux excipients, aux cofacteurs, aux plantes ajoutées ou au magnésium lui-même. Un complexe anti-stress peut contenir plusieurs actifs, ce qui rend la réaction plus difficile à attribuer à un seul ingrédient.</p>
+          <p>Un autre effet indirect possible est la somnolence ou la sensation de relâchement, surtout si la formule est orientée détente ou prise du soir. Ce n’est pas forcément un effet indésirable si c’est l’objectif, mais cela peut gêner si vous le prenez avant de conduire, de travailler ou de faire une activité demandant de l’attention. À l’inverse, certaines personnes ne ressentent rien de particulier, ce qui ne signifie pas forcément que la cure est inutile.</p>
+          <p>Le point le plus important reste la dose totale. Beaucoup de personnes prennent déjà du magnésium dans un multivitamines, une poudre sport, un produit sommeil ou un complexe anti-stress. Ajouter un bisglycinate par-dessus peut créer un cumul non prévu. Avant de conclure que le bisglycinate vous “ne convient pas”, vérifiez d’abord tous vos apports.</p>
+        </section>
+
+        <ContentImage src="/images/content/magnesium-effets-secondaires.webp" alt="Magnésium bisglycinate effets secondaires" caption="Les effets secondaires sont souvent liés à la dose, au cumul de compléments ou à une sensibilité digestive personnelle." />
+
+        <ComparisonTable title="Effets secondaires possibles et bons réflexes" headers={[{label:'Situation'}, {label:'Réflexe prudent'}]} rows={[
+          { cells: ['<span class="table-fit">Selles molles ou gêne digestive</span><span class="table-muted"> Après quelques prises</span>', 'Réduire la dose, prendre avec un repas et vérifier les autres apports en magnésium.'], highlight: true },
+          { cells: ['<span class="table-fit">Nausée ou inconfort</span><span class="table-muted"> Formule mal tolérée</span>', 'Stopper temporairement et comparer la formule complète, pas seulement la forme bisglycinate.'] },
+          { cells: ['<span class="table-fit">Traitement médical</span><span class="table-muted"> Médicaments ou maladie chronique</span>', 'Demander un avis médical ou pharmaceutique avant de commencer.'] },
+          { cells: ['<span class="table-fit">Grossesse ou allaitement</span><span class="table-muted"> Besoin spécifique</span>', 'Ne pas démarrer seul : demander un avis professionnel adapté.'] },
+        ]} />
+
+        <section id="danger" class="rich-text seo-guide">
+          <h2>Le magnésium bisglycinate est-il dangereux ?</h2>
+          <p>Le mot danger doit être utilisé avec précision. Le magnésium bisglycinate n’est pas un produit dangereux par nature lorsqu’il est utilisé correctement par un adulte en bonne santé. C’est une forme courante de magnésium, présente dans beaucoup de compléments. Le vrai sujet est plutôt le contexte : dose, durée, santé rénale, traitements, âge, grossesse, cumul et objectifs de la cure.</p>
+          <p>Le risque devient plus sérieux en cas de problème rénal. Les reins participent à l’équilibre des minéraux. Si leur fonctionnement est altéré, la gestion d’un apport supplémentaire en magnésium peut poser question. C’est pour cela que je ne recommande jamais de démarrer une cure sans avis médical lorsqu’il existe une pathologie rénale connue ou un doute sur ce point.</p>
+          <p>Il faut aussi être prudent avec certains traitements. Les compléments minéraux peuvent interagir avec l’absorption ou la prise de certains médicaments selon le moment de la journée. Ce sujet dépend du traitement exact, donc il ne faut pas improviser. Si vous prenez un médicament régulier, le pharmacien ou le médecin peut vous dire s’il faut espacer les prises ou éviter la supplémentation.</p>
+          <p>Enfin, il y a le risque marketing. Certains contenus présentent le magnésium comme une solution simple à la fatigue, au stress, au sommeil ou aux crampes. C’est trop rapide. Le magnésium contribue à des fonctions normales de l’organisme, mais il ne traite pas une maladie et ne remplace pas une prise en charge si les symptômes sont forts, récents ou persistants.</p>
+        </section>
+
+        <InnerNote emoji="⚠️" text="Mon approche : rassurer sans banaliser. Le bisglycinate est intéressant, mais le contexte médical et la dose passent avant le code promo." />
+
+        <section id="contre-indications" class="rich-text seo-guide">
+          <h2>Contre-indications et situations où demander conseil</h2>
+          <p>La première situation à surveiller est la maladie rénale. Si vous avez une insuffisance rénale, un suivi néphrologique ou une consigne médicale sur les minéraux, ne prenez pas de magnésium sans avis. C’est le profil le plus important à citer, car le risque n’est pas comparable à celui d’un adulte en bonne santé.</p>
+          <p>La deuxième situation concerne les traitements médicaux. Antibiotiques, traitements cardiaques, diurétiques, traitements chroniques ou médicaments avec horaires stricts peuvent nécessiter un espacement ou une vérification. Je ne donne pas ici de règle universelle, parce que ce serait dangereux. Le bon conseil dépend du médicament, de la dose et de votre dossier.</p>
+          <p>La grossesse et l’allaitement demandent aussi de la prudence. Le magnésium peut être conseillé dans certains contextes, mais ce n’est pas une raison pour choisir seul une formule en ligne, surtout si elle contient aussi des plantes, de la vitamine B6 ou d’autres actifs. La formule complète compte autant que le magnésium.</p>
+          <p>Enfin, prudence si vous avez une forte sensibilité digestive, une maladie inflammatoire digestive, un historique de diarrhées fréquentes ou une supplémentation déjà chargée. Dans ces cas, la question n’est pas seulement “bisglycinate ou citrate”, mais “est-ce le bon moment, la bonne dose et la bonne formule pour moi ?”.</p>
+        </section>
+
+        <ContentImage src="/images/content/magnesium-precautions.webp" alt="Précautions magnésium bisglycinate" caption="Avant une cure, vérifiez la formule complète, vos traitements et vos autres apports en minéraux." />
+
+        <section id="profils" class="rich-text seo-guide">
+          <h2>Profils sensibles : femme enceinte, reins, digestion, sport</h2>
+          <p>Pour une femme enceinte ou allaitante, le sujet principal est la sécurité globale de la formule. Un produit simple n’a pas le même profil qu’un complexe avec plantes, cofacteurs et actifs anti-stress. Même si la marque paraît sérieuse, il vaut mieux demander un avis professionnel. Ce conseil vaut encore plus si la grossesse est suivie pour une raison particulière ou si d’autres compléments sont déjà pris.</p>
+          <p>Pour les personnes avec un problème rénal, je suis beaucoup plus strict : pas d’automédication. Le magnésium est un minéral, et le corps doit pouvoir gérer l’excédent. Ce n’est pas le bon terrain pour tester un produit parce qu’un comparatif ou un code promo semble attractif.</p>
+          <p>Pour les sportifs, le risque est souvent le cumul. Une poudre d’électrolytes, un multivitamines, un produit récupération et un magnésium bisglycinate peuvent se chevaucher. Si vous avez des crampes ou une fatigue persistante, le magnésium peut être une piste, mais il faut aussi regarder hydratation, sodium, potassium, charge d’entraînement, sommeil et alimentation.</p>
+          <p>Pour les personnes sensibles au niveau digestif, commencez plus bas, prenez avec un repas et évitez de multiplier les nouveautés en même temps. Si vous commencez magnésium, probiotiques, plantes et compléments sommeil la même semaine, vous ne saurez pas ce qui vous convient ou non.</p>
+        </section>
+
+        <section id="dosage" class="rich-text seo-guide">
+          <h2>Dosage, moment de prise et erreurs fréquentes</h2>
+          <p>Le bon dosage dépend du produit, de la dose de magnésium élémentaire et du contexte personnel. C’est pour cela que je renvoie toujours à l’étiquette et au conseil professionnel si besoin. Deux produits peuvent afficher “magnésium bisglycinate” en façade, mais ne pas apporter la même quantité de magnésium utile par prise.</p>
+          <p>Le moment de prise dépend de l’objectif. Pour une formule orientée détente ou sommeil, le soir est logique. Pour une formule anti-stress de journée, la prise peut être différente. Pour une cure simple, le plus important est souvent la régularité et la tolérance. Si une prise à jeun vous gêne, testez avec un repas, sauf indication contraire du fabricant.</p>
+          <p>Les erreurs fréquentes sont simples : commencer trop haut, cumuler plusieurs produits, ignorer les traitements, croire que “naturel” veut dire sans risque, ou acheter uniquement selon le pourcentage de réduction. Un code promo améliore le prix, mais il ne remplace pas la lecture de l’étiquette.</p>
+        </section>
+
+        <section id="choisir" class="rich-text seo-guide">
+          <h2>Comment choisir un produit plus sûr</h2>
+          <p>Un produit plus sûr est d’abord un produit lisible. Je préfère une formule qui indique clairement la forme de magnésium, la dose par prise, les cofacteurs et les conseils d’utilisation. Les promesses vagues comme “anti-stress puissant” ou “sommeil garanti” doivent rendre prudent, surtout si la fiche ne détaille pas assez la composition.</p>
+          <p>Si votre objectif est simplement de tester le magnésium bisglycinate, une formule directe comme Argalys, Nutripreneur ou Punch Power peut être plus facile à comprendre. Si votre problème réel est le stress du quotidien, Pauser peut être plus cohérent, mais il faut accepter que ce soit un complexe et pas un bisglycinate pur.</p>
+          <p>Mon verdict : choisissez selon votre besoin réel, pas selon la peur. Si vous êtes en bonne santé et que vous respectez les doses, le bisglycinate est une option sérieuse. Si vous avez un terrain sensible, demandez conseil. Et si vous ressentez un effet indésirable net, arrêtez et réévaluez au lieu de forcer la cure.</p>
+        </section>
+
+        <section class="promo-highlight" aria-label="Recommandation prudente magnésium bisglycinate">
+          <div><span class="promo-strip__eyebrow">Verdict prudent</span><h2>Ne choisissez pas seulement le “plus fort”</h2><p>Le meilleur produit est celui qui correspond à votre besoin, votre tolérance et votre contexte santé. Pour le stress quotidien, Pauser reste mon choix principal.</p></div>
+          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">Voir Pauser avec le code {topProduct.promoCode}</a>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
+      </div>
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={topProduct.brandLogo} promoCode={topProduct.promoCode} promoPercent={topProduct.promoPercent} originalPrice={topProduct.originalPrice} discountPrice={topProduct.discountPrice} ctaLink={topProduct.affiliateLink} heroImage={topProduct.image} rating={topProduct.rating} reviewCount={topProduct.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+</BaseLayout>
+
+<style>
+  .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
+  .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }
+  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .promo-strip { margin: 2.5rem 0 3rem; padding: 1.5rem; border: 1px solid #f1dec8; border-radius: 24px; background: linear-gradient(135deg, #fff7e8 0%, #ffffff 56%, #f4f2ec 100%); box-shadow: 0 18px 42px rgba(36,36,36,.08); }
+  .promo-strip__header { max-width: 46rem; margin-bottom: 1.25rem; }
+  .promo-strip__eyebrow { display: inline-flex; margin-bottom: .45rem; padding: .35rem .7rem; border-radius: 999px; background: rgba(239,122,26,.12); color: #c95f09; font-family: Archivo, sans-serif; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+  .promo-strip h2, .promo-highlight h2 { margin: 0 0 .55rem; font-family: Archivo, sans-serif; color: #242424; font-size: clamp(1.45rem, 1.2rem + 1vw, 2rem); line-height: 1.15; }
+  .promo-strip p, .promo-highlight p { margin: 0; color: #555; line-height: 1.65; }
+  .promo-card { position: relative; display: grid; grid-template-columns: minmax(16rem,.72fr) 1fr; overflow: hidden; border: 1px solid #e6e0d6; border-radius: 18px; background: #fff; box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+  .promo-card--featured { border-color: rgba(239,122,26,.55); box-shadow: 0 12px 26px rgba(239,122,26,.14); }
+  .promo-card__image-col { position: relative; min-height: 19rem; padding: 1.2rem; background: linear-gradient(135deg, #d7c8b6 0%, #eee4d6 100%); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .promo-card__badge { position: absolute; top: .9rem; left: .9rem; z-index: 2; padding: .35rem .65rem; border-radius: 999px; background: rgba(36,36,36,.92); color: #fff; font-family: Archivo, sans-serif; font-size: .72rem; font-weight: 800; }
+  .promo-card__image { width: 100%; height: 100%; min-height: 16rem; object-fit: contain; display: block; }
+  .promo-card__content { padding: 1.5rem 1.65rem; display: flex; flex-direction: column; justify-content: center; gap: .85rem; }
+  .promo-card__topline { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+  .promo-card h3 { margin: 0; font-family: Archivo, sans-serif; font-size: clamp(1.25rem, 1.1rem + .5vw, 1.65rem); color: #242424; line-height: 1.1; }
+  .promo-card__rating { white-space: nowrap; font-weight: 900; color: #242424; }
+  .promo-card__rating span { color: #ef7a1a; }
+  .promo-card__rating em { font-style: normal; color: #777; font-weight: 700; }
+  .promo-card__rows { display: grid; gap: .55rem; color: #555; font-size: .95rem; }
+  .promo-card__row { display: flex; align-items: center; gap: .55rem; }
+  .promo-card__icon { width: 1.15rem; text-align: center; color: #424242; }
+  .promo-card__row strong { color: #242424; }
+  .promo-card__price { display: flex; align-items: baseline; gap: .55rem; color: #777; }
+  .promo-card__price del { color: #888; }
+  .promo-card__price strong { color: #ef7a1a; font-size: clamp(1.45rem, 1.2rem + .9vw, 2rem); }
+  .promo-card__actions { display: grid; grid-template-columns: minmax(8rem,.62fr) 1fr; gap: .8rem; align-items: stretch; }
+  .promo-card__coupon { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 1.5px dashed rgba(239,122,26,.7); border-radius: 12px; background: #fffaf3; color: #242424; font-weight: 900; }
+  .promo-card__coupon em { color: #ef7a1a; font-style: normal; }
+  .promo-card__cta, .promo-highlight__cta { display: inline-flex; align-items: center; justify-content: center; width: 100%; border-radius: 12px; background: #ef7a1a; color: #fff; font-family: Archivo, sans-serif; font-weight: 900; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+  .promo-card__cta { padding: .95rem 1rem; gap: .65rem; }
+  .promo-card__cta span { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin: -.5rem -.65rem -.5rem 0; border-radius: 9px; background: rgba(255,255,255,.16); }
+  .promo-card__cta:hover, .promo-highlight__cta:hover { background: #d66a12; transform: translateY(-1px); }
+  .promo-card__verified { margin: 0; color: #242424; font-weight: 800; font-size: .9rem; }
+  .promo-highlight { margin: 3rem 0 0; padding: 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: 1.25rem; align-items: center; border-radius: 24px; background: #242424; color: #fff; }
+  .promo-highlight h2, .promo-highlight p { color: #fff; }
+  .promo-highlight__cta { width: auto; white-space: nowrap; padding: 1rem 1.35rem; }
+  @media (max-width: 991px) { .promo-card { grid-template-columns: 1fr; } .promo-card__image-col, .promo-card__image { min-height: 14rem; } .promo-card__topline { align-items: flex-start; } .promo-card__actions { grid-template-columns: 1fr; } .promo-highlight { grid-template-columns: 1fr; } .promo-highlight__cta { width: 100%; white-space: normal; } }
+</style>

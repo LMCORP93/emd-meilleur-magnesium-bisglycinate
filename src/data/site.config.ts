@@ -195,6 +195,7 @@ const config: SiteConfig = {
   pages: [
     { type: 'comparatif', label: 'Comparatif', slug: '/' },
     { type: 'blog', label: 'Avis', slug: '/avis-magnesium-bisglycinate/' },
+    { type: 'blog', label: 'Pharmacie', slug: '/magnesium-bisglycinate-pharmacie/' },
   ],
 };
 

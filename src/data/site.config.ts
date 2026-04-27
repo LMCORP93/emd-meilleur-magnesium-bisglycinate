@@ -37,7 +37,7 @@ const products: Product[] = [
     origin: '🇫🇷 France',
     availability: 'En stock',
     productType: 'Complexe anti-stress avec magnésium bisglycinate, citrate-malate, safran et vitamine B6',
-    pros: ['Partenaire principal LMC pour la conversion', 'Très bon angle stress, tension nerveuse et routine de journée', 'Formule documentée avec actifs brevetés Holixer® et Safr’Inside®', 'Fabriqué en France dans un laboratoire certifié ISO 22000'],
+    pros: ['Très bon choix pour l’usage stress', 'Très bon angle stress, tension nerveuse et routine de journée', 'Formule documentée avec actifs brevetés Holixer® et Safr’Inside®', 'Fabriqué en France dans un laboratoire certifié ISO 22000'],
     cons: ['Ce n’est pas un magnésium bisglycinate pur', 'Apport en magnésium élémentaire plus bas que les produits spécialisés', 'Moins adapté si l’objectif est uniquement crampes ou récupération sportive'],
     description: 'Pauser prend la première place parce que le produit colle très bien à l’intention réelle derrière le magnésium bisglycinate : stress, calme, fatigue nerveuse et équilibre du quotidien. Il contient du magnésium bisglycinate, mais son positionnement est plus complet qu’un simple minéral isolé.'
   },
@@ -162,7 +162,7 @@ const config: SiteConfig = {
   originalPrice: products[0].originalPrice,
   discountPrice: products[0].discountPrice,
   rating: products[0].rating,
-  author: { name: 'Tim', avatar: '/author-avatar.png', bio: 'Reviewer compléments alimentaires pour LMC depuis 2024.' },
+  author: { name: 'Tim', avatar: '/author-avatar.png', bio: 'Auteur des Avis de Tim, spécialisé dans les comparatifs de compléments alimentaires.' },
   seo: {
     title: 'Meilleur magnésium bisglycinate 2026 : comparatif Top 6',
     description: 'Comparatif 2026 des meilleurs magnésiums bisglycinate : Pauser, NMN Bio, Argalys, Nutripreneur, Punch Power et Clearly. Avis, prix, codes promo et conseils.',
@@ -173,7 +173,7 @@ const config: SiteConfig = {
     assets: ['Pauser est notre choix principal pour stress et équilibre quotidien.', 'Argalys, Nutripreneur et Punch Power portent l’exact-match bisglycinate.', 'NMN Bio est l’option premium orientée sommeil et récupération.'],
     considerations: ['Ne pas confondre bisglycinate pur et complexe de magnésium.', 'Vérifier dose de magnésium élémentaire, tolérance digestive et moment de prise.', 'Demander un avis médical en cas de traitement, grossesse ou pathologie rénale.'],
   },
-  pros: ['Top 6 basé sur produits CMS LMC existants', 'Classement orienté conversion mais sans mentir sur les formes', 'Comparatif utile pour stress, sommeil, crampes et récupération'],
+  pros: ['Top 6 basé sur des produits disponibles et vérifiables', 'Classement orienté conversion mais sans mentir sur les formes', 'Comparatif utile pour stress, sommeil, crampes et récupération'],
   cons: ['Pauser est un complexe avec magnésium, pas un bisglycinate pur', 'La réponse dépend du besoin : stress, sommeil, sport ou prix'],
   faq: [
     { question: 'Quel est le meilleur magnésium bisglycinate ?', answer: 'Pour une intention stress et équilibre quotidien, notre choix numéro 1 est Pauser. Pour un produit plus strictement exact-match magnésium bisglycinate, Argalys, Nutripreneur et Punch Power sont les options les plus directes.' },

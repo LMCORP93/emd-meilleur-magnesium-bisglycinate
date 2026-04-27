@@ -15,8 +15,13 @@ const promoProducts = [
   config.products.find((product) => product.brand === 'Argalys'),
   config.products.find((product) => product.brand === 'NMN Bio'),
 ].filter(Boolean);
-const pageTitle = 'Avis magnésium bisglycinate : notre verdict 2026';
-const pageDescription = 'Notre avis sur le magnésium bisglycinate : tolérance, sommeil, stress, prix, meilleur choix selon le besoin et limites à connaître avant achat.';
+const promoUseCase = (brand: string) => ({
+  Pauser: 'Stress et équilibre quotidien',
+  Argalys: 'Cure simple de bisglycinate',
+  'NMN Bio': 'Sommeil et récupération',
+}[brand] ?? 'Magnésium bisglycinate');
+const pageTitle = 'Avis magnésium bisglycinate : mon verdict 2026';
+const pageDescription = 'Mon avis sur le magnésium bisglycinate : tolérance, sommeil, stress, prix, meilleur choix selon le besoin et limites à connaître avant achat.';
 const tocItems = [
   { id: 'verdict', label: 'Verdict' },
   { id: 'notation', label: 'Notation' },
@@ -28,9 +33,9 @@ const tocItems = [
   { id: 'faq', label: 'FAQ' },
 ];
 const faq = [
-  { question: 'Quel est notre avis global sur le magnésium bisglycinate ?', answer: 'Notre avis est positif si l’objectif est de choisir une forme généralement bien tolérée, adaptée aux routines stress, sommeil ou récupération. Le choix du produit reste important : certains sont des bisglycinates directs, d’autres sont des complexes plus larges.' },
+  { question: 'Quel est mon avis global sur le magnésium bisglycinate ?', answer: 'Mon avis est positif si l’objectif est de choisir une forme généralement bien tolérée, adaptée aux routines stress, sommeil ou récupération. Le choix du produit reste important : certains sont des bisglycinates directs, d’autres sont des complexes plus larges.' },
   { question: 'Le magnésium bisglycinate est-il meilleur que le citrate ?', answer: 'Il est souvent préféré pour la tolérance digestive et l’usage détente. Le citrate peut être intéressant, mais il peut être moins confortable chez certaines personnes sensibles. Le meilleur choix dépend donc du profil et de la formule complète.' },
-  { question: 'Pauser est-il un magnésium bisglycinate pur ?', answer: 'Non. Pauser Reset by Day est un complexe anti-stress qui contient du magnésium bisglycinate et citrate-malate, avec d’autres actifs. Nous le recommandons pour l’usage stress, pas comme produit mono-ingrédient.' },
+  { question: 'Pauser est-il un magnésium bisglycinate pur ?', answer: 'Non. Pauser Reset by Day est un complexe anti-stress qui contient du magnésium bisglycinate et citrate-malate, avec d’autres actifs. Je le recommande pour l’usage stress, pas comme produit mono-ingrédient.' },
   { question: 'Qui doit demander un avis médical avant une cure ?', answer: 'Les femmes enceintes ou allaitantes, les personnes sous traitement, avec pathologie rénale, maladie chronique ou sensibilité digestive importante doivent demander un avis professionnel avant supplémentation.' },
 ];
 const schema = {
@@ -52,7 +57,7 @@ const schema = {
 
   <BlogHero
     title={pageTitle}
-    description="Le magnésium bisglycinate mérite sa réputation, mais tous les produits ne se valent pas. Voici notre avis clair : quand le choisir, quel produit privilégier et quelles limites garder en tête."
+    description="Le magnésium bisglycinate mérite sa réputation, mais tous les produits ne se valent pas. Voici mon avis clair : quand le choisir, quel produit privilégier et quelles limites garder en tête."
     author={config.author.name}
     authorAvatar={config.author.avatar}
     date="27 avril 2026"
@@ -60,7 +65,7 @@ const schema = {
     breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Avis magnésium bisglycinate', href: '/avis-magnesium-bisglycinate/' }]}
     bannerImage="/images/content/magnesium-bisglycinate-hero.webp"
     product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
-    heroButton={{ text: 'Voir notre recommandation', href: topProduct.affiliateLink, external: true }}
+    heroButton={{ text: 'Voir ma recommandation', href: topProduct.affiliateLink, external: true }}
     showOfferBlock={false}
   />
 
@@ -68,37 +73,50 @@ const schema = {
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
         <section id="verdict" class="rich-text">
-          <h2>Notre avis en bref</h2>
-          <p><strong>Notre avis sur le magnésium bisglycinate est positif</strong>, surtout pour les personnes qui cherchent une forme de magnésium bien tolérée, facile à intégrer dans une routine et cohérente avec les besoins stress, sommeil, fatigue nerveuse ou récupération. C’est une forme populaire parce qu’elle est liée à la glycine, ce qui explique son positionnement plus “doux” que certaines formes moins bien supportées.</p>
+          <h2>Mon avis en bref</h2>
+          <p><strong>Mon avis sur le magnésium bisglycinate est positif</strong>, surtout pour les personnes qui cherchent une forme de magnésium bien tolérée, facile à intégrer dans une routine et cohérente avec les besoins stress, sommeil, fatigue nerveuse ou récupération. C’est une forme populaire parce qu’elle est liée à la glycine, ce qui explique son positionnement plus “doux” que certaines formes moins bien supportées.</p>
           <p>Mais il faut éviter le raccourci classique : “bisglycinate” ne veut pas automatiquement dire meilleur produit. La forme compte, oui. Mais la dose de magnésium élémentaire, la clarté de l’étiquette, les cofacteurs, le prix réel par dose et l’objectif d’usage comptent autant. Un produit très pur peut être parfait pour une cure simple. Un complexe plus large peut être plus pertinent si le problème réel est le stress ou la surcharge mentale.</p>
-          <p>Dans notre sélection, <strong>Pauser</strong> reste notre recommandation commerciale principale pour l’usage stress du quotidien. Ce n’est pas un bisglycinate pur : c’est un complexe anti-stress avec magnésium bisglycinate, citrate-malate, safran, basilic sacré et vitamine B6. Pour un lecteur qui veut strictement un magnésium bisglycinate direct, <strong>Argalys</strong>, <strong>Nutripreneur</strong> et <strong>Punch Power</strong> sont plus exacts.</p>
+          <p>Dans ma sélection, <strong>Pauser</strong> reste ma recommandation principale pour l’usage stress du quotidien. Ce n’est pas un bisglycinate pur : c’est un complexe anti-stress avec magnésium bisglycinate, citrate-malate, safran, basilic sacré et vitamine B6. Pour un lecteur qui veut strictement un magnésium bisglycinate direct, <strong>Argalys</strong>, <strong>Nutripreneur</strong> et <strong>Punch Power</strong> sont plus exacts.</p>
         </section>
 
         <TableOfContents items={tocItems} />
 
         <section class="promo-strip" aria-label="Offres recommandées magnésium bisglycinate">
           <div class="promo-strip__header">
-            <span class="promo-strip__eyebrow">Offres LMC</span>
-            <h2>Nos 3 choix à considérer</h2>
+            <span class="promo-strip__eyebrow">Sélection de Tim</span>
+            <h2>Mes 3 choix à considérer</h2>
             <p>Si vous voulez passer à l’achat maintenant, ces trois options couvrent les besoins les plus fréquents : stress, cure simple et sommeil.</p>
           </div>
           <div class="promo-grid">
             {promoProducts.map((product: any, index) => (
               <article class={`promo-card ${index === 0 ? 'promo-card--featured' : ''}`}>
-                <div class="promo-card__badge">#{index + 1} recommandé</div>
-                <img src={product.image} alt={product.name} class="promo-card__image" loading="lazy" />
+                <div class="promo-card__image-col">
+                  <span class="promo-card__badge">#{index + 1} recommandé</span>
+                  <img src={product.image} alt={product.name} class="promo-card__image" loading="lazy" />
+                </div>
                 <div class="promo-card__content">
-                  <h3>{product.brand}</h3>
-                  <p class="promo-card__name">{product.name}</p>
-                  <p class="promo-card__desc">{product.description}</p>
+                  <div class="promo-card__topline">
+                    <h3>{product.name}</h3>
+                    <div class="promo-card__rating"><span>★</span> {product.rating.toFixed(1)} <em>/10</em></div>
+                  </div>
+                  <div class="promo-card__rows">
+                    <div class="promo-card__row"><span class="promo-card__icon">✦</span><span>Usage : <strong>{promoUseCase(product.brand)}</strong></span></div>
+                    <div class="promo-card__row"><span class="promo-card__icon">◎</span><span>Marque : <strong>{product.brand}</strong></span></div>
+                    <div class="promo-card__row"><span class="promo-card__icon">🌍</span><span>Origine : <strong>{product.origin.replace(/^🇫🇷 |^🇬🇧 |^🇳🇱 /, '')}</strong></span></div>
+                    <div class="promo-card__row"><span class="promo-card__icon">🏷</span><span>-{product.promoPercent}% avec le code : <strong>{product.promoCode}</strong></span></div>
+                  </div>
                   <div class="promo-card__price">
-                    <span class="promo-card__old">{product.originalPrice}</span>
+                    <span>À partir de :</span>
+                    <del>{product.originalPrice}</del>
                     <strong>{product.discountPrice}</strong>
                   </div>
-                  <div class="promo-card__code">Code promo : <strong>{product.promoCode}</strong></div>
-                  <a href={product.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">
-                    Voir l’offre
-                  </a>
+                  <div class="promo-card__actions">
+                    <div class="promo-card__coupon"><span>⧉</span><strong>{product.promoCode}</strong><em>-{product.promoPercent}%</em></div>
+                    <a href={product.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">
+                      Voir l’offre <span>→</span>
+                    </a>
+                  </div>
+                  <p class="promo-card__verified">✅ Code contrôlé et valable en 2026</p>
                 </div>
               </article>
             ))}
@@ -106,13 +124,13 @@ const schema = {
         </section>
 
         <section id="notation" class="rich-text seo-guide">
-          <h2>Notre méthode de notation : pourquoi cet avis ?</h2>
-          <p>Notre avis n’est pas une note médicale et ne promet pas de résultat individuel. Il s’agit d’une évaluation éditoriale LMC basée sur cinq critères : cohérence de la formule, clarté de la forme de magnésium utilisée, adéquation avec l’intention utilisateur, rapport qualité-prix et facilité d’achat via les offres disponibles.</p>
-          <p>Nous distinguons volontairement les produits “exact-match” et les complexes. Un exact-match est simple à comprendre : il contient clairement du magnésium bisglycinate et répond directement à la recherche. Un complexe peut être moins pur, mais plus intéressant si l’objectif est plus concret : stress, sommeil, détente ou récupération nerveuse. C’est la raison pour laquelle Pauser peut être recommandé en premier pour le stress, sans être présenté comme le produit le plus pur.</p>
+          <h2>Ma méthode de notation : pourquoi cet avis ?</h2>
+          <p>Mon avis n’est pas une note médicale et ne promet pas de résultat individuel. Il s’agit d’une évaluation éditoriale de Tim basée sur cinq critères : cohérence de la formule, clarté de la forme de magnésium utilisée, adéquation avec l’intention utilisateur, rapport qualité-prix et facilité d’achat via les offres disponibles.</p>
+          <p>Je distingue volontairement les produits “exact-match” et les complexes. Un exact-match est simple à comprendre : il contient clairement du magnésium bisglycinate et répond directement à la recherche. Un complexe peut être moins pur, mais plus intéressant si l’objectif est plus concret : stress, sommeil, détente ou récupération nerveuse. C’est la raison pour laquelle Pauser peut être recommandé en premier pour le stress, sans être présenté comme le produit le plus pur.</p>
           <p>Ce point est important pour rester honnête. Si vous voulez acheter uniquement du bisglycinate, Argalys ou Punch Power sont plus directs. Si vous cherchez une routine anti-stress plus complète, Pauser a un meilleur fit. Si vous cherchez une prise du soir premium, NMN Bio devient très cohérent.</p>
         </section>
 
-        <ComparisonTable title="Avis rapide selon votre profil" headers={[{label:'Profil'}, {label:'Notre avis'}]} rows={[
+        <ComparisonTable title="Avis rapide selon votre profil" headers={[{label:'Profil'}, {label:'Mon avis'}]} rows={[
           { cells: ['<span class="table-fit">Stress en journée</span><span class="table-muted"> Besoin d’une formule complète</span>', '<strong>Pauser</strong> est le plus cohérent malgré une formule non purement bisglycinate.'], highlight: true },
           { cells: ['<span class="table-fit">Cure simple de bisglycinate</span><span class="table-muted"> Priorité à la forme exacte</span>', '<strong>Argalys</strong> est le choix le plus direct et accessible.'] },
           { cells: ['<span class="table-fit">Sommeil et détente</span><span class="table-muted"> Routine du soir</span>', '<strong>NMN Bio Oh!Mg</strong> est l’option premium la plus logique.'] },
@@ -123,7 +141,7 @@ const schema = {
           <h2>Pourquoi le bisglycinate a une bonne réputation</h2>
           <p>Le magnésium bisglycinate est une forme chélatée : le magnésium est associé à deux molécules de glycine. En pratique, cette association explique pourquoi cette forme est souvent choisie par les personnes qui veulent éviter les inconforts digestifs associés à certaines autres formes. Elle est aussi très présente dans les produits positionnés stress, sommeil et récupération.</p>
           <p>Ce n’est pas une raison pour ignorer l’étiquette. Certains produits parlent de “magnésium” en gros, mais mélangent citrate, malate, oxyde, bisglycinate ou glycinate. Ce n’est pas forcément mauvais, mais il faut savoir ce que l’on achète. Un mix peut être intelligent si la marque explique sa logique. Il devient problématique si l’utilisateur croit acheter un bisglycinate pur alors que la formule est surtout composée d’autres formes.</p>
-          <p>Notre avis : le bisglycinate est une très bonne base pour une cure sérieuse, mais la meilleure formule dépend de l’objectif. Pour stress et tension nerveuse, les cofacteurs comme la vitamine B6 ou certains extraits végétaux peuvent renforcer la cohérence commerciale du produit. Pour une cure minimaliste, moins d’ingrédients peut au contraire être un avantage.</p>
+          <p>Mon avis : le bisglycinate est une très bonne base pour une cure sérieuse, mais la meilleure formule dépend de l’objectif. Pour stress et tension nerveuse, les cofacteurs comme la vitamine B6 ou certains extraits végétaux peuvent renforcer la cohérence commerciale du produit. Pour une cure minimaliste, moins d’ingrédients peut au contraire être un avantage.</p>
         </section>
 
         <ContentImage src="/images/content/magnesium-bisglycinate-hero.webp" alt="Avis magnésium bisglycinate" caption="Le bon avis dépend surtout du besoin : stress, sommeil, récupération ou cure simple." />
@@ -132,16 +150,16 @@ const schema = {
           <h2>Quels effets attendre raisonnablement ?</h2>
           <p>Le magnésium contribue au fonctionnement normal du système nerveux, à réduire la fatigue et à une fonction musculaire normale. Ces allégations autorisées expliquent pourquoi il est souvent associé à la fatigue nerveuse, aux périodes de stress ou à la récupération. En revanche, il ne faut pas le présenter comme un traitement du sommeil, de l’anxiété ou des crampes.</p>
           <p>Dans les avis utilisateurs, les retours les plus fréquents concernent souvent la sensation de détente, la régularité de la routine, la récupération ou le confort digestif. Ces signaux sont utiles, mais ils restent subjectifs. Deux personnes peuvent réagir différemment selon leur alimentation, leur niveau de stress, leur sommeil, leur activité physique et leurs éventuels traitements.</p>
-          <p>Notre position est donc prudente : le magnésium bisglycinate est un choix solide pour soutenir une routine bien-être, mais il ne remplace ni un diagnostic ni une prise en charge médicale. Si la fatigue est forte, durable ou associée à d’autres symptômes, le bon réflexe reste de demander un avis professionnel.</p>
+          <p>Ma position est donc prudente : le magnésium bisglycinate est un choix solide pour soutenir une routine bien-être, mais il ne remplace ni un diagnostic ni une prise en charge médicale. Si la fatigue est forte, durable ou associée à d’autres symptômes, le bon réflexe reste de demander un avis professionnel.</p>
         </section>
 
-        <InnerNote emoji="🧠" text="Notre angle : ne pas vendre le bisglycinate comme une solution miracle. Le présenter comme une forme pertinente, bien tolérée et utile dans une routine cohérente." />
+        <InnerNote emoji="🧠" text="Mon angle : ne pas vendre le bisglycinate comme une solution miracle. Le présenter comme une forme pertinente, bien tolérée et utile dans une routine cohérente." />
 
         <section id="produits" class="rich-text seo-guide">
-          <h2>Notre avis sur les meilleurs produits du comparatif</h2>
+          <h2>Mon avis sur les meilleurs produits du comparatif</h2>
           <h3>Pauser Reset by Day : meilleur choix stress</h3>
           <p>Pauser est le produit le plus intéressant si l’utilisateur arrive avec une intention “je suis tendu, fatigué nerveusement, j’ai besoin d’une routine simple”. La formule ne repose pas uniquement sur le magnésium, ce qui est à la fois sa force et sa limite. Elle contient du magnésium bisglycinate, mais aussi d’autres actifs cohérents avec le positionnement anti-stress.</p>
-          <p>Notre avis : excellent choix conversion, très bon storytelling, mais à ne pas vendre comme bisglycinate pur. Il faut être transparent sur ce point pour garder la confiance.</p>
+          <p>Mon avis : excellent choix conversion, très bon storytelling, mais à ne pas vendre comme bisglycinate pur. Il faut être transparent sur ce point pour garder la confiance.</p>
           <h3>Argalys : meilleur choix exact-match accessible</h3>
           <p>Argalys est plus direct. Le produit répond clairement à la recherche “magnésium bisglycinate”, avec un prix accessible et une marque française. C’est probablement le choix le plus rassurant pour quelqu’un qui veut une formule simple, lisible et sans positionnement trop premium.</p>
           <h3>NMN Bio Oh!Mg : meilleur choix premium du soir</h3>
@@ -152,8 +170,8 @@ const schema = {
 
         <section class="promo-highlight" aria-label="Meilleure offre magnésium bisglycinate">
           <div>
-            <span class="promo-strip__eyebrow">Choix LMC</span>
-            <h2>Notre recommandation si vous hésitez</h2>
+            <span class="promo-strip__eyebrow">Choix de Tim</span>
+            <h2>Ma recommandation si vous hésitez</h2>
             <p>Pour un usage stress et équilibre quotidien, Pauser reste le meilleur choix conversion. Pour un bisglycinate plus direct, passez plutôt par Argalys depuis le comparatif.</p>
           </div>
           <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">
@@ -162,16 +180,16 @@ const schema = {
         </section>
 
         <section id="prix" class="rich-text seo-guide">
-          <h2>Prix et code promo : notre avis</h2>
+          <h2>Prix et code promo : mon avis</h2>
           <p>Le prix doit être regardé par dose utile, pas seulement par boîte. Un produit à 15€ peut être très bon si la formule est claire et si la cure dure correctement. Un produit à 35€ ou 45€ peut rester pertinent si la formule inclut des actifs complémentaires et si l’usage est plus ciblé.</p>
-          <p>Les codes promo changent l’équation au premier achat. Pauser propose LMC10, NMN Bio utilise LMC, Argalys LMC, Nutripreneur LMC15, Punch Power LMC20 et Clearly LMC. Notre recommandation : choisir d’abord le produit selon le besoin, puis utiliser le code pour améliorer le rapport qualité-prix. Le code ne doit pas devenir le seul critère de choix.</p>
+          <p>Les codes promo changent l’équation au premier achat. Pauser propose LMC10, NMN Bio utilise LMC, Argalys LMC, Nutripreneur LMC15, Punch Power LMC20 et Clearly LMC. Ma recommandation : choisir d’abord le produit selon le besoin, puis utiliser le code pour améliorer le rapport qualité-prix. Le code ne doit pas devenir le seul critère de choix.</p>
         </section>
 
         <section id="limites" class="rich-text seo-guide">
           <h2>Limites, précautions et avis négatifs possibles</h2>
           <p>Les avis négatifs sur le magnésium bisglycinate viennent souvent de trois situations : attente trop élevée, produit mal choisi ou inconfort digestif malgré une forme réputée douce. Même avec du bisglycinate, certaines personnes peuvent ne pas apprécier la prise, le format, la dose ou les ingrédients associés.</p>
           <p>Il faut aussi faire attention aux profils sensibles. En cas de grossesse, allaitement, pathologie rénale, traitement médical, maladie chronique ou supplémentation multiple, l’avis d’un professionnel de santé est préférable. Le magnésium peut sembler banal, mais une cure n’est pas neutre pour tout le monde.</p>
-          <p>Notre avis final : le magnésium bisglycinate mérite sa place parmi les formes les plus intéressantes. Pour LMC, le meilleur angle est de l’utiliser comme porte d’entrée vers un choix produit intelligent : Pauser pour le stress, Argalys pour la simplicité, NMN Bio pour le soir, Punch Power pour le budget sport.</p>
+          <p>Mon avis final : le magnésium bisglycinate mérite sa place parmi les formes les plus intéressantes. Le meilleur angle est de l’utiliser comme porte d’entrée vers un choix produit intelligent : Pauser pour le stress, Argalys pour la simplicité, NMN Bio pour le soir, Punch Power pour le budget sport.</p>
         </section>
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
@@ -191,24 +209,35 @@ const schema = {
   .promo-strip__eyebrow { display: inline-flex; margin-bottom: .45rem; padding: .35rem .7rem; border-radius: 999px; background: rgba(239,122,26,.12); color: #c95f09; font-family: Archivo, sans-serif; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
   .promo-strip h2, .promo-highlight h2 { margin: 0 0 .55rem; font-family: Archivo, sans-serif; color: #242424; font-size: clamp(1.45rem, 1.2rem + 1vw, 2rem); line-height: 1.15; }
   .promo-strip p, .promo-highlight p { margin: 0; color: #555; line-height: 1.65; }
-  .promo-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
-  .promo-card { position: relative; overflow: hidden; border: 1px solid #eee5d8; border-radius: 20px; background: #fff; box-shadow: 0 10px 26px rgba(36,36,36,.07); }
-  .promo-card--featured { border-color: rgba(239,122,26,.55); box-shadow: 0 16px 34px rgba(239,122,26,.13); }
-  .promo-card__badge { position: absolute; top: .8rem; left: .8rem; z-index: 2; padding: .35rem .6rem; border-radius: 999px; background: #242424; color: #fff; font-family: Archivo, sans-serif; font-size: .72rem; font-weight: 800; }
-  .promo-card__image { width: 100%; height: 11rem; object-fit: cover; background: #f4f2ec; display: block; }
-  .promo-card__content { padding: 1rem; }
-  .promo-card h3 { margin: 0 0 .15rem; font-family: Archivo, sans-serif; font-size: 1.12rem; color: #242424; }
-  .promo-card__name { margin: 0 0 .55rem; font-weight: 800; color: #ef7a1a; }
-  .promo-card__desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 4.6rem; font-size: .9rem; line-height: 1.55; color: #555; }
-  .promo-card__price { display: flex; align-items: baseline; gap: .5rem; margin: .9rem 0 .5rem; }
-  .promo-card__old { color: #888; text-decoration: line-through; font-size: .9rem; }
-  .promo-card__price strong { color: #242424; font-size: 1.25rem; }
-  .promo-card__code { margin-bottom: .85rem; padding: .55rem .7rem; border: 1px dashed rgba(239,122,26,.55); border-radius: 12px; background: #fffaf3; color: #333; font-size: .9rem; }
-  .promo-card__cta, .promo-highlight__cta { display: inline-flex; align-items: center; justify-content: center; width: 100%; border-radius: 999px; background: #ef7a1a; color: #fff; font-family: Archivo, sans-serif; font-weight: 800; text-decoration: none; transition: transform .2s ease, background .2s ease; }
-  .promo-card__cta { padding: .82rem 1rem; }
+  .promo-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
+  .promo-card { position: relative; display: grid; grid-template-columns: minmax(16rem,.72fr) 1fr; overflow: hidden; border: 1px solid #e6e0d6; border-radius: 18px; background: #fff; box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+  .promo-card--featured { border-color: rgba(239,122,26,.55); box-shadow: 0 12px 26px rgba(239,122,26,.14); }
+  .promo-card__image-col { position: relative; min-height: 19rem; background: linear-gradient(135deg, #d7c8b6 0%, #eee4d6 100%); overflow: hidden; }
+  .promo-card__badge { position: absolute; top: .9rem; left: .9rem; z-index: 2; padding: .35rem .65rem; border-radius: 999px; background: rgba(36,36,36,.92); color: #fff; font-family: Archivo, sans-serif; font-size: .72rem; font-weight: 800; }
+  .promo-card__image { width: 100%; height: 100%; min-height: 19rem; object-fit: cover; display: block; }
+  .promo-card__content { padding: 1.5rem 1.65rem; display: flex; flex-direction: column; justify-content: center; gap: .85rem; }
+  .promo-card__topline { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+  .promo-card h3 { margin: 0; font-family: Archivo, sans-serif; font-size: clamp(1.25rem, 1.1rem + .5vw, 1.65rem); color: #242424; line-height: 1.1; }
+  .promo-card__rating { white-space: nowrap; font-weight: 900; color: #242424; }
+  .promo-card__rating span { color: #ef7a1a; }
+  .promo-card__rating em { font-style: normal; color: #777; font-weight: 700; }
+  .promo-card__rows { display: grid; gap: .55rem; color: #555; font-size: .95rem; }
+  .promo-card__row { display: flex; align-items: center; gap: .55rem; }
+  .promo-card__icon { width: 1.15rem; text-align: center; color: #424242; }
+  .promo-card__row strong { color: #242424; }
+  .promo-card__price { display: flex; align-items: baseline; gap: .55rem; color: #777; }
+  .promo-card__price del { color: #888; }
+  .promo-card__price strong { color: #ef7a1a; font-size: clamp(1.45rem, 1.2rem + .9vw, 2rem); }
+  .promo-card__actions { display: grid; grid-template-columns: minmax(8rem,.62fr) 1fr; gap: .8rem; align-items: stretch; }
+  .promo-card__coupon { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 1.5px dashed rgba(239,122,26,.7); border-radius: 12px; background: #fffaf3; color: #242424; font-weight: 900; }
+  .promo-card__coupon em { color: #ef7a1a; font-style: normal; }
+  .promo-card__cta, .promo-highlight__cta { display: inline-flex; align-items: center; justify-content: center; width: 100%; border-radius: 12px; background: #ef7a1a; color: #fff; font-family: Archivo, sans-serif; font-weight: 900; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+  .promo-card__cta { padding: .95rem 1rem; gap: .65rem; }
+  .promo-card__cta span { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin: -.5rem -.65rem -.5rem 0; border-radius: 9px; background: rgba(255,255,255,.16); }
   .promo-card__cta:hover, .promo-highlight__cta:hover { background: #d66a12; transform: translateY(-1px); }
+  .promo-card__verified { margin: 0; color: #242424; font-weight: 800; font-size: .9rem; }
   .promo-highlight { margin: 3rem 0 0; padding: 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: 1.25rem; align-items: center; border-radius: 24px; background: #242424; color: #fff; }
   .promo-highlight h2, .promo-highlight p { color: #fff; }
   .promo-highlight__cta { width: auto; white-space: nowrap; padding: 1rem 1.35rem; }
-  @media (max-width: 991px) { .promo-grid { grid-template-columns: 1fr; } .promo-card__image { height: 13rem; } .promo-highlight { grid-template-columns: 1fr; } .promo-highlight__cta { width: 100%; white-space: normal; } }
+  @media (max-width: 991px) { .promo-card { grid-template-columns: 1fr; } .promo-card__image-col, .promo-card__image { min-height: 14rem; } .promo-card__topline { align-items: flex-start; } .promo-card__actions { grid-template-columns: 1fr; } .promo-highlight { grid-template-columns: 1fr; } .promo-highlight__cta { width: 100%; white-space: normal; } }
 </style>

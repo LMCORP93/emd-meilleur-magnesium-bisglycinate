@@ -1,0 +1,7 @@
+<svg width="360" height="120" viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Argalys">
+  <rect width="360" height="120" rx="28" fill="#ffffff"/>
+  <rect x="8" y="8" width="344" height="104" rx="24" fill="#16a34a" fill-opacity="0.10"/>
+  <circle cx="62" cy="60" r="28" fill="#16a34a"/>
+  <text x="62" y="69" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="800" fill="#fff">A</text>
+  <text x="110" y="68" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#111827">Argalys</text>
+</svg>

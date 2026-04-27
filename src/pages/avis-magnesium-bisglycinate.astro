@@ -10,6 +10,11 @@ import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
 
 const topProduct = config.products[0];
+const promoProducts = [
+  topProduct,
+  config.products.find((product) => product.brand === 'Argalys'),
+  config.products.find((product) => product.brand === 'NMN Bio'),
+].filter(Boolean);
 const pageTitle = 'Avis magnésium bisglycinate : notre verdict 2026';
 const pageDescription = 'Notre avis sur le magnésium bisglycinate : tolérance, sommeil, stress, prix, meilleur choix selon le besoin et limites à connaître avant achat.';
 const tocItems = [
@@ -71,6 +76,35 @@ const schema = {
 
         <TableOfContents items={tocItems} />
 
+        <section class="promo-strip" aria-label="Offres recommandées magnésium bisglycinate">
+          <div class="promo-strip__header">
+            <span class="promo-strip__eyebrow">Offres LMC</span>
+            <h2>Nos 3 choix à considérer</h2>
+            <p>Si vous voulez passer à l’achat maintenant, ces trois options couvrent les besoins les plus fréquents : stress, cure simple et sommeil.</p>
+          </div>
+          <div class="promo-grid">
+            {promoProducts.map((product: any, index) => (
+              <article class={`promo-card ${index === 0 ? 'promo-card--featured' : ''}`}>
+                <div class="promo-card__badge">#{index + 1} recommandé</div>
+                <img src={product.image} alt={product.name} class="promo-card__image" loading="lazy" />
+                <div class="promo-card__content">
+                  <h3>{product.brand}</h3>
+                  <p class="promo-card__name">{product.name}</p>
+                  <p class="promo-card__desc">{product.description}</p>
+                  <div class="promo-card__price">
+                    <span class="promo-card__old">{product.originalPrice}</span>
+                    <strong>{product.discountPrice}</strong>
+                  </div>
+                  <div class="promo-card__code">Code promo : <strong>{product.promoCode}</strong></div>
+                  <a href={product.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">
+                    Voir l’offre
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section id="notation" class="rich-text seo-guide">
           <h2>Notre méthode de notation : pourquoi cet avis ?</h2>
           <p>Notre avis n’est pas une note médicale et ne promet pas de résultat individuel. Il s’agit d’une évaluation éditoriale LMC basée sur cinq critères : cohérence de la formule, clarté de la forme de magnésium utilisée, adéquation avec l’intention utilisateur, rapport qualité-prix et facilité d’achat via les offres disponibles.</p>
@@ -116,6 +150,17 @@ const schema = {
           <p>Nutripreneur parle bien aux profils actifs, entrepreneurs ou personnes sous charge mentale. Punch Power est plus sportif et budget. Ces deux produits renforcent le cluster exact-match du site : ils permettent de ne pas dépendre uniquement de Pauser et donnent une vraie crédibilité au comparatif.</p>
         </section>
 
+        <section class="promo-highlight" aria-label="Meilleure offre magnésium bisglycinate">
+          <div>
+            <span class="promo-strip__eyebrow">Choix LMC</span>
+            <h2>Notre recommandation si vous hésitez</h2>
+            <p>Pour un usage stress et équilibre quotidien, Pauser reste le meilleur choix conversion. Pour un bisglycinate plus direct, passez plutôt par Argalys depuis le comparatif.</p>
+          </div>
+          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">
+            Voir Pauser avec le code {topProduct.promoCode}
+          </a>
+        </section>
+
         <section id="prix" class="rich-text seo-guide">
           <h2>Prix et code promo : notre avis</h2>
           <p>Le prix doit être regardé par dose utile, pas seulement par boîte. Un produit à 15€ peut être très bon si la formule est claire et si la cure dure correctement. Un produit à 35€ ou 45€ peut rester pertinent si la formule inclut des actifs complémentaires et si l’usage est plus ciblé.</p>
@@ -141,4 +186,29 @@ const schema = {
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }
   .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .promo-strip { margin: 2.5rem 0 3rem; padding: 1.5rem; border: 1px solid #f1dec8; border-radius: 24px; background: linear-gradient(135deg, #fff7e8 0%, #ffffff 56%, #f4f2ec 100%); box-shadow: 0 18px 42px rgba(36,36,36,.08); }
+  .promo-strip__header { max-width: 46rem; margin-bottom: 1.25rem; }
+  .promo-strip__eyebrow { display: inline-flex; margin-bottom: .45rem; padding: .35rem .7rem; border-radius: 999px; background: rgba(239,122,26,.12); color: #c95f09; font-family: Archivo, sans-serif; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+  .promo-strip h2, .promo-highlight h2 { margin: 0 0 .55rem; font-family: Archivo, sans-serif; color: #242424; font-size: clamp(1.45rem, 1.2rem + 1vw, 2rem); line-height: 1.15; }
+  .promo-strip p, .promo-highlight p { margin: 0; color: #555; line-height: 1.65; }
+  .promo-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1rem; }
+  .promo-card { position: relative; overflow: hidden; border: 1px solid #eee5d8; border-radius: 20px; background: #fff; box-shadow: 0 10px 26px rgba(36,36,36,.07); }
+  .promo-card--featured { border-color: rgba(239,122,26,.55); box-shadow: 0 16px 34px rgba(239,122,26,.13); }
+  .promo-card__badge { position: absolute; top: .8rem; left: .8rem; z-index: 2; padding: .35rem .6rem; border-radius: 999px; background: #242424; color: #fff; font-family: Archivo, sans-serif; font-size: .72rem; font-weight: 800; }
+  .promo-card__image { width: 100%; height: 11rem; object-fit: cover; background: #f4f2ec; display: block; }
+  .promo-card__content { padding: 1rem; }
+  .promo-card h3 { margin: 0 0 .15rem; font-family: Archivo, sans-serif; font-size: 1.12rem; color: #242424; }
+  .promo-card__name { margin: 0 0 .55rem; font-weight: 800; color: #ef7a1a; }
+  .promo-card__desc { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 4.6rem; font-size: .9rem; line-height: 1.55; color: #555; }
+  .promo-card__price { display: flex; align-items: baseline; gap: .5rem; margin: .9rem 0 .5rem; }
+  .promo-card__old { color: #888; text-decoration: line-through; font-size: .9rem; }
+  .promo-card__price strong { color: #242424; font-size: 1.25rem; }
+  .promo-card__code { margin-bottom: .85rem; padding: .55rem .7rem; border: 1px dashed rgba(239,122,26,.55); border-radius: 12px; background: #fffaf3; color: #333; font-size: .9rem; }
+  .promo-card__cta, .promo-highlight__cta { display: inline-flex; align-items: center; justify-content: center; width: 100%; border-radius: 999px; background: #ef7a1a; color: #fff; font-family: Archivo, sans-serif; font-weight: 800; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+  .promo-card__cta { padding: .82rem 1rem; }
+  .promo-card__cta:hover, .promo-highlight__cta:hover { background: #d66a12; transform: translateY(-1px); }
+  .promo-highlight { margin: 3rem 0 0; padding: 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: 1.25rem; align-items: center; border-radius: 24px; background: #242424; color: #fff; }
+  .promo-highlight h2, .promo-highlight p { color: #fff; }
+  .promo-highlight__cta { width: auto; white-space: nowrap; padding: 1rem 1.35rem; }
+  @media (max-width: 991px) { .promo-grid { grid-template-columns: 1fr; } .promo-card__image { height: 13rem; } .promo-highlight { grid-template-columns: 1fr; } .promo-highlight__cta { width: 100%; white-space: normal; } }
 </style>

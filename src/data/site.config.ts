@@ -166,7 +166,7 @@ const config: SiteConfig = {
   seo: {
     title: 'Meilleur magnésium bisglycinate 2026 : comparatif Top 6',
     description: 'Comparatif 2026 des meilleurs magnésiums bisglycinate : Pauser, NMN Bio, Argalys, Nutripreneur, Punch Power et Clearly. Avis, prix, codes promo et conseils.',
-    ogImage: '/images/content/magnesium-bisglycinate-hero.svg',
+    ogImage: '/images/content/magnesium-bisglycinate-hero.webp',
   },
   breadcrumbs: [{ label: 'Accueil', href: '/' }],
   quickSummary: {

@@ -192,7 +192,10 @@ const config: SiteConfig = {
     { id: 'verdict', label: 'Verdict' },
     { id: 'faq', label: 'FAQ' },
   ],
-  pages: [{ type: 'comparatif', label: 'Comparatif', slug: '/' }],
+  pages: [
+    { type: 'comparatif', label: 'Comparatif', slug: '/' },
+    { type: 'blog', label: 'Avis', slug: '/avis-magnesium-bisglycinate/' },
+  ],
 };
 
 export default config;

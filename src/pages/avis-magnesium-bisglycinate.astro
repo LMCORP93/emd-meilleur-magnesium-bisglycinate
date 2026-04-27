@@ -1,0 +1,144 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import config from '@/data/site.config';
+
+const topProduct = config.products[0];
+const pageTitle = 'Avis magnésium bisglycinate : notre verdict 2026';
+const pageDescription = 'Notre avis sur le magnésium bisglycinate : tolérance, sommeil, stress, prix, meilleur choix selon le besoin et limites à connaître avant achat.';
+const tocItems = [
+  { id: 'verdict', label: 'Verdict' },
+  { id: 'notation', label: 'Notation' },
+  { id: 'forme', label: 'Forme' },
+  { id: 'effets', label: 'Effets attendus' },
+  { id: 'produits', label: 'Produits' },
+  { id: 'prix', label: 'Prix' },
+  { id: 'limites', label: 'Limites' },
+  { id: 'faq', label: 'FAQ' },
+];
+const faq = [
+  { question: 'Quel est notre avis global sur le magnésium bisglycinate ?', answer: 'Notre avis est positif si l’objectif est de choisir une forme généralement bien tolérée, adaptée aux routines stress, sommeil ou récupération. Le choix du produit reste important : certains sont des bisglycinates directs, d’autres sont des complexes plus larges.' },
+  { question: 'Le magnésium bisglycinate est-il meilleur que le citrate ?', answer: 'Il est souvent préféré pour la tolérance digestive et l’usage détente. Le citrate peut être intéressant, mais il peut être moins confortable chez certaines personnes sensibles. Le meilleur choix dépend donc du profil et de la formule complète.' },
+  { question: 'Pauser est-il un magnésium bisglycinate pur ?', answer: 'Non. Pauser Reset by Day est un complexe anti-stress qui contient du magnésium bisglycinate et citrate-malate, avec d’autres actifs. Nous le recommandons pour l’usage stress, pas comme produit mono-ingrédient.' },
+  { question: 'Qui doit demander un avis médical avant une cure ?', answer: 'Les femmes enceintes ou allaitantes, les personnes sous traitement, avec pathologie rénale, maladie chronique ou sensibilité digestive importante doivent demander un avis professionnel avant supplémentation.' },
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: pageTitle,
+  description: pageDescription,
+  author: { '@type': 'Person', name: config.author.name },
+  datePublished: '2026-04-27',
+  dateModified: '2026-04-27',
+  image: new URL(config.seo.ogImage, config.domain).toString(),
+  mainEntityOfPage: `${config.domain}/avis-magnesium-bisglycinate/`,
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Le magnésium bisglycinate mérite sa réputation, mais tous les produits ne se valent pas. Voici notre avis clair : quand le choisir, quel produit privilégier et quelles limites garder en tête."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="27 avril 2026"
+    readingTime="10 min de lecture"
+    breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Avis magnésium bisglycinate', href: '/avis-magnesium-bisglycinate/' }]}
+    bannerImage="/images/content/magnesium-bisglycinate-hero.webp"
+    product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
+    heroButton={{ text: 'Voir notre recommandation', href: topProduct.affiliateLink, external: true }}
+    showOfferBlock={false}
+  />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="verdict" class="rich-text">
+          <h2>Notre avis en bref</h2>
+          <p><strong>Notre avis sur le magnésium bisglycinate est positif</strong>, surtout pour les personnes qui cherchent une forme de magnésium bien tolérée, facile à intégrer dans une routine et cohérente avec les besoins stress, sommeil, fatigue nerveuse ou récupération. C’est une forme populaire parce qu’elle est liée à la glycine, ce qui explique son positionnement plus “doux” que certaines formes moins bien supportées.</p>
+          <p>Mais il faut éviter le raccourci classique : “bisglycinate” ne veut pas automatiquement dire meilleur produit. La forme compte, oui. Mais la dose de magnésium élémentaire, la clarté de l’étiquette, les cofacteurs, le prix réel par dose et l’objectif d’usage comptent autant. Un produit très pur peut être parfait pour une cure simple. Un complexe plus large peut être plus pertinent si le problème réel est le stress ou la surcharge mentale.</p>
+          <p>Dans notre sélection, <strong>Pauser</strong> reste notre recommandation commerciale principale pour l’usage stress du quotidien. Ce n’est pas un bisglycinate pur : c’est un complexe anti-stress avec magnésium bisglycinate, citrate-malate, safran, basilic sacré et vitamine B6. Pour un lecteur qui veut strictement un magnésium bisglycinate direct, <strong>Argalys</strong>, <strong>Nutripreneur</strong> et <strong>Punch Power</strong> sont plus exacts.</p>
+        </section>
+
+        <TableOfContents items={tocItems} />
+
+        <section id="notation" class="rich-text seo-guide">
+          <h2>Notre méthode de notation : pourquoi cet avis ?</h2>
+          <p>Notre avis n’est pas une note médicale et ne promet pas de résultat individuel. Il s’agit d’une évaluation éditoriale LMC basée sur cinq critères : cohérence de la formule, clarté de la forme de magnésium utilisée, adéquation avec l’intention utilisateur, rapport qualité-prix et facilité d’achat via les offres disponibles.</p>
+          <p>Nous distinguons volontairement les produits “exact-match” et les complexes. Un exact-match est simple à comprendre : il contient clairement du magnésium bisglycinate et répond directement à la recherche. Un complexe peut être moins pur, mais plus intéressant si l’objectif est plus concret : stress, sommeil, détente ou récupération nerveuse. C’est la raison pour laquelle Pauser peut être recommandé en premier pour le stress, sans être présenté comme le produit le plus pur.</p>
+          <p>Ce point est important pour rester honnête. Si vous voulez acheter uniquement du bisglycinate, Argalys ou Punch Power sont plus directs. Si vous cherchez une routine anti-stress plus complète, Pauser a un meilleur fit. Si vous cherchez une prise du soir premium, NMN Bio devient très cohérent.</p>
+        </section>
+
+        <ComparisonTable title="Avis rapide selon votre profil" headers={[{label:'Profil'}, {label:'Notre avis'}]} rows={[
+          { cells: ['<span class="table-fit">Stress en journée</span><span class="table-muted"> Besoin d’une formule complète</span>', '<strong>Pauser</strong> est le plus cohérent malgré une formule non purement bisglycinate.'], highlight: true },
+          { cells: ['<span class="table-fit">Cure simple de bisglycinate</span><span class="table-muted"> Priorité à la forme exacte</span>', '<strong>Argalys</strong> est le choix le plus direct et accessible.'] },
+          { cells: ['<span class="table-fit">Sommeil et détente</span><span class="table-muted"> Routine du soir</span>', '<strong>NMN Bio Oh!Mg</strong> est l’option premium la plus logique.'] },
+          { cells: ['<span class="table-fit">Sport, crampes, budget</span><span class="table-muted"> Prix bas et usage récupération</span>', '<strong>Punch Power</strong> est l’alternative sportive la plus simple.'] },
+        ]} />
+
+        <section id="forme" class="rich-text seo-guide">
+          <h2>Pourquoi le bisglycinate a une bonne réputation</h2>
+          <p>Le magnésium bisglycinate est une forme chélatée : le magnésium est associé à deux molécules de glycine. En pratique, cette association explique pourquoi cette forme est souvent choisie par les personnes qui veulent éviter les inconforts digestifs associés à certaines autres formes. Elle est aussi très présente dans les produits positionnés stress, sommeil et récupération.</p>
+          <p>Ce n’est pas une raison pour ignorer l’étiquette. Certains produits parlent de “magnésium” en gros, mais mélangent citrate, malate, oxyde, bisglycinate ou glycinate. Ce n’est pas forcément mauvais, mais il faut savoir ce que l’on achète. Un mix peut être intelligent si la marque explique sa logique. Il devient problématique si l’utilisateur croit acheter un bisglycinate pur alors que la formule est surtout composée d’autres formes.</p>
+          <p>Notre avis : le bisglycinate est une très bonne base pour une cure sérieuse, mais la meilleure formule dépend de l’objectif. Pour stress et tension nerveuse, les cofacteurs comme la vitamine B6 ou certains extraits végétaux peuvent renforcer la cohérence commerciale du produit. Pour une cure minimaliste, moins d’ingrédients peut au contraire être un avantage.</p>
+        </section>
+
+        <ContentImage src="/images/content/magnesium-bisglycinate-hero.webp" alt="Avis magnésium bisglycinate" caption="Le bon avis dépend surtout du besoin : stress, sommeil, récupération ou cure simple." />
+
+        <section id="effets" class="rich-text seo-guide">
+          <h2>Quels effets attendre raisonnablement ?</h2>
+          <p>Le magnésium contribue au fonctionnement normal du système nerveux, à réduire la fatigue et à une fonction musculaire normale. Ces allégations autorisées expliquent pourquoi il est souvent associé à la fatigue nerveuse, aux périodes de stress ou à la récupération. En revanche, il ne faut pas le présenter comme un traitement du sommeil, de l’anxiété ou des crampes.</p>
+          <p>Dans les avis utilisateurs, les retours les plus fréquents concernent souvent la sensation de détente, la régularité de la routine, la récupération ou le confort digestif. Ces signaux sont utiles, mais ils restent subjectifs. Deux personnes peuvent réagir différemment selon leur alimentation, leur niveau de stress, leur sommeil, leur activité physique et leurs éventuels traitements.</p>
+          <p>Notre position est donc prudente : le magnésium bisglycinate est un choix solide pour soutenir une routine bien-être, mais il ne remplace ni un diagnostic ni une prise en charge médicale. Si la fatigue est forte, durable ou associée à d’autres symptômes, le bon réflexe reste de demander un avis professionnel.</p>
+        </section>
+
+        <InnerNote emoji="🧠" text="Notre angle : ne pas vendre le bisglycinate comme une solution miracle. Le présenter comme une forme pertinente, bien tolérée et utile dans une routine cohérente." />
+
+        <section id="produits" class="rich-text seo-guide">
+          <h2>Notre avis sur les meilleurs produits du comparatif</h2>
+          <h3>Pauser Reset by Day : meilleur choix stress</h3>
+          <p>Pauser est le produit le plus intéressant si l’utilisateur arrive avec une intention “je suis tendu, fatigué nerveusement, j’ai besoin d’une routine simple”. La formule ne repose pas uniquement sur le magnésium, ce qui est à la fois sa force et sa limite. Elle contient du magnésium bisglycinate, mais aussi d’autres actifs cohérents avec le positionnement anti-stress.</p>
+          <p>Notre avis : excellent choix conversion, très bon storytelling, mais à ne pas vendre comme bisglycinate pur. Il faut être transparent sur ce point pour garder la confiance.</p>
+          <h3>Argalys : meilleur choix exact-match accessible</h3>
+          <p>Argalys est plus direct. Le produit répond clairement à la recherche “magnésium bisglycinate”, avec un prix accessible et une marque française. C’est probablement le choix le plus rassurant pour quelqu’un qui veut une formule simple, lisible et sans positionnement trop premium.</p>
+          <h3>NMN Bio Oh!Mg : meilleur choix premium du soir</h3>
+          <p>NMN Bio se positionne mieux pour la détente du soir et la récupération. Le prix est plus élevé, mais la formule est plus travaillée. C’est une option cohérente pour une cible qui veut un produit plus premium et une routine nocturne.</p>
+          <h3>Nutripreneur et Punch Power : bons seconds choix</h3>
+          <p>Nutripreneur parle bien aux profils actifs, entrepreneurs ou personnes sous charge mentale. Punch Power est plus sportif et budget. Ces deux produits renforcent le cluster exact-match du site : ils permettent de ne pas dépendre uniquement de Pauser et donnent une vraie crédibilité au comparatif.</p>
+        </section>
+
+        <section id="prix" class="rich-text seo-guide">
+          <h2>Prix et code promo : notre avis</h2>
+          <p>Le prix doit être regardé par dose utile, pas seulement par boîte. Un produit à 15€ peut être très bon si la formule est claire et si la cure dure correctement. Un produit à 35€ ou 45€ peut rester pertinent si la formule inclut des actifs complémentaires et si l’usage est plus ciblé.</p>
+          <p>Les codes promo changent l’équation au premier achat. Pauser propose LMC10, NMN Bio utilise LMC, Argalys LMC, Nutripreneur LMC15, Punch Power LMC20 et Clearly LMC. Notre recommandation : choisir d’abord le produit selon le besoin, puis utiliser le code pour améliorer le rapport qualité-prix. Le code ne doit pas devenir le seul critère de choix.</p>
+        </section>
+
+        <section id="limites" class="rich-text seo-guide">
+          <h2>Limites, précautions et avis négatifs possibles</h2>
+          <p>Les avis négatifs sur le magnésium bisglycinate viennent souvent de trois situations : attente trop élevée, produit mal choisi ou inconfort digestif malgré une forme réputée douce. Même avec du bisglycinate, certaines personnes peuvent ne pas apprécier la prise, le format, la dose ou les ingrédients associés.</p>
+          <p>Il faut aussi faire attention aux profils sensibles. En cas de grossesse, allaitement, pathologie rénale, traitement médical, maladie chronique ou supplémentation multiple, l’avis d’un professionnel de santé est préférable. Le magnésium peut sembler banal, mais une cure n’est pas neutre pour tout le monde.</p>
+          <p>Notre avis final : le magnésium bisglycinate mérite sa place parmi les formes les plus intéressantes. Pour LMC, le meilleur angle est de l’utiliser comme porte d’entrée vers un choix produit intelligent : Pauser pour le stress, Argalys pour la simplicité, NMN Bio pour le soir, Punch Power pour le budget sport.</p>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
+      </div>
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={topProduct.brandLogo} promoCode={topProduct.promoCode} promoPercent={topProduct.promoPercent} originalPrice={topProduct.originalPrice} discountPrice={topProduct.discountPrice} ctaLink={topProduct.affiliateLink} heroImage={topProduct.image} rating={topProduct.rating} reviewCount={topProduct.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+</BaseLayout>
+
+<style>
+  .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
+  .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }
+  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+</style>

@@ -7,7 +7,7 @@ const legalPageDescription = `Politique de confidentialité du site ${config.sit
 const legalPageUrl = new URL(Astro.url.pathname, config.domain).toString();
 ---
 
-<BaseLayout title="Politique de confidentialité | Meilleur Magnésium Bisglycinate" description={legalPageDescription}>
+<BaseLayout title="Confidentialité | Meilleur Magnésium Bisglycinate" description={legalPageDescription}>
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

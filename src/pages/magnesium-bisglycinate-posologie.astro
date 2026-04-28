@@ -1,0 +1,224 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+import ContentImage from '@/components/ContentImage.astro';
+import InnerNote from '@/components/InnerNote.astro';
+import config from '@/data/site.config';
+
+const topProduct = config.products[0];
+const pageTitle = 'Magnésium bisglycinate posologie : dose et moment de prise';
+const pageDescription = 'Posologie du magnésium bisglycinate : dose, magnésium élémentaire, matin ou soir, durée de cure, erreurs à éviter et conseils de choix.';
+const tocItems = [
+  { id: 'en-bref', label: 'En bref' },
+  { id: 'dose', label: 'Dose utile' },
+  { id: 'moment', label: 'Matin ou soir' },
+  { id: 'cure', label: 'Durée de cure' },
+  { id: 'profils', label: 'Selon le profil' },
+  { id: 'erreurs', label: 'Erreurs fréquentes' },
+  { id: 'choisir', label: 'Choisir le bon produit' },
+  { id: 'faq', label: 'FAQ' },
+];
+const faq = [
+  { question: 'Quelle dose de magnésium bisglycinate prendre par jour ?', answer: 'Il faut regarder la dose de magnésium élémentaire indiquée sur l’étiquette, pas seulement le poids de bisglycinate. La bonne dose dépend du produit, de l’alimentation, de la tolérance et du contexte personnel. Respectez la recommandation du fabricant et demandez conseil si vous avez un traitement ou une pathologie.' },
+  { question: 'Faut-il prendre le magnésium bisglycinate le matin ou le soir ?', answer: 'Le soir est souvent choisi pour la détente et le sommeil. Le matin ou le midi peut être plus logique pour une formule anti-stress de journée. Le bon moment est celui qui correspond à l’objectif et reste bien toléré.' },
+  { question: 'Combien de temps dure une cure de magnésium bisglycinate ?', answer: 'Beaucoup de cures se raisonnent sur plusieurs semaines, mais il n’y a pas une durée unique valable pour tout le monde. Le plus sérieux est de suivre l’étiquette, d’observer la tolérance et de réévaluer après la période prévue.' },
+  { question: 'Peut-on prendre du magnésium bisglycinate tous les jours ?', answer: 'Oui, certains produits sont prévus pour une prise quotidienne, mais cela ne veut pas dire qu’il faut cumuler plusieurs sources de magnésium. Vérifiez multivitamines, électrolytes, produits sommeil et complexes anti-stress avant d’ajouter une cure.' },
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: pageTitle,
+  description: pageDescription,
+  author: { '@type': 'Person', name: config.author.name },
+  datePublished: '2026-04-28',
+  dateModified: '2026-04-28',
+  image: new URL('/images/content/magnesium-routine.webp', config.domain).toString(),
+  mainEntityOfPage: `${config.domain}/magnesium-bisglycinate-posologie/`,
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} ogImage="/images/content/magnesium-routine.webp">
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Dose, moment de prise, durée de cure : le sujet paraît simple, mais beaucoup d’erreurs viennent d’une confusion entre bisglycinate, magnésium élémentaire et objectif réel. Voici mon guide clair avant achat."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="28 avril 2026"
+    readingTime="13 min de lecture"
+    breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Posologie', href: '/magnesium-bisglycinate-posologie/' }]}
+    bannerImage="/images/content/magnesium-routine.webp"
+    product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
+    heroButton={{ text: 'Voir la méthode', href: '#dose' }}
+    showOfferBlock={false}
+  />
+
+  <main style="background-color:#ffffff;">
+    <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
+      <div class="content-column">
+        <section id="en-bref" class="rich-text">
+          <h2>En bref : la posologie se lit en magnésium élémentaire</h2>
+          <p><strong>La première erreur consiste à regarder seulement le mot “bisglycinate”.</strong> Ce mot indique une forme de magnésium, pas automatiquement la quantité réellement apportée. Deux produits peuvent afficher une gélule de magnésium bisglycinate et donner une dose utile très différente. Ce qui compte, c’est la ligne “magnésium élémentaire” ou “dont magnésium” sur l’étiquette.</p>
+          <p>La deuxième erreur consiste à croire qu’il existe une dose parfaite pour tout le monde. Le besoin dépend de votre alimentation, de votre tolérance digestive, de votre niveau de stress, de votre sommeil, de votre activité physique, de vos traitements et des autres compléments déjà pris. Une personne qui utilise déjà des électrolytes, un multivitamines ou un complexe sommeil n’a pas le même contexte qu’une personne qui commence une cure simple.</p>
+          <p>Mon avis : commencez par comprendre le produit, puis choisissez le moment de prise selon votre objectif. Pour détente et sommeil, le soir est souvent logique. Pour stress de journée, une formule comme Pauser peut mieux s’intégrer le matin ou en début d’après-midi selon l’étiquette. Le bon choix n’est pas le dosage le plus agressif, c’est le dosage régulier, lisible et bien toléré.</p>
+        </section>
+
+        <TableOfContents items={tocItems} />
+
+        <section class="promo-strip" aria-label="Choix posologie magnésium bisglycinate">
+          <div class="promo-strip__header">
+            <span class="promo-strip__eyebrow">Choix de Tim</span>
+            <h2>Pour le stress de journée, je privilégie une formule cohérente</h2>
+            <p>Pauser n’est pas le meilleur choix si vous cherchez un bisglycinate pur et isolé. En revanche, pour une routine anti-stress avec magnésium bisglycinate, c’est le produit le plus cohérent du classement.</p>
+          </div>
+          <article class="promo-card promo-card--featured">
+            <div class="promo-card__image-col">
+              <span class="promo-card__badge">Recommandé</span>
+              <img src={topProduct.image} alt={topProduct.name} class="promo-card__image" loading="lazy" />
+            </div>
+            <div class="promo-card__content">
+              <div class="promo-card__topline"><h3>{topProduct.name}</h3><div class="promo-card__rating"><span>★</span> {topProduct.rating.toFixed(1)} <em>/10</em></div></div>
+              <div class="promo-card__rows">
+                <div class="promo-card__row"><span class="promo-card__icon">✦</span><span>Usage : <strong>Stress et équilibre quotidien</strong></span></div>
+                <div class="promo-card__row"><span class="promo-card__icon">◎</span><span>Marque : <strong>{topProduct.brand}</strong></span></div>
+                <div class="promo-card__row"><span class="promo-card__icon">🏷</span><span>-{Math.abs(topProduct.promoPercent)}% avec le code : <strong>{topProduct.promoCode}</strong></span></div>
+              </div>
+              <div class="promo-card__price"><span>À partir de :</span><del>{topProduct.originalPrice}</del><strong>{topProduct.discountPrice}</strong></div>
+              <div class="promo-card__actions"><div class="promo-card__coupon"><span>⧉</span><strong>{topProduct.promoCode}</strong><em>-{Math.abs(topProduct.promoPercent)}%</em></div><a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">Voir l’offre <span>→</span></a></div>
+              <p class="promo-card__verified">✅ Suivez l’étiquette du produit et évitez le cumul avec d’autres apports en magnésium.</p>
+            </div>
+          </article>
+        </section>
+
+        <section id="dose" class="rich-text seo-guide">
+          <h2>Quelle dose de magnésium bisglycinate prendre ?</h2>
+          <p>La dose se raisonne d’abord en magnésium élémentaire. C’est la partie utile à comparer entre deux produits. Le bisglycinate est une forme où le magnésium est lié à la glycine. Le poids total du composé n’est donc pas équivalent à la quantité de magnésium réellement apportée. Si une fiche produit met surtout en avant “500 mg de bisglycinate” sans clarifier l’apport élémentaire, vous devez lire plus loin avant d’acheter.</p>
+          <p>En pratique, l’étiquette doit indiquer la dose par gélule, par portion ou par prise quotidienne. C’est cette information qui guide la posologie. Certains produits proposent une prise en une fois, d’autres en deux prises. Certains complexes associent magnésium, vitamine B6, zinc, plantes ou acides aminés. Dans ce cas, la question n’est plus seulement la dose de magnésium, mais la tolérance de la formule entière.</p>
+          <p>Je déconseille de commencer par dépasser la recommandation fabricant sous prétexte que le magnésium est “naturel”. Un complément reste un apport concentré. Si vous débutez, la régularité vaut mieux que la force. Une dose modérée mais suivie, prise au bon moment et bien tolérée, a plus de sens qu’une dose forte qui crée une gêne digestive ou vous pousse à arrêter au bout de trois jours.</p>
+          <p>La bonne lecture est donc simple : identifier la dose de magnésium élémentaire, vérifier le nombre de prises, regarder les autres actifs, puis comparer avec vos apports déjà existants. Si vous prenez déjà un multivitamines, une boisson électrolyte ou un produit sommeil, additionnez les sources au lieu de considérer chaque produit séparément.</p>
+        </section>
+
+        <ContentImage src="/images/content/magnesium-routine.webp" alt="Routine et posologie du magnésium bisglycinate" caption="La posologie doit partir de l’étiquette : dose élémentaire, nombre de prises, moment recommandé et tolérance personnelle." />
+
+        <ComparisonTable title="Posologie : comment lire une étiquette" headers={[{label:'Élément à vérifier'}, {label:'Pourquoi c’est important'}]} rows={[
+          { cells: ['<span class="table-fit">Magnésium élémentaire</span><span class="table-muted"> La vraie dose comparable</span>', 'C’est la quantité utile à comparer entre deux produits, pas seulement le poids du bisglycinate.'], highlight: true },
+          { cells: ['<span class="table-fit">Nombre de prises</span><span class="table-muted"> 1 ou 2 fois par jour</span>', 'Une dose fractionnée peut être mieux tolérée chez certaines personnes sensibles.'] },
+          { cells: ['<span class="table-fit">Formule complète</span><span class="table-muted"> B6, zinc, plantes, théanine</span>', 'Les cofacteurs changent l’usage du produit et peuvent influencer le moment de prise.'] },
+          { cells: ['<span class="table-fit">Apports cumulés</span><span class="table-muted"> Multi, électrolytes, sommeil</span>', 'Le risque vient souvent du cumul involontaire de plusieurs compléments.'] },
+        ]} />
+
+        <section id="moment" class="rich-text seo-guide">
+          <h2>Magnésium bisglycinate le matin ou le soir ?</h2>
+          <p>Le soir est le moment le plus intuitif pour beaucoup de lecteurs, surtout quand la recherche tourne autour du sommeil, de la détente ou de la récupération nerveuse. Le magnésium bisglycinate est souvent associé à une meilleure tolérance et à un usage relaxation. Cela ne signifie pas qu’il “fait dormir” comme un somnifère. Cela signifie plutôt qu’il peut s’intégrer dans une routine du soir quand l’objectif est de soutenir le calme et la récupération.</p>
+          <p>Le matin ou le midi peuvent aussi être pertinents, surtout pour les formules orientées stress de journée. C’est le cas de Pauser Reset by Day : le produit n’est pas pensé comme un simple magnésium du soir, mais comme un complexe anti-stress. Dans ce contexte, la prise dépend davantage de l’étiquette et de votre ressenti en journée que d’une règle universelle “toujours le soir”.</p>
+          <p>Si vous êtes sensible au niveau digestif, prendre le magnésium avec un repas peut être plus confortable. Si vous ressentez une détente marquée, évitez de tester une première prise avant une réunion, la conduite ou une séance de travail exigeante. À l’inverse, si la prise du soir vous gêne ou ne change rien, un autre moment peut être plus adapté. Le corps répond parfois mieux à la régularité qu’à l’horaire parfait.</p>
+          <p>Le bon test se fait proprement : un seul nouveau complément à la fois, une prise stable pendant plusieurs jours, puis une observation honnête. Changer dose, horaire, marque et autres compléments en même temps rend votre lecture impossible. Vous ne saurez pas si l’effet vient du magnésium, d’un autre actif ou simplement d’une meilleure routine de sommeil.</p>
+        </section>
+
+        <InnerNote emoji="📌" text="Ma règle simple : soir pour détente et sommeil, journée pour formule anti-stress, repas si l’estomac est sensible. Toujours selon l’étiquette." />
+
+        <section id="cure" class="rich-text seo-guide">
+          <h2>Combien de temps faire une cure ?</h2>
+          <p>La durée d’une cure dépend du produit et de la raison de départ. Beaucoup de personnes raisonnent en quelques semaines, parce qu’une routine minérale se juge rarement en une seule prise. Mais il serait faux de promettre une durée magique. Une fatigue, des crampes ou un sommeil perturbé peuvent avoir plusieurs causes : alimentation, hydratation, entraînement, stress, rythme de vie, carences, traitements ou contexte médical.</p>
+          <p>Une cure sérieuse commence donc par un objectif clair. Si l’objectif est la détente du soir, observez la qualité d’endormissement, les réveils et la récupération. Si l’objectif est le stress de journée, observez la tension nerveuse, la régularité de l’énergie et la tolérance. Si l’objectif est sportif, observez plutôt crampes, récupération, hydratation et charge d’entraînement. Sans objectif, vous risquez de prendre un produit sans savoir quoi mesurer.</p>
+          <p>Après la période recommandée par le fabricant, réévaluez. Est-ce utile ? Est-ce bien toléré ? Avez-vous changé autre chose en même temps ? Le produit est-il encore nécessaire ? Cette étape est importante, car l’affiliation pousse parfois à acheter en continu. Mon approche est plus simple : utiliser un complément quand il sert une routine claire, puis réévaluer plutôt que d’empiler les flacons.</p>
+          <p>Si les symptômes sont forts, récents, inhabituels ou persistants, ne cherchez pas à tout résoudre avec du magnésium. Le complément peut être une piste, pas un diagnostic. Un avis médical est préférable quand la situation sort du simple confort ou de l’optimisation du quotidien.</p>
+        </section>
+
+        <ContentImage src="/images/content/magnesium-precautions.webp" alt="Précautions avant une cure de magnésium bisglycinate" caption="Une cure utile se réévalue : objectif, tolérance, autres apports et contexte santé passent avant la durée automatique." />
+
+        <section class="promo-strip mid-promo" aria-label="Rappel offre Pauser">
+          <div class="promo-strip__header">
+            <span class="promo-strip__eyebrow">Routine stress</span>
+            <h2>Si votre besoin est surtout mental, ne choisissez pas seulement la dose</h2>
+            <p>Une formule complète peut être plus pertinente qu’un bisglycinate isolé si votre objectif principal est le stress du quotidien. Pauser reste notre top 1 pour cet usage précis.</p>
+          </div>
+          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-strip__button">Voir Pauser avec le code {topProduct.promoCode}</a>
+        </section>
+
+        <section id="profils" class="rich-text seo-guide">
+          <h2>Adapter la prise selon le profil</h2>
+          <p>Pour une personne stressée mais en bonne santé, la question principale est l’usage réel. Si la tension nerveuse monte surtout dans la journée, une formule anti-stress peut avoir plus de sens qu’une prise uniquement le soir. Si la difficulté concerne plutôt le relâchement du soir, un produit orienté récupération nocturne peut mieux correspondre. Dans les deux cas, évitez de multiplier les actifs d’un coup.</p>
+          <p>Pour un sportif, la posologie ne doit pas être isolée de l’hydratation et des électrolytes. Les crampes ou la fatigue ne viennent pas toujours d’un manque de magnésium. Sodium, potassium, charge d’entraînement, sommeil et récupération comptent aussi. Avant d’augmenter la dose, vérifiez la cohérence globale de votre routine.</p>
+          <p>Pour une personne sensible au niveau digestif, commencez progressivement et privilégiez une prise avec repas si l’étiquette le permet. Le bisglycinate est souvent choisi pour sa tolérance, mais aucune forme n’est parfaite pour tout le monde. Si une gêne apparaît, réduisez, fractionnez ou stoppez temporairement au lieu d’insister.</p>
+          <p>Pour les femmes enceintes ou allaitantes, les personnes avec maladie rénale, traitement médical ou maladie chronique, le bon réflexe est de demander conseil. Le sujet n’est pas seulement la forme bisglycinate, mais la sécurité globale de la formule. Un complexe avec plantes, vitamine B6 ou autres actifs n’a pas le même niveau de simplicité qu’un minéral seul.</p>
+        </section>
+
+        <section id="erreurs" class="rich-text seo-guide">
+          <h2>Les erreurs fréquentes à éviter</h2>
+          <p>La première erreur est de confondre “plus dosé” et “meilleur”. Un produit très dosé peut être inutilement inconfortable si votre besoin est modéré ou si votre alimentation couvre déjà une partie des apports. Le bon complément doit s’intégrer dans la journée, pas devenir une contrainte digestive.</p>
+          <p>La deuxième erreur est de cumuler plusieurs produits sans additionner les apports. Un multivitamines le matin, une poudre électrolyte au sport, un complexe sommeil le soir et un bisglycinate à côté peuvent créer une addition que personne n’a vraiment prévue. Avant d’acheter, listez les produits déjà pris et regardez les minéraux présents.</p>
+          <p>La troisième erreur est d’acheter uniquement selon le code promo. Un bon prix est utile, mais il ne compense pas une formule mal adaptée. Pour un usage stress, je regarde les cofacteurs et le moment de prise. Pour un usage exact-match, je regarde la clarté de la dose élémentaire. Pour un usage sport, je regarde aussi le reste de la routine récupération.</p>
+          <p>La quatrième erreur est d’attendre un effet immédiat spectaculaire. Le magnésium n’est pas une baguette magique. Si votre sommeil est dégradé par les écrans, la caféine tardive, l’alcool ou un stress élevé, la prise d’une gélule ne remplace pas les bases. Elle peut soutenir une routine, mais elle ne doit pas servir d’excuse pour ignorer le reste.</p>
+        </section>
+
+        <section id="choisir" class="rich-text seo-guide">
+          <h2>Comment choisir entre Pauser, Argalys, NMN Bio et les autres ?</h2>
+          <p>Si votre objectif est le stress de journée, Pauser est le choix le plus cohérent du site. Le produit contient du magnésium bisglycinate, mais il doit être compris comme un complexe anti-stress. C’est précisément pour cela qu’il est premier dans notre classement global : il répond bien à l’intention réelle d’une partie des lecteurs, qui cherchent moins une molécule isolée qu’une routine pour mieux gérer la tension quotidienne.</p>
+          <p>Si vous voulez un produit plus direct sur le mot-clé “magnésium bisglycinate”, Argalys, Nutripreneur et Punch Power sont plus simples à défendre. Argalys est accessible et clair. Nutripreneur parle bien aux profils actifs et entrepreneurs. Punch Power a un angle sport et prix intéressant. Dans ces cas, la posologie se lit surtout via la dose élémentaire et le nombre de gélules recommandé.</p>
+          <p>Si votre objectif est plutôt le soir, NMN Bio peut être pertinent grâce à son positionnement premium et sa logique détente. Clearly est une alternative propre mais moins exacte, car le produit est un mix de formes de magnésium. Cela peut convenir à certains lecteurs, mais ce n’est pas le choix le plus pur si vous cherchez strictement du bisglycinate.</p>
+          <p>Mon verdict : partez de votre besoin, puis seulement ensuite de la posologie. Stress de journée, Pauser. Bisglycinate exact et simple, Argalys ou Nutripreneur. Sport et prix, Punch Power. Routine du soir premium, NMN Bio. Et dans tous les cas, lisez la dose élémentaire avant de comparer les prix.</p>
+        </section>
+
+        <section class="promo-highlight" aria-label="Recommandation posologie magnésium bisglycinate">
+          <div><span class="promo-strip__eyebrow">Verdict</span><h2>La meilleure posologie est celle que vous tenez sans inconfort</h2><p>Pour le stress quotidien, Pauser reste mon choix principal. Pour un bisglycinate pur, vérifiez dose élémentaire, moment de prise et tolérance.</p></div>
+          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">Voir Pauser avec le code {topProduct.promoCode}</a>
+        </section>
+
+        <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
+      </div>
+      <aside class="sidebar-column"><div class="sidebar-sticky"><SidebarCTA logoSrc={topProduct.brandLogo} promoCode={topProduct.promoCode} promoPercent={topProduct.promoPercent} originalPrice={topProduct.originalPrice} discountPrice={topProduct.discountPrice} ctaLink={topProduct.affiliateLink} heroImage={topProduct.image} rating={topProduct.rating} reviewCount={topProduct.reviewCount} /></div></aside>
+    </div></div></div>
+  </main>
+</BaseLayout>
+
+<style>
+  .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
+  .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }
+  .faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
+  .promo-strip { margin: 2.5rem 0 3rem; padding: 1.5rem; border: 1px solid #f1dec8; border-radius: 24px; background: linear-gradient(135deg, #fff7e8 0%, #ffffff 56%, #f4f2ec 100%); box-shadow: 0 18px 42px rgba(36,36,36,.08); }
+  .mid-promo { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; }
+  .promo-strip__header { max-width: 46rem; margin-bottom: 1.25rem; }
+  .mid-promo .promo-strip__header { margin-bottom: 0; }
+  .promo-strip__eyebrow { display: inline-flex; margin-bottom: .45rem; padding: .35rem .7rem; border-radius: 999px; background: rgba(239,122,26,.12); color: #c95f09; font-family: Archivo, sans-serif; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+  .promo-strip h2, .promo-highlight h2 { margin: 0 0 .55rem; font-family: Archivo, sans-serif; color: #242424; font-size: clamp(1.45rem, 1.2rem + 1vw, 2rem); line-height: 1.15; }
+  .promo-strip p, .promo-highlight p { margin: 0; color: #555; line-height: 1.65; }
+  .promo-card { position: relative; display: grid; grid-template-columns: minmax(16rem,.72fr) 1fr; overflow: hidden; border: 1px solid #e6e0d6; border-radius: 18px; background: #fff; box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+  .promo-card--featured { border-color: rgba(239,122,26,.55); box-shadow: 0 12px 26px rgba(239,122,26,.14); }
+  .promo-card__image-col { position: relative; min-height: 19rem; padding: 1.2rem; background: linear-gradient(135deg, #d7c8b6 0%, #eee4d6 100%); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .promo-card__badge { position: absolute; top: .9rem; left: .9rem; z-index: 2; padding: .35rem .65rem; border-radius: 999px; background: rgba(36,36,36,.92); color: #fff; font-family: Archivo, sans-serif; font-size: .72rem; font-weight: 800; }
+  .promo-card__image { width: 100%; height: 100%; min-height: 16rem; object-fit: contain; display: block; }
+  .promo-card__content { padding: 1.5rem 1.65rem; display: flex; flex-direction: column; justify-content: center; gap: .85rem; }
+  .promo-card__topline { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+  .promo-card h3 { margin: 0; font-family: Archivo, sans-serif; font-size: clamp(1.25rem, 1.1rem + .5vw, 1.65rem); color: #242424; line-height: 1.1; }
+  .promo-card__rating { white-space: nowrap; font-weight: 900; color: #242424; }
+  .promo-card__rating span { color: #ef7a1a; }
+  .promo-card__rating em { font-style: normal; color: #777; font-weight: 700; }
+  .promo-card__rows { display: grid; gap: .55rem; color: #555; font-size: .95rem; }
+  .promo-card__row { display: flex; align-items: center; gap: .55rem; }
+  .promo-card__icon { width: 1.15rem; text-align: center; color: #424242; }
+  .promo-card__row strong { color: #242424; }
+  .promo-card__price { display: flex; align-items: baseline; gap: .55rem; color: #777; }
+  .promo-card__price del { color: #888; }
+  .promo-card__price strong { color: #ef7a1a; font-size: clamp(1.45rem, 1.2rem + .9vw, 2rem); }
+  .promo-card__actions { display: grid; grid-template-columns: minmax(8rem,.62fr) 1fr; gap: .8rem; align-items: stretch; }
+  .promo-card__coupon { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 1.5px dashed rgba(239,122,26,.7); border-radius: 12px; background: #fffaf3; color: #242424; font-weight: 900; }
+  .promo-card__coupon em { color: #ef7a1a; font-style: normal; }
+  .promo-card__cta, .promo-highlight__cta, .promo-strip__button { display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #ef7a1a; color: #fff; font-family: Archivo, sans-serif; font-weight: 900; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+  .promo-card__cta { width: 100%; padding: .95rem 1rem; gap: .65rem; }
+  .promo-card__cta span { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin: -.5rem -.65rem -.5rem 0; border-radius: 9px; background: rgba(255,255,255,.16); }
+  .promo-card__cta:hover, .promo-highlight__cta:hover, .promo-strip__button:hover { background: #d66a12; transform: translateY(-1px); }
+  .promo-card__verified { margin: 0; color: #242424; font-weight: 800; font-size: .9rem; }
+  .promo-strip__button { padding: 1rem 1.25rem; white-space: nowrap; }
+  .promo-highlight { margin: 3rem 0 0; padding: 1.5rem; display: grid; grid-template-columns: 1fr auto; gap: 1.25rem; align-items: center; border-radius: 24px; background: #242424; color: #fff; }
+  .promo-highlight h2, .promo-highlight p { color: #fff; }
+  .promo-highlight__cta { width: auto; white-space: nowrap; padding: 1rem 1.35rem; }
+  @media (max-width: 991px) { .promo-card, .mid-promo { grid-template-columns: 1fr; } .promo-card__image-col, .promo-card__image { min-height: 14rem; } .promo-card__topline { align-items: flex-start; } .promo-card__actions { grid-template-columns: 1fr; } .promo-highlight { grid-template-columns: 1fr; } .promo-highlight__cta, .promo-strip__button { width: 100%; white-space: normal; } }
+</style>

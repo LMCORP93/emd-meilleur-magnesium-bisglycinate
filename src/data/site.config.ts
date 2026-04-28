@@ -197,6 +197,7 @@ const config: SiteConfig = {
     { type: 'blog', label: 'Avis', slug: '/avis-magnesium-bisglycinate/' },
     { type: 'blog', label: 'Pharmacie', slug: '/magnesium-bisglycinate-pharmacie/' },
     { type: 'blog', label: 'Effets secondaires', slug: '/magnesium-bisglycinate-effets-secondaires/' },
+    { type: 'blog', label: 'Posologie', slug: '/magnesium-bisglycinate-posologie/' },
   ],
 };
 

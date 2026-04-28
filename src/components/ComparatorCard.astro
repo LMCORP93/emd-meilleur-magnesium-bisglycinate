@@ -54,7 +54,6 @@ const chevronId = `chevron-${product.slug}`;
         <!-- Brand logo badge -->
         <div class="cc-badge-logo">
           <img src={product.brandLogo} alt={`Logo ${product.brand}`} class="cc-badge-img" loading="lazy" />
-          <span class="cc-badge-text">{product.brand}</span>
         </div>
         <!-- TOP badge -->
         {product.rank <= 3 && (
@@ -347,15 +346,6 @@ const chevronId = `chevron-${product.slug}`;
     object-fit: contain;
     display: block;
   }
-  .cc-badge-text {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: 0.72rem;
-    line-height: 1;
-    color: #1f2d46;
-    text-align: center;
-  }
-
   /* TOP badge - top left */
   .cc-top-badge {
     position: absolute;

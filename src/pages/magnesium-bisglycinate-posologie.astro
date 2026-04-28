@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import FAQSection from '@/components/FAQSection.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
@@ -55,7 +56,7 @@ const schema = {
     breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Posologie', href: '/magnesium-bisglycinate-posologie/' }]}
     bannerImage="/images/content/magnesium-routine.webp"
     product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
-    heroButton={{ text: 'Voir la méthode', href: '#dose' }}
+    heroButton={{ text: 'Lire l’article', href: '#en-bref' }}
     showOfferBlock={false}
   />
 
@@ -71,29 +72,8 @@ const schema = {
 
         <TableOfContents items={tocItems} />
 
-        <section class="promo-strip" aria-label="Choix posologie magnésium bisglycinate">
-          <div class="promo-strip__header">
-            <span class="promo-strip__eyebrow">Choix de Tim</span>
-            <h2>Pour le stress de journée, je privilégie une formule cohérente</h2>
-            <p>Pauser n’est pas le meilleur choix si vous cherchez un bisglycinate pur et isolé. En revanche, pour une routine anti-stress avec magnésium bisglycinate, c’est le produit le plus cohérent du classement.</p>
-          </div>
-          <article class="promo-card promo-card--featured">
-            <div class="promo-card__image-col">
-              <span class="promo-card__badge">Recommandé</span>
-              <img src={topProduct.image} alt={topProduct.name} class="promo-card__image" loading="lazy" />
-            </div>
-            <div class="promo-card__content">
-              <div class="promo-card__topline"><h3>{topProduct.name}</h3><div class="promo-card__rating"><span>★</span> {topProduct.rating.toFixed(1)} <em>/10</em></div></div>
-              <div class="promo-card__rows">
-                <div class="promo-card__row"><span class="promo-card__icon">✦</span><span>Usage : <strong>Stress et équilibre quotidien</strong></span></div>
-                <div class="promo-card__row"><span class="promo-card__icon">◎</span><span>Marque : <strong>{topProduct.brand}</strong></span></div>
-                <div class="promo-card__row"><span class="promo-card__icon">🏷</span><span>-{Math.abs(topProduct.promoPercent)}% avec le code : <strong>{topProduct.promoCode}</strong></span></div>
-              </div>
-              <div class="promo-card__price"><span>À partir de :</span><del>{topProduct.originalPrice}</del><strong>{topProduct.discountPrice}</strong></div>
-              <div class="promo-card__actions"><div class="promo-card__coupon"><span>⧉</span><strong>{topProduct.promoCode}</strong><em>-{Math.abs(topProduct.promoPercent)}%</em></div><a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">Voir l’offre <span>→</span></a></div>
-              <p class="promo-card__verified">✅ Suivez l’étiquette du produit et évitez le cumul avec d’autres apports en magnésium.</p>
-            </div>
-          </article>
+        <section class="template-promo-block" aria-label="Offre Pauser recommandée">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="dose" class="rich-text seo-guide">
@@ -133,13 +113,8 @@ const schema = {
 
         <ContentImage src="/images/content/magnesium-precautions.webp" alt="Précautions avant une cure de magnésium bisglycinate" caption="Une cure utile se réévalue : objectif, tolérance, autres apports et contexte santé passent avant la durée automatique." />
 
-        <section class="promo-strip mid-promo" aria-label="Rappel offre Pauser">
-          <div class="promo-strip__header">
-            <span class="promo-strip__eyebrow">Routine stress</span>
-            <h2>Si votre besoin est surtout mental, ne choisissez pas seulement la dose</h2>
-            <p>Une formule complète peut être plus pertinente qu’un bisglycinate isolé si votre objectif principal est le stress du quotidien. Pauser reste notre top 1 pour cet usage précis.</p>
-          </div>
-          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-strip__button">Voir Pauser avec le code {topProduct.promoCode}</a>
+        <section class="template-promo-block" aria-label="Rappel offre Pauser">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="profils" class="rich-text seo-guide">
@@ -166,9 +141,8 @@ const schema = {
           <p>Mon verdict : partez de votre besoin, puis seulement ensuite de la posologie. Stress de journée, Pauser. Bisglycinate exact et simple, Argalys ou Nutripreneur. Sport et prix, Punch Power. Routine du soir premium, NMN Bio. Et dans tous les cas, lisez la dose élémentaire avant de comparer les prix.</p>
         </section>
 
-        <section class="promo-highlight" aria-label="Recommandation posologie magnésium bisglycinate">
-          <div><span class="promo-strip__eyebrow">Verdict</span><h2>La meilleure posologie est celle que vous tenez sans inconfort</h2><p>Pour le stress quotidien, Pauser reste mon choix principal. Pour un bisglycinate pur, vérifiez dose élémentaire, moment de prise et tolérance.</p></div>
-          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">Voir Pauser avec le code {topProduct.promoCode}</a>
+        <section class="template-promo-block" aria-label="Offre Pauser">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
@@ -179,6 +153,7 @@ const schema = {
 </BaseLayout>
 
 <style>
+  .template-promo-block { margin: 2.5rem 0 3rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

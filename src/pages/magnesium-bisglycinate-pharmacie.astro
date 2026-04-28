@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import FAQSection from '@/components/FAQSection.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
@@ -10,9 +11,6 @@ import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
 
 const topProduct = config.products[0];
-const argalys = config.products.find((product) => product.brand === 'Argalys');
-const punchPower = config.products.find((product) => product.brand === 'Punch Power');
-const promoProducts = [topProduct, argalys, punchPower].filter(Boolean);
 const pageTitle = 'Magnésium bisglycinate en pharmacie : mon guide 2026';
 const pageDescription = 'Faut-il acheter son magnésium bisglycinate en pharmacie ou en ligne ? Mon guide compare prix, formes, codes promo, tolérance et meilleurs choix.';
 const tocItems = [
@@ -42,11 +40,6 @@ const schema = {
   image: new URL('/images/content/magnesium-pharmacie.webp', config.domain).toString(),
   mainEntityOfPage: `${config.domain}/magnesium-bisglycinate-pharmacie/`,
 };
-const useCase = (brand: string) => ({
-  Pauser: 'Stress et équilibre quotidien',
-  Argalys: 'Cure simple et achat rationnel',
-  'Punch Power': 'Budget, sport et récupération',
-}[brand] ?? 'Magnésium bisglycinate');
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -63,7 +56,7 @@ const useCase = (brand: string) => ({
     breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Magnésium bisglycinate pharmacie', href: '/magnesium-bisglycinate-pharmacie/' }]}
     bannerImage="/images/content/magnesium-pharmacie.webp"
     product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
-    heroButton={{ text: 'Voir la sélection', href: '#selection' }}
+    heroButton={{ text: 'Lire l’article', href: '#en-bref' }}
     showOfferBlock={false}
   />
 
@@ -79,44 +72,8 @@ const useCase = (brand: string) => ({
 
         <TableOfContents items={tocItems} />
 
-        <section id="selection" class="promo-strip" aria-label="Sélection magnésium bisglycinate pharmacie">
-          <div class="promo-strip__header">
-            <span class="promo-strip__eyebrow">Sélection de Tim</span>
-            <h2>Mes choix avant d’acheter en pharmacie</h2>
-            <p>Ces produits couvrent les trois intentions les plus fréquentes : stress, cure simple et petit budget orienté récupération.</p>
-          </div>
-          <div class="promo-grid">
-            {promoProducts.map((product: any, index) => (
-              <article class={`promo-card ${index === 0 ? 'promo-card--featured' : ''}`}>
-                <div class="promo-card__image-col">
-                  <span class="promo-card__badge">#{index + 1} choix</span>
-                  <img src={product.image} alt={product.name} class="promo-card__image" loading="lazy" />
-                </div>
-                <div class="promo-card__content">
-                  <div class="promo-card__topline">
-                    <h3>{product.name}</h3>
-                    <div class="promo-card__rating"><span>★</span> {product.rating.toFixed(1)} <em>/10</em></div>
-                  </div>
-                  <div class="promo-card__rows">
-                    <div class="promo-card__row"><span class="promo-card__icon">✦</span><span>Usage : <strong>{useCase(product.brand)}</strong></span></div>
-                    <div class="promo-card__row"><span class="promo-card__icon">◎</span><span>Marque : <strong>{product.brand}</strong></span></div>
-                    <div class="promo-card__row"><span class="promo-card__icon">🌍</span><span>Origine : <strong>{product.origin.replace(/^🇫🇷 |^🇬🇧 |^🇳🇱 /, '')}</strong></span></div>
-                    <div class="promo-card__row"><span class="promo-card__icon">🏷</span><span>-{Math.abs(product.promoPercent)}% avec le code : <strong>{product.promoCode}</strong></span></div>
-                  </div>
-                  <div class="promo-card__price">
-                    <span>À partir de :</span>
-                    <del>{product.originalPrice}</del>
-                    <strong>{product.discountPrice}</strong>
-                  </div>
-                  <div class="promo-card__actions">
-                    <div class="promo-card__coupon"><span>⧉</span><strong>{product.promoCode}</strong><em>-{Math.abs(product.promoPercent)}%</em></div>
-                    <a href={product.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">Voir l’offre <span>→</span></a>
-                  </div>
-                  <p class="promo-card__verified">✅ Code contrôlé et offre à vérifier au moment de l’achat</p>
-                </div>
-              </article>
-            ))}
-          </div>
+        <section id="selection" class="template-promo-block" aria-label="Offre Pauser recommandée">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="pharmacie" class="rich-text seo-guide">
@@ -165,13 +122,8 @@ const useCase = (brand: string) => ({
           <p>Autre point important : ne pas promettre des effets médicaux. Le magnésium contribue au fonctionnement normal du système nerveux, à la réduction de la fatigue et à une fonction musculaire normale. Cela ne veut pas dire qu’il traite l’anxiété, l’insomnie ou les crampes. Si les symptômes sont forts ou persistants, la bonne réponse n’est pas d’acheter une boîte plus chère, mais de demander un avis professionnel.</p>
         </section>
 
-        <section class="promo-highlight" aria-label="Recommandation magnésium bisglycinate">
-          <div>
-            <span class="promo-strip__eyebrow">Choix pratique</span>
-            <h2>Si vous hésitez entre pharmacie et achat en ligne</h2>
-            <p>Demandez conseil en pharmacie si vous avez un doute santé. Achetez en ligne si vous voulez comparer les formules, profiter d’un code promo et choisir selon votre besoin réel.</p>
-          </div>
-          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">Voir Pauser avec le code {topProduct.promoCode}</a>
+        <section class="template-promo-block" aria-label="Offre Pauser">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="verdict" class="rich-text seo-guide">
@@ -189,6 +141,7 @@ const useCase = (brand: string) => ({
 </BaseLayout>
 
 <style>
+  .template-promo-block { margin: 2.5rem 0 3rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

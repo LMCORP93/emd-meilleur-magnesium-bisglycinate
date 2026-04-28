@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import FAQSection from '@/components/FAQSection.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
@@ -55,7 +56,7 @@ const schema = {
     breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Effets secondaires', href: '/magnesium-bisglycinate-effets-secondaires/' }]}
     bannerImage="/images/content/magnesium-effets-secondaires.webp"
     product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
-    heroButton={{ text: 'Voir les précautions', href: '#contre-indications' }}
+    heroButton={{ text: 'Lire l’article', href: '#en-bref' }}
     showOfferBlock={false}
   />
 
@@ -71,29 +72,8 @@ const schema = {
 
         <TableOfContents items={tocItems} />
 
-        <section class="promo-strip" aria-label="Choix prudent magnésium bisglycinate">
-          <div class="promo-strip__header">
-            <span class="promo-strip__eyebrow">Choix de Tim</span>
-            <h2>Le produit à considérer si votre besoin principal est le stress</h2>
-            <p>Pauser n’est pas un bisglycinate pur. C’est un complexe anti-stress avec magnésium bisglycinate. Je le recommande surtout si votre intention réelle est fatigue nerveuse, tension mentale et équilibre quotidien.</p>
-          </div>
-          <article class="promo-card promo-card--featured">
-            <div class="promo-card__image-col">
-              <span class="promo-card__badge">Recommandé</span>
-              <img src={topProduct.image} alt={topProduct.name} class="promo-card__image" loading="lazy" />
-            </div>
-            <div class="promo-card__content">
-              <div class="promo-card__topline"><h3>{topProduct.name}</h3><div class="promo-card__rating"><span>★</span> {topProduct.rating.toFixed(1)} <em>/10</em></div></div>
-              <div class="promo-card__rows">
-                <div class="promo-card__row"><span class="promo-card__icon">✦</span><span>Usage : <strong>Stress et équilibre quotidien</strong></span></div>
-                <div class="promo-card__row"><span class="promo-card__icon">◎</span><span>Marque : <strong>{topProduct.brand}</strong></span></div>
-                <div class="promo-card__row"><span class="promo-card__icon">🏷</span><span>-{Math.abs(topProduct.promoPercent)}% avec le code : <strong>{topProduct.promoCode}</strong></span></div>
-              </div>
-              <div class="promo-card__price"><span>À partir de :</span><del>{topProduct.originalPrice}</del><strong>{topProduct.discountPrice}</strong></div>
-              <div class="promo-card__actions"><div class="promo-card__coupon"><span>⧉</span><strong>{topProduct.promoCode}</strong><em>-{Math.abs(topProduct.promoPercent)}%</em></div><a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">Voir l’offre <span>→</span></a></div>
-              <p class="promo-card__verified">✅ À utiliser selon l’étiquette, sans cumul inutile avec d’autres apports en magnésium.</p>
-            </div>
-          </article>
+        <section class="template-promo-block" aria-label="Offre Pauser recommandée">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="effets" class="rich-text seo-guide">
@@ -155,9 +135,8 @@ const schema = {
           <p>Mon verdict : choisissez selon votre besoin réel, pas selon la peur. Si vous êtes en bonne santé et que vous respectez les doses, le bisglycinate est une option sérieuse. Si vous avez un terrain sensible, demandez conseil. Et si vous ressentez un effet indésirable net, arrêtez et réévaluez au lieu de forcer la cure.</p>
         </section>
 
-        <section class="promo-highlight" aria-label="Recommandation prudente magnésium bisglycinate">
-          <div><span class="promo-strip__eyebrow">Verdict prudent</span><h2>Ne choisissez pas seulement le “plus fort”</h2><p>Le meilleur produit est celui qui correspond à votre besoin, votre tolérance et votre contexte santé. Pour le stress quotidien, Pauser reste mon choix principal.</p></div>
-          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">Voir Pauser avec le code {topProduct.promoCode}</a>
+        <section class="template-promo-block" aria-label="Offre Pauser">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
@@ -168,6 +147,7 @@ const schema = {
 </BaseLayout>
 
 <style>
+  .template-promo-block { margin: 2.5rem 0 3rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

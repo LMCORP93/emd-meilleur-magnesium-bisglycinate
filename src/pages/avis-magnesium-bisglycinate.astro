@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
+import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
 import FAQSection from '@/components/FAQSection.astro';
 import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
@@ -10,16 +11,6 @@ import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
 
 const topProduct = config.products[0];
-const promoProducts = [
-  topProduct,
-  config.products.find((product) => product.brand === 'Argalys'),
-  config.products.find((product) => product.brand === 'NMN Bio'),
-].filter(Boolean);
-const promoUseCase = (brand: string) => ({
-  Pauser: 'Stress et équilibre quotidien',
-  Argalys: 'Cure simple de bisglycinate',
-  'NMN Bio': 'Sommeil et récupération',
-}[brand] ?? 'Magnésium bisglycinate');
 const pageTitle = 'Avis magnésium bisglycinate : mon verdict 2026';
 const pageDescription = 'Mon avis sur le magnésium bisglycinate : tolérance, sommeil, stress, prix, meilleur choix selon le besoin et limites à connaître avant achat.';
 const tocItems = [
@@ -65,7 +56,7 @@ const schema = {
     breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Avis magnésium bisglycinate', href: '/avis-magnesium-bisglycinate/' }]}
     bannerImage="/images/content/magnesium-bisglycinate-hero.webp"
     product={{ name: topProduct.name, image: topProduct.image, promoCode: topProduct.promoCode, promoPercent: topProduct.promoPercent, originalPrice: topProduct.originalPrice, discountPrice: topProduct.discountPrice, affiliateLink: topProduct.affiliateLink }}
-    heroButton={{ text: 'Voir ma recommandation', href: topProduct.affiliateLink, external: true }}
+    heroButton={{ text: 'Lire l’article', href: '#verdict' }}
     showOfferBlock={false}
   />
 
@@ -82,46 +73,8 @@ const schema = {
 
         <TableOfContents items={tocItems} />
 
-        <section class="promo-strip" aria-label="Offres recommandées magnésium bisglycinate">
-          <div class="promo-strip__header">
-            <span class="promo-strip__eyebrow">Sélection de Tim</span>
-            <h2>Mes 3 choix à considérer</h2>
-            <p>Si vous voulez passer à l’achat maintenant, ces trois options couvrent les besoins les plus fréquents : stress, cure simple et sommeil.</p>
-          </div>
-          <div class="promo-grid">
-            {promoProducts.map((product: any, index) => (
-              <article class={`promo-card ${index === 0 ? 'promo-card--featured' : ''}`}>
-                <div class="promo-card__image-col">
-                  <span class="promo-card__badge">#{index + 1} recommandé</span>
-                  <img src={product.image} alt={product.name} class="promo-card__image" loading="lazy" />
-                </div>
-                <div class="promo-card__content">
-                  <div class="promo-card__topline">
-                    <h3>{product.name}</h3>
-                    <div class="promo-card__rating"><span>★</span> {product.rating.toFixed(1)} <em>/10</em></div>
-                  </div>
-                  <div class="promo-card__rows">
-                    <div class="promo-card__row"><span class="promo-card__icon">✦</span><span>Usage : <strong>{promoUseCase(product.brand)}</strong></span></div>
-                    <div class="promo-card__row"><span class="promo-card__icon">◎</span><span>Marque : <strong>{product.brand}</strong></span></div>
-                    <div class="promo-card__row"><span class="promo-card__icon">🌍</span><span>Origine : <strong>{product.origin.replace(/^🇫🇷 |^🇬🇧 |^🇳🇱 /, '')}</strong></span></div>
-                    <div class="promo-card__row"><span class="promo-card__icon">🏷</span><span>-{product.promoPercent}% avec le code : <strong>{product.promoCode}</strong></span></div>
-                  </div>
-                  <div class="promo-card__price">
-                    <span>À partir de :</span>
-                    <del>{product.originalPrice}</del>
-                    <strong>{product.discountPrice}</strong>
-                  </div>
-                  <div class="promo-card__actions">
-                    <div class="promo-card__coupon"><span>⧉</span><strong>{product.promoCode}</strong><em>-{product.promoPercent}%</em></div>
-                    <a href={product.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-card__cta">
-                      Voir l’offre <span>→</span>
-                    </a>
-                  </div>
-                  <p class="promo-card__verified">✅ Code contrôlé et valable en 2026</p>
-                </div>
-              </article>
-            ))}
-          </div>
+        <section id="verdict" class="template-promo-block" aria-label="Offre Pauser recommandée">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="notation" class="rich-text seo-guide">
@@ -169,15 +122,8 @@ const schema = {
           <p>Nutripreneur parle bien aux profils actifs, entrepreneurs ou personnes sous charge mentale. Punch Power est plus sportif et budget. Ces deux produits renforcent le cluster exact-match du site : ils permettent de ne pas dépendre uniquement de Pauser et donnent une vraie crédibilité au comparatif.</p>
         </section>
 
-        <section class="promo-highlight" aria-label="Meilleure offre magnésium bisglycinate">
-          <div>
-            <span class="promo-strip__eyebrow">Choix de Tim</span>
-            <h2>Ma recommandation si vous hésitez</h2>
-            <p>Pour un usage stress et équilibre quotidien, Pauser reste le meilleur choix conversion. Pour un bisglycinate plus direct, passez plutôt par Argalys depuis le comparatif.</p>
-          </div>
-          <a href={topProduct.affiliateLink} target="_blank" rel="nofollow sponsored" class="promo-highlight__cta">
-            Voir Pauser avec le code {topProduct.promoCode}
-          </a>
+        <section class="template-promo-block" aria-label="Offre Pauser">
+          <ReviewPromoCard product={topProduct} />
         </section>
 
         <section id="prix" class="rich-text seo-guide">
@@ -201,6 +147,7 @@ const schema = {
 </BaseLayout>
 
 <style>
+  .template-promo-block { margin: 2.5rem 0 3rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

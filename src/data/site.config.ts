@@ -149,8 +149,8 @@ const products: Product[] = [
 ];
 
 const config: SiteConfig = {
-  domain: 'https://emd-meilleur-magnesium-bisglycinate.pages.dev',
-  isIndexable: false,
+  domain: 'https://meilleur-magnesium-bisglycinate.fr',
+  isIndexable: true,
   siteName: 'Meilleur Magnésium Bisglycinate',
   brand: 'Pauser',
   product: 'Reset by Day',

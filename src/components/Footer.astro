@@ -87,7 +87,9 @@ const infoLinks: NavLink[] = [
 
     <!-- Bottom sub-footer: logo + copyright aligned on same row -->
     <div class="footer_sub">
-      <a href="/" class="footer_logo-link footer_logo-text">{siteName}</a>
+      <a href="/" class="footer_logo-link">
+        <img src={logoSrc} alt={siteName} class="footer_logo" />
+      </a>
       <p class="footer_copyright">© {year} {copyright}</p>
     </div>
   </div>
@@ -185,14 +187,6 @@ const infoLinks: NavLink[] = [
     width: 5.25rem;
     height: 5.25rem;
     object-fit: contain;
-  }
-
-  .footer_logo-text {
-    font-family: 'Archivo', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #242424;
-    text-decoration: none;
   }
 
   .footer_copyright {

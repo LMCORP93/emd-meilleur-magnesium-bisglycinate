@@ -228,11 +228,11 @@ const schema = {
   .promo-card__price { display: flex; align-items: baseline; gap: .55rem; color: #777; }
   .promo-card__price del { color: #888; }
   .promo-card__price strong { color: #ef7a1a; font-size: clamp(1.45rem, 1.2rem + .9vw, 2rem); }
-  .promo-card__actions { display: grid; grid-template-columns: minmax(8rem,.62fr) 1fr; gap: .8rem; align-items: stretch; }
-  .promo-card__coupon { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 1.5px dashed rgba(239,122,26,.7); border-radius: 12px; background: #fffaf3; color: #242424; font-weight: 900; }
+  .promo-card__actions { display: grid; grid-template-columns: minmax(8rem,.62fr) 1fr; width: 100%; gap: .8rem; align-items: stretch; }
+  .promo-card__coupon { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 3.25rem; padding: .85rem 1rem; box-sizing: border-box; gap: .5rem; border: 1.5px dashed rgba(239,122,26,.7); border-radius: 12px; background: #fffaf3; color: #242424; font-weight: 900; }
   .promo-card__coupon em { color: #ef7a1a; font-style: normal; }
   .promo-card__cta, .promo-highlight__cta { display: inline-flex; align-items: center; justify-content: center; width: 100%; border-radius: 12px; background: #ef7a1a; color: #fff; font-family: Archivo, sans-serif; font-weight: 900; text-decoration: none; transition: transform .2s ease, background .2s ease; }
-  .promo-card__cta { padding: .95rem 1rem; gap: .65rem; }
+  .promo-card__cta { width: 100%; min-height: 3.25rem; padding: .95rem 1rem; box-sizing: border-box; gap: .65rem; }
   .promo-card__cta span { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin: -.5rem -.65rem -.5rem 0; border-radius: 9px; background: rgba(255,255,255,.16); }
   .promo-card__cta:hover, .promo-highlight__cta:hover { background: #d66a12; transform: translateY(-1px); }
   .promo-card__verified { margin: 0; color: #242424; font-weight: 800; font-size: .9rem; }

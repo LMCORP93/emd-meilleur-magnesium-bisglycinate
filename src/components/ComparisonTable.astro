@@ -64,7 +64,7 @@ const { title, headers, rows } = Astro.props;
   /* Grid row */
   .table_grid {
     border-bottom: 1px solid #eee5d8;
-    grid-template-columns: 1.45fr 1fr;
+    grid-template-columns: minmax(14rem, 0.95fr) minmax(18rem, 1.25fr);
     display: grid;
   }
   .table_grid:last-child {
@@ -96,7 +96,7 @@ const { title, headers, rows } = Astro.props;
     flex-flow: column;
     justify-content: center;
     align-items: flex-start;
-    padding: .8rem 1rem;
+    padding: .9rem 1rem;
     display: flex;
     font-weight: 600;
     color: #242424;
@@ -108,15 +108,17 @@ const { title, headers, rows } = Astro.props;
   .table_grid-col-right {
     justify-content: flex-start;
     align-items: center;
-    padding: .8rem 1rem;
-    display: flex;
+    padding: .9rem 1rem;
+    display: block;
     color: #333;
     font-size: clamp(0.8125rem, 0.8rem + 0.1vw, 0.875rem);
-    line-height: 1.5;
+    line-height: 1.55;
   }
-  :global(.table-fit) { display:inline-flex; align-items:center; gap:.4rem; font-weight:700; color:#242424; }
+  :global(.table-verdict) { display:block; margin-bottom:.18rem; font-weight:800; color:#242424; }
+  :global(.table-explain) { display:block; color:#4a4a4a; }
+  :global(.table-fit) { display:block; font-weight:800; color:#242424; }
   :global(.table-link) { display:inline-flex; align-items:center; gap:.35rem; color:#ef7a1a; font-weight:800; text-decoration:none; border-bottom:1px solid rgba(239,122,26,.28); }
   :global(.table-link:hover) { color:#c95f09; border-bottom-color:currentColor; }
-  :global(.table-muted) { color:#666; font-size:.82em; font-weight:600; }
+  :global(.table-muted) { display:block; margin-top:.15rem; color:#666; font-size:.82em; font-weight:600; line-height:1.35; }
   @media (max-width:640px) { .table_grid{grid-template-columns:1fr;} .table_grid-col-right{border-top:1px dashed #eee5d8;} }
 </style>

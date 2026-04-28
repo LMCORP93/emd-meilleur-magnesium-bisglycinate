@@ -85,10 +85,10 @@ const schema = {
         </section>
 
         <ComparisonTable title="Avis rapide selon votre profil" headers={[{label:'Profil'}, {label:'Mon avis'}]} rows={[
-          { cells: ['<span class="table-fit">Stress en journée</span><span class="table-muted"> Besoin d’une formule complète</span>', '<strong>Pauser</strong> est le plus cohérent malgré une formule non purement bisglycinate.'], highlight: true },
-          { cells: ['<span class="table-fit">Cure simple de bisglycinate</span><span class="table-muted"> Priorité à la forme exacte</span>', '<strong>Argalys</strong> est le choix le plus direct et accessible.'] },
-          { cells: ['<span class="table-fit">Sommeil et détente</span><span class="table-muted"> Routine du soir</span>', '<strong>NMN Bio Oh!Mg</strong> est l’option premium la plus logique.'] },
-          { cells: ['<span class="table-fit">Sport, crampes, budget</span><span class="table-muted"> Prix bas et usage récupération</span>', '<strong>Punch Power</strong> est l’alternative sportive la plus simple.'] },
+          { cells: ['<span class="table-fit">Stress en journée</span><span class="table-muted"> Besoin d’une formule complète</span>', '<span class="table-verdict">Pauser</span><span class="table-explain">Le plus pertinent si votre priorité est le stress. Ce n’est pas un bisglycinate pur, mais la formule est plus complète.</span>'], highlight: true },
+          { cells: ['<span class="table-fit">Cure simple de bisglycinate</span><span class="table-muted"> Priorité à la forme exacte</span>', '<span class="table-verdict">Argalys</span><span class="table-explain">Le choix simple si vous cherchez surtout du bisglycinate, sans formule anti-stress complexe.</span>'] },
+          { cells: ['<span class="table-fit">Sommeil et détente</span><span class="table-muted"> Routine du soir</span>', '<span class="table-verdict">NMN Bio Oh!Mg</span><span class="table-explain">Le plus logique pour une routine détente du soir, avec un positionnement plus premium.</span>'] },
+          { cells: ['<span class="table-fit">Sport, crampes, budget</span><span class="table-muted"> Prix bas et usage récupération</span>', '<span class="table-verdict">Punch Power</span><span class="table-explain">Alternative simple pour le sport, les crampes et un budget plus serré.</span>'] },
         ]} />
 
         <section id="forme" class="rich-text seo-guide">
@@ -147,7 +147,7 @@ const schema = {
 </BaseLayout>
 
 <style>
-  .template-promo-block { margin: 2.5rem 0 3rem; }
+  .template-promo-block { margin: 1.25rem 0 1.75rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

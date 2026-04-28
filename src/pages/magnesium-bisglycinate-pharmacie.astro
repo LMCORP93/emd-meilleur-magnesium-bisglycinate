@@ -87,10 +87,10 @@ const schema = {
         <ContentImage src="/images/content/magnesium-pharmacie.webp" alt="Magnésium bisglycinate en pharmacie" caption="La pharmacie rassure, mais l’étiquette reste le vrai juge : forme, dose, cofacteurs et prix par prise." />
 
         <ComparisonTable title="Pharmacie vs achat en ligne" headers={[{label:'Critère'}, {label:'Mon avis'}]} rows={[
-          { cells: ['<span class="table-fit">Conseil humain</span><span class="table-muted"> Traitement, grossesse, doute santé</span>', '<strong>Avantage pharmacie</strong> : c’est le meilleur canal si vous avez besoin d’un avis personnalisé.'], highlight: true },
-          { cells: ['<span class="table-fit">Choix produit</span><span class="table-muted"> Bisglycinate précis, complexes, marques</span>', '<strong>Avantage en ligne</strong> : plus de références et plus de détails sur la formule.'] },
-          { cells: ['<span class="table-fit">Prix réel</span><span class="table-muted"> Prix par dose et codes promo</span>', '<strong>Avantage en ligne</strong> si la marque est sérieuse et le code promo actif.'] },
-          { cells: ['<span class="table-fit">Achat immédiat</span><span class="table-muted"> Pas d’attente de livraison</span>', '<strong>Avantage pharmacie</strong> si vous voulez commencer aujourd’hui.'] },
+          { cells: ['<span class="table-fit">Conseil humain</span><span class="table-muted"> Traitement, grossesse, doute santé</span>', '<span class="table-verdict">Pharmacie</span><span class="table-explain">Meilleur choix si vous avez un traitement, une grossesse ou un doute santé.</span>'], highlight: true },
+          { cells: ['<span class="table-fit">Choix produit</span><span class="table-muted"> Bisglycinate précis, complexes, marques</span>', '<span class="table-verdict">En ligne</span><span class="table-explain">Plus de références, plus de détails sur la dose et plus facile de comparer les formules.</span>'] },
+          { cells: ['<span class="table-fit">Prix réel</span><span class="table-muted"> Prix par dose et codes promo</span>', '<span class="table-verdict">En ligne</span><span class="table-explain">Souvent meilleur prix par dose si la marque est fiable et le code promo fonctionne.</span>'] },
+          { cells: ['<span class="table-fit">Achat immédiat</span><span class="table-muted"> Pas d’attente de livraison</span>', '<span class="table-verdict">Pharmacie</span><span class="table-explain">Plus pratique si vous voulez commencer aujourd’hui sans attendre la livraison.</span>'] },
         ]} />
 
         <section id="prix" class="rich-text seo-guide">
@@ -141,7 +141,7 @@ const schema = {
 </BaseLayout>
 
 <style>
-  .template-promo-block { margin: 2.5rem 0 3rem; }
+  .template-promo-block { margin: 1.25rem 0 1.75rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

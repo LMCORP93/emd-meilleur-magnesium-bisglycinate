@@ -87,10 +87,10 @@ const schema = {
         <ContentImage src="/images/content/magnesium-effets-secondaires.webp" alt="Magnésium bisglycinate effets secondaires" caption="Les effets secondaires sont souvent liés à la dose, au cumul de compléments ou à une sensibilité digestive personnelle." />
 
         <ComparisonTable title="Effets secondaires possibles et bons réflexes" headers={[{label:'Situation'}, {label:'Réflexe prudent'}]} rows={[
-          { cells: ['<span class="table-fit">Selles molles ou gêne digestive</span><span class="table-muted"> Après quelques prises</span>', 'Réduire la dose, prendre avec un repas et vérifier les autres apports en magnésium.'], highlight: true },
-          { cells: ['<span class="table-fit">Nausée ou inconfort</span><span class="table-muted"> Formule mal tolérée</span>', 'Stopper temporairement et comparer la formule complète, pas seulement la forme bisglycinate.'] },
-          { cells: ['<span class="table-fit">Traitement médical</span><span class="table-muted"> Médicaments ou maladie chronique</span>', 'Demander un avis médical ou pharmaceutique avant de commencer.'] },
-          { cells: ['<span class="table-fit">Grossesse ou allaitement</span><span class="table-muted"> Besoin spécifique</span>', 'Ne pas démarrer seul : demander un avis professionnel adapté.'] },
+          { cells: ['<span class="table-fit">Selles molles ou gêne digestive</span><span class="table-muted"> Après quelques prises</span>', '<span class="table-verdict">Baisser la dose</span><span class="table-explain">Prenez-le avec un repas et vérifiez si un autre complément apporte déjà du magnésium.</span>'], highlight: true },
+          { cells: ['<span class="table-fit">Nausée ou inconfort</span><span class="table-muted"> Formule mal tolérée</span>', '<span class="table-verdict">Faire une pause</span><span class="table-explain">Si l’inconfort revient, regardez toute la formule : B6, plantes, édulcorants, dosage.</span>'] },
+          { cells: ['<span class="table-fit">Traitement médical</span><span class="table-muted"> Médicaments ou maladie chronique</span>', '<span class="table-verdict">Avis pro avant achat</span><span class="table-explain">Indispensable si vous prenez un traitement ou avez une maladie chronique.</span>'] },
+          { cells: ['<span class="table-fit">Grossesse ou allaitement</span><span class="table-muted"> Besoin spécifique</span>', '<span class="table-verdict">Ne pas démarrer seul</span><span class="table-explain">Pendant la grossesse ou l’allaitement, validez la dose avec un professionnel.</span>'] },
         ]} />
 
         <section id="danger" class="rich-text seo-guide">
@@ -147,7 +147,7 @@ const schema = {
 </BaseLayout>
 
 <style>
-  .template-promo-block { margin: 2.5rem 0 3rem; }
+  .template-promo-block { margin: 1.25rem 0 1.75rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

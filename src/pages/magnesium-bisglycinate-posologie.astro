@@ -87,10 +87,10 @@ const schema = {
         <ContentImage src="/images/content/magnesium-routine.webp" alt="Routine et posologie du magnésium bisglycinate" caption="La posologie doit partir de l’étiquette : dose élémentaire, nombre de prises, moment recommandé et tolérance personnelle." />
 
         <ComparisonTable title="Posologie : comment lire une étiquette" headers={[{label:'Élément à vérifier'}, {label:'Pourquoi c’est important'}]} rows={[
-          { cells: ['<span class="table-fit">Magnésium élémentaire</span><span class="table-muted"> La vraie dose comparable</span>', 'C’est la quantité utile à comparer entre deux produits, pas seulement le poids du bisglycinate.'], highlight: true },
-          { cells: ['<span class="table-fit">Nombre de prises</span><span class="table-muted"> 1 ou 2 fois par jour</span>', 'Une dose fractionnée peut être mieux tolérée chez certaines personnes sensibles.'] },
-          { cells: ['<span class="table-fit">Formule complète</span><span class="table-muted"> B6, zinc, plantes, théanine</span>', 'Les cofacteurs changent l’usage du produit et peuvent influencer le moment de prise.'] },
-          { cells: ['<span class="table-fit">Apports cumulés</span><span class="table-muted"> Multi, électrolytes, sommeil</span>', 'Le risque vient souvent du cumul involontaire de plusieurs compléments.'] },
+          { cells: ['<span class="table-fit">Magnésium élémentaire</span><span class="table-muted"> La vraie dose comparable</span>', '<span class="table-verdict">La vraie dose</span><span class="table-explain">Comparez le magnésium élémentaire, pas seulement le poids total du bisglycinate.</span>'], highlight: true },
+          { cells: ['<span class="table-fit">Nombre de prises</span><span class="table-muted"> 1 ou 2 fois par jour</span>', '<span class="table-verdict">Tolérance</span><span class="table-explain">Deux petites prises peuvent être plus confortables qu’une grosse dose unique.</span>'] },
+          { cells: ['<span class="table-fit">Formule complète</span><span class="table-muted"> B6, zinc, plantes, théanine</span>', '<span class="table-verdict">Usage différent</span><span class="table-explain">B6, taurine, théanine ou plantes orientent plutôt stress, sommeil ou récupération.</span>'] },
+          { cells: ['<span class="table-fit">Apports cumulés</span><span class="table-muted"> Multi, électrolytes, sommeil</span>', '<span class="table-verdict">Attention au cumul</span><span class="table-explain">Multi, électrolytes ou sommeil peuvent déjà contenir du magnésium.</span>'] },
         ]} />
 
         <section id="moment" class="rich-text seo-guide">
@@ -153,7 +153,7 @@ const schema = {
 </BaseLayout>
 
 <style>
-  .template-promo-block { margin: 2.5rem 0 3rem; }
+  .template-promo-block { margin: 1.25rem 0 1.75rem; }
   .seo-guide { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #f0ebe3; }
   .seo-guide .rich-text h3, .seo-guide h3 { margin-top: 2rem; margin-bottom: .75rem; font-size: 1.25rem; font-weight: 600; color: #242424; }
   .seo-guide p { margin-bottom: 1rem; line-height: 1.8; color: #444; }

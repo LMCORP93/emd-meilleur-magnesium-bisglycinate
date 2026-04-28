@@ -168,6 +168,7 @@ const config: SiteConfig = {
     description: 'Comparatif 2026 des meilleurs magnésiums bisglycinate : Pauser, NMN Bio, Argalys, Nutripreneur, Punch Power et Clearly. Avis, prix, codes promo et conseils.',
     ogImage: '/og-image.jpg',
   },
+  analyticsMeasurementId: 'G-ML32J40DPR',
   breadcrumbs: [{ label: 'Accueil', href: '/' }],
   quickSummary: {
     assets: ['Pauser est notre choix principal pour stress et équilibre quotidien.', 'Argalys, Nutripreneur et Punch Power portent l’exact-match bisglycinate.', 'NMN Bio est l’option premium orientée sommeil et récupération.'],

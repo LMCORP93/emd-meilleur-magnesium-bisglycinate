@@ -18,6 +18,44 @@ const productLink = (brand: string, label = brand) => {
   const href = product?.affiliateLink ?? '#';
   return `<a class="table-link" href="${href}" target="_blank" rel="nofollow sponsored">${label}</a>`;
 };
+const toAbsoluteUrl = (value: string) => /^https?:\/\//i.test(value) ? value : new URL(value, config.domain).toString();
+const numericPrice = (value: string) => value.replace(',', '.').replace(/[^\d.]/g, '');
+const productSchema = (p: typeof config.products[number]) => ({
+  '@type': 'Product',
+  '@id': new URL(`/#product-${p.slug}`, config.domain).toString(),
+  name: `${p.name} - ${p.brand}`,
+  image: toAbsoluteUrl(p.image),
+  description: p.description,
+  category: p.productType ?? config.productCategory,
+  brand: { '@type': 'Brand', name: p.brand },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    price: numericPrice(p.discountPrice),
+    availability: 'https://schema.org/InStock',
+    url: p.affiliateLink,
+    itemCondition: 'https://schema.org/NewCondition',
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'FR' },
+      shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'EUR' },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 2, unitCode: 'DAY' },
+        transitTime: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 7, unitCode: 'DAY' }
+      }
+    },
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'FR',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+      merchantReturnDays: 14,
+      returnMethod: 'https://schema.org/ReturnByMail',
+      returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility'
+    }
+  },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: p.rating, bestRating: 10, worstRating: 1, reviewCount: p.reviewCount }
+});
 const faq = [
   { question: 'Quel est le meilleur magnésium bisglycinate en 2026 ?', answer: 'Notre choix principal est Pauser pour l’usage stress et équilibre quotidien. Si vous cherchez un produit plus strictement centré sur le bisglycinate, Argalys, Nutripreneur et Punch Power sont les options les plus directes du classement.' },
   { question: 'Pauser est-il un magnésium bisglycinate pur ?', answer: 'Non. Pauser Reset by Day est une formule anti-stress qui contient du magnésium bisglycinate et citrate-malate, mais ce n’est pas un produit mono-ingrédient. Nous le plaçons premier pour la conversion et l’usage stress, pas comme bisglycinate pur.' },
@@ -31,7 +69,7 @@ const faq = [
 <BaseLayout title={pageTitle} description={pageDescription}>
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({
     '@context': 'https://schema.org', '@type': 'ItemList',
-    itemListElement: config.products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Product', name: `${p.name} - ${p.brand}`, image: p.image, brand: { '@type': 'Brand', name: p.brand }, offers: { '@type': 'Offer', priceCurrency: 'EUR', price: p.discountPrice.replace(/[^\d.,]/g, '').replace(',', '.'), availability: 'https://schema.org/InStock', url: p.affiliateLink }, aggregateRating: { '@type': 'AggregateRating', ratingValue: p.rating, bestRating: 10, reviewCount: p.reviewCount } } }))
+    itemListElement: config.products.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: productSchema(p) }))
   })} />
   <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((item) => ({ '@type': 'Question', name: item.question, acceptedAnswer: { '@type': 'Answer', text: item.answer } })) })} />
 

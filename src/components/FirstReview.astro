@@ -46,7 +46,7 @@ const { tag, heading, paragraphs, assets, considerations, product } = Astro.prop
 
       <!-- Verdict box heading -->
       <div>
-        <span class="verdict-box-heading">Our verdict</span>
+        <span class="verdict-box-heading">Notre verdict</span>
       </div>
 
       <!-- first-review_grid-advantage: Pros + Cons (2 columns) -->
@@ -58,7 +58,7 @@ const { tag, heading, paragraphs, assets, considerations, product } = Astro.prop
               <circle cx="12" cy="12" r="10"/>
               <path d="m9 12 2 2 4-4"/>
             </svg>
-            Main strengths
+            Les principaux atouts
           </h4>
           <ul class="list-none p-0 m-0 flex flex-col gap-2">
             {assets.map((item) => (
@@ -80,7 +80,7 @@ const { tag, heading, paragraphs, assets, considerations, product } = Astro.prop
               <path d="M12 9v4"/>
               <path d="M12 17h.01"/>
             </svg>
-            Points to consider
+            Points à considérer
           </h4>
           <ul class="list-none p-0 m-0 flex flex-col gap-2">
             {considerations.map((item) => (
@@ -113,7 +113,7 @@ const { tag, heading, paragraphs, assets, considerations, product } = Astro.prop
       <!-- Rating wrapper (first-review_wrapper-note) -->
       <div class="first-review_wrapper-note">
         <p class="font-primary font-bold text-sm text-text-dark text-center m-0">
-          My rating for {product.brandName}
+          Ma note sur {product.brandName}
         </p>
 
         <!-- first-review_note: star + score -->

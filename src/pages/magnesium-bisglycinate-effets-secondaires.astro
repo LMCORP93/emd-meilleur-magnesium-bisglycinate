@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
+import FirstReview from '@/components/FirstReview.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
@@ -63,12 +64,29 @@ const schema = {
   <main style="background-color:#ffffff;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
-        <section id="en-bref" class="rich-text">
-          <h2>En bref : faut-il s’inquiéter ?</h2>
-          <p><strong>Le magnésium bisglycinate est généralement bien toléré</strong>, mais il peut quand même provoquer des effets secondaires chez certaines personnes. Le plus fréquent concerne la digestion : gêne abdominale, nausée légère, selles plus molles ou inconfort si la dose est trop élevée. Cela arrive surtout quand on commence trop fort, quand on cumule plusieurs produits ou quand la formule contient d’autres actifs.</p>
-          <p>Il faut aussi être clair sur le mot “danger”. Pour un adulte en bonne santé qui respecte les doses indiquées, le magnésium bisglycinate n’est pas un complément à diaboliser. En revanche, il devient un sujet sérieux chez certains profils : pathologie rénale, traitement médical, grossesse, allaitement, maladie chronique, troubles cardiaques, prise de diurétiques ou supplémentation déjà chargée.</p>
-          <p>Mon avis : la bonne approche n’est ni l’alarme, ni la promesse miracle. Le bisglycinate est une forme intéressante, souvent choisie pour sa tolérance, mais le choix du produit, la dose et votre contexte personnel restent essentiels. Si vous avez un doute santé, le bon réflexe reste de demander un avis médical ou pharmaceutique.</p>
-        </section>
+
+        <div id="en-bref">
+        <FirstReview
+          tag="En bref"
+          heading="Magnésium bisglycinate effets secondaires : rare, mais à surveiller"
+          paragraphs={[
+          'Le magnésium bisglycinate est généralement bien toléré, mais il peut provoquer gêne digestive, nausée légère ou selles plus molles, surtout si la dose est trop élevée ou si plusieurs compléments sont cumulés. Naturel ne veut pas dire sans contexte.',
+          'Notre avis : il ne faut ni dramatiser, ni banaliser. Une formule comme Pauser peut être pertinente pour le stress, mais le choix du produit, la dose et votre situation personnelle restent essentiels. En cas de doute santé, l’avis médical ou pharmaceutique passe avant l’achat.'
+        ]}
+          assets={[
+          'Message rassurant sans minimiser les vrais profils à risque',
+          'Focus sur dose, tolérance et cumul de compléments',
+          'Pauser recommandé avec prudence pour l’usage stress',
+          'Bon équilibre entre SEO “danger” et responsabilité santé'
+        ]}
+          considerations={[
+          'Prudence en cas de pathologie rénale, grossesse ou traitement',
+          'Les effets digestifs augmentent avec les doses trop rapides',
+          'Un complexe multi-actifs peut être moins adapté à certains profils'
+        ]}
+          product={{ brandName: topProduct.brand, brandLogoSrc: topProduct.brandLogo, rating: topProduct.rating, reviewLabel: 'Meilleur choix du comparatif', ctaText: 'Voir l’offre', ctaLink: topProduct.affiliateLink }}
+        />
+        </div>
 
         <TableOfContents items={tocItems} />
 

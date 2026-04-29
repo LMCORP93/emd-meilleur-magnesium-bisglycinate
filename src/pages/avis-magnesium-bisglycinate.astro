@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
+import FirstReview from '@/components/FirstReview.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
@@ -63,17 +64,33 @@ const schema = {
   <main style="background-color:#ffffff;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
-        <section id="verdict" class="rich-text">
-          <h2>Mon avis en bref</h2>
-          <p><strong>Mon avis sur le magnésium bisglycinate est positif</strong>, surtout pour les personnes qui cherchent une forme de magnésium bien tolérée, facile à intégrer dans une routine et cohérente avec les besoins stress, sommeil, fatigue nerveuse ou récupération. C’est une forme populaire parce qu’elle est liée à la glycine, ce qui explique son positionnement plus “doux” que certaines formes moins bien supportées.</p>
-          <p>Mais il faut éviter le raccourci classique : “bisglycinate” ne veut pas automatiquement dire meilleur produit. La forme compte, oui. Mais la dose de magnésium élémentaire, la clarté de l’étiquette, les cofacteurs, le prix réel par dose et l’objectif d’usage comptent autant. Un produit très pur peut être parfait pour une cure simple. Un complexe plus large peut être plus pertinent si le problème réel est le stress ou la surcharge mentale.</p>
-          <p>Dans ma sélection, <strong>Pauser</strong> reste ma recommandation principale pour l’usage stress du quotidien. Ce n’est pas un bisglycinate pur : c’est un complexe anti-stress avec magnésium bisglycinate, citrate-malate, safran, basilic sacré et vitamine B6. Pour un lecteur qui veut strictement un magnésium bisglycinate direct, <strong>Argalys</strong>, <strong>Nutripreneur</strong> et <strong>Punch Power</strong> sont plus exacts.</p>
-          <p>Le bon réflexe consiste donc à partir du besoin réel avant de regarder le prix. Pour une cure simple, je privilégie une étiquette courte, une dose clairement exprimée en magnésium élémentaire et une prise facile à tenir. Pour le stress, je regarde davantage l’ensemble de la formule, la présence éventuelle de cofacteurs utiles et la tolérance sur plusieurs jours. Pour le sommeil, je préfère une routine du soir cohérente plutôt qu’un produit très dosé mais difficile à intégrer. Cette logique évite d’acheter uniquement sur la promesse marketing et rend la comparaison plus utile au quotidien. Elle aide aussi à distinguer un vrai choix de cure d’un simple achat impulsif basé sur un code promo ou une note mise en avant.</p>
-        </section>
+
+        <div id="verdict">
+        <FirstReview
+          tag="En bref"
+          heading="Avis magnésium bisglycinate : bon choix, mais pas automatique"
+          paragraphs={[
+          'Notre avis sur le magnésium bisglycinate est positif quand l’objectif est la tolérance, la détente, le sommeil ou le stress. Mais le mot “bisglycinate” ne suffit pas : il faut regarder la dose de magnésium élémentaire, la clarté de l’étiquette, les cofacteurs et l’usage réel.',
+          'Pauser reste notre choix principal pour l’usage stress du quotidien, car sa formule dépasse le simple magnésium. Pour une cure bisglycinate plus directe, Argalys, Nutripreneur et Punch Power restent des alternatives plus ciblées.'
+        ]}
+          assets={[
+          'Forme généralement bien tolérée et pertinente pour stress/sommeil',
+          'Pauser recommandé pour une approche anti-stress plus complète',
+          'Comparaison utile entre bisglycinate pur et complexes plus larges',
+          'Lecture axée sur le besoin réel avant le prix'
+        ]}
+          considerations={[
+          'Pauser n’est pas un magnésium bisglycinate pur',
+          'La dose utile dépend du magnésium élémentaire affiché',
+          'Avis médical nécessaire en cas de traitement, grossesse ou pathologie'
+        ]}
+          product={{ brandName: topProduct.brand, brandLogoSrc: topProduct.brandLogo, rating: topProduct.rating, reviewLabel: 'Meilleur choix du comparatif', ctaText: 'Voir l’offre', ctaLink: topProduct.affiliateLink }}
+        />
+        </div>
 
         <TableOfContents items={tocItems} />
 
-        <section id="verdict" class="template-promo-block" aria-label="Offre Pauser recommandée">
+        <section class="template-promo-block" aria-label="Offre Pauser recommandée">
           <ReviewPromoCard product={topProduct} />
         </section>
 

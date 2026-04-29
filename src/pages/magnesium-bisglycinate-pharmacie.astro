@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
+import FirstReview from '@/components/FirstReview.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
@@ -63,12 +64,29 @@ const schema = {
   <main style="background-color:#ffffff;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
-        <section id="en-bref" class="rich-text">
-          <h2>En bref : pharmacie ou achat en ligne ?</h2>
-          <p><strong>Oui, on peut chercher du magnésium bisglycinate en pharmacie</strong>, mais ce n’est pas toujours le canal le plus simple pour trouver la meilleure formule. En officine, l’avantage principal est le conseil : vous pouvez poser une question, vérifier une contre-indication et repartir tout de suite avec un produit. L’inconvénient est le choix parfois limité, surtout si vous cherchez précisément du bisglycinate et non un mélange de magnésium générique.</p>
-          <p>En ligne, le choix est plus large. Vous pouvez comparer la forme, le dosage, le nombre de gélules, le prix par dose, les avis clients annoncés, la transparence de la marque et les codes promo. Mais il faut être plus rigoureux : une belle fiche produit ne garantit pas une bonne formule. Il faut lire l’étiquette, regarder la dose de magnésium élémentaire et vérifier si le produit contient bien du bisglycinate.</p>
-          <p>Mon avis est simple : <strong>la pharmacie est rassurante pour demander conseil</strong>, mais l’achat en ligne est souvent meilleur pour comparer et payer moins cher. Pour une routine anti-stress complète, Pauser reste mon premier choix. Pour un bisglycinate plus direct, Argalys ou Punch Power sont plus proches de la recherche exacte.</p>
-        </section>
+
+        <div id="en-bref">
+        <FirstReview
+          tag="En bref"
+          heading="Magnésium bisglycinate en pharmacie : rassurant, mais pas toujours optimal"
+          paragraphs={[
+          'La pharmacie est rassurante si vous voulez un conseil immédiat, vérifier une contre-indication ou repartir avec un produit le jour même. Le problème : le choix est parfois limité et le mot bisglycinate peut être noyé dans des complexes magnésium génériques.',
+          'En ligne, la comparaison est souvent plus efficace : forme, dosage, prix par dose, avis, transparence et code promo. Pour une routine stress complète, Pauser reste notre premier choix ; pour un bisglycinate plus direct, Argalys ou Punch Power sont plus proches de la recherche exacte.'
+        ]}
+          assets={[
+          'Conseil pharmaceutique utile pour les profils sensibles',
+          'Achat en ligne plus pratique pour comparer les formules',
+          'Pauser recommandé pour le stress et la routine quotidienne',
+          'Alternatives directes disponibles si vous voulez du bisglycinate pur'
+        ]}
+          considerations={[
+          'Le rayon pharmacie peut manquer de choix précis',
+          'Comparer uniquement le prix sans lire la dose est risqué',
+          'Un conseil médical reste prioritaire en cas de doute santé'
+        ]}
+          product={{ brandName: topProduct.brand, brandLogoSrc: topProduct.brandLogo, rating: topProduct.rating, reviewLabel: 'Meilleur choix du comparatif', ctaText: 'Voir l’offre', ctaLink: topProduct.affiliateLink }}
+        />
+        </div>
 
         <TableOfContents items={tocItems} />
 

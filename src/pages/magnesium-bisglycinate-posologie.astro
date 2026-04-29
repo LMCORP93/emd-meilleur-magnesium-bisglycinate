@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BlogHero from '@/components/BlogHero.astro';
+import FirstReview from '@/components/FirstReview.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
 import SidebarCTA from '@/components/SidebarCTA.astro';
 import ReviewPromoCard from '@/components/ReviewPromoCard.astro';
@@ -63,12 +64,29 @@ const schema = {
   <main style="background-color:#ffffff;">
     <div class="container-large padding-global"><div class="padding-section-medium"><div class="blog-grid">
       <div class="content-column">
-        <section id="en-bref" class="rich-text">
-          <h2>En bref : la posologie se lit en magnésium élémentaire</h2>
-          <p><strong>La première erreur consiste à regarder seulement le mot “bisglycinate”.</strong> Ce mot indique une forme de magnésium, pas automatiquement la quantité réellement apportée. Deux produits peuvent afficher une gélule de magnésium bisglycinate et donner une dose utile très différente. Ce qui compte, c’est la ligne “magnésium élémentaire” ou “dont magnésium” sur l’étiquette.</p>
-          <p>La deuxième erreur consiste à croire qu’il existe une dose parfaite pour tout le monde. Le besoin dépend de votre alimentation, de votre tolérance digestive, de votre niveau de stress, de votre sommeil, de votre activité physique, de vos traitements et des autres compléments déjà pris. Une personne qui utilise déjà des électrolytes, un multivitamines ou un complexe sommeil n’a pas le même contexte qu’une personne qui commence une cure simple.</p>
-          <p>Mon avis : commencez par comprendre le produit, puis choisissez le moment de prise selon votre objectif. Pour détente et sommeil, le soir est souvent logique. Pour stress de journée, une formule comme Pauser peut mieux s’intégrer le matin ou en début d’après-midi selon l’étiquette. Le bon choix n’est pas le dosage le plus agressif, c’est le dosage régulier, lisible et bien toléré.</p>
-        </section>
+
+        <div id="en-bref">
+        <FirstReview
+          tag="En bref"
+          heading="Magnésium bisglycinate posologie : regardez le magnésium élémentaire"
+          paragraphs={[
+          'La première erreur est de regarder seulement le mot bisglycinate. Ce qui compte vraiment, c’est la quantité de magnésium élémentaire apportée, la tolérance digestive, les autres compléments déjà pris et le moment de prise selon l’objectif.',
+          'Pour détente et sommeil, une prise le soir peut être logique. Pour stress de journée, une formule comme Pauser peut mieux s’intégrer selon l’étiquette. Le bon dosage n’est pas le plus agressif : c’est celui qui reste régulier, lisible et bien toléré.'
+        ]}
+          assets={[
+          'Explication claire entre forme bisglycinate et magnésium élémentaire',
+          'Approche progressive plus sûre qu’une dose universelle',
+          'Pauser mis en avant pour la routine stress du quotidien',
+          'Conseils concrets selon sommeil, stress et récupération'
+        ]}
+          considerations={[
+          'La posologie exacte dépend toujours de l’étiquette',
+          'Attention au cumul avec multivitamines, électrolytes ou sommeil',
+          'Demander un avis médical en cas de traitement ou pathologie'
+        ]}
+          product={{ brandName: topProduct.brand, brandLogoSrc: topProduct.brandLogo, rating: topProduct.rating, reviewLabel: 'Meilleur choix du comparatif', ctaText: 'Voir l’offre', ctaLink: topProduct.affiliateLink }}
+        />
+        </div>
 
         <TableOfContents items={tocItems} />
 

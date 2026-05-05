@@ -10,6 +10,7 @@ import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const topProduct = config.products[0];
 const pageTitle = 'Avis magnésium bisglycinate : mon verdict 2026';
@@ -172,6 +173,8 @@ const schema = {
           <p>C’est pour cette raison que nous privilégions les formules lisibles, les doses cohérentes et les marques qui évitent les promesses trop fortes. Le bisglycinate est intéressant parce qu’il est généralement bien toléré, mais il ne transforme pas une mauvaise routine de sommeil ou une alimentation déséquilibrée à lui seul. Le meilleur test consiste à garder la même heure de prise pendant plusieurs jours, à éviter de multiplier les nouveaux compléments en même temps et à noter sommeil, détente, digestion et régularité.</p>
           <p>Dans cette logique, Pauser reste notre recommandation principale pour un usage détente/stress, mais Argalys, NMN Bio ou Punch Power peuvent avoir du sens selon le budget, le format et le moment de prise. L’objectif n’est donc pas de trouver “le” magnésium universel, mais le produit le plus cohérent avec ton besoin réel.</p>
         </section>
+
+        <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
       </div>

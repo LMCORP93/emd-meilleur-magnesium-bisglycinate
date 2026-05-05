@@ -10,6 +10,7 @@ import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const topProduct = config.products[0];
 const pageTitle = 'Magnésium bisglycinate posologie : dose et moment de prise';
@@ -168,6 +169,8 @@ const schema = {
           alt="Magnésium bisglycinate et conseils de dosage"
           caption="La posologie se raisonne en magnésium élémentaire, pas seulement en nombre de gélules."
         />
+
+        <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
       </div>

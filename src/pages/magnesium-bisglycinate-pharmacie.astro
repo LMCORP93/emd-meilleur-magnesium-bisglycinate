@@ -10,6 +10,7 @@ import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const topProduct = config.products[0];
 const pageTitle = 'Magnésium bisglycinate en pharmacie : mon guide 2026';
@@ -157,6 +158,8 @@ const schema = {
           alt="Magnésium bisglycinate comparé entre achat en ligne et pharmacie"
           caption="La pharmacie rassure, mais la comparaison doit aussi regarder dosage, prix et transparence."
         />
+
+        <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
       </div>

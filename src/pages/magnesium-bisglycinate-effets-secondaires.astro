@@ -10,6 +10,7 @@ import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const topProduct = config.products[0];
 const pageTitle = 'Magnésium bisglycinate : effets secondaires et dangers';
@@ -162,6 +163,8 @@ const schema = {
           alt="Routine calme avec magnésium bisglycinate le soir"
           caption="Les effets secondaires se limitent souvent quand la dose, le moment de prise et la forme sont adaptés."
         />
+
+        <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
       </div>

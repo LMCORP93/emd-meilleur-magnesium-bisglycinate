@@ -9,6 +9,7 @@ import ComparisonTable from '@/components/ComparisonTable.astro';
 import ContentImage from '@/components/ContentImage.astro';
 import InnerNote from '@/components/InnerNote.astro';
 import config from '@/data/site.config';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
 
 const topProduct = config.products[0];
 const pageTitle = 'Meilleur magnésium bisglycinate 2026 : comparatif Top 6';
@@ -169,6 +170,8 @@ const faq = [
           <p><strong>NMN Bio</strong> est le meilleur choix premium pour le soir. <strong>Argalys</strong> est le meilleur compromis exact-match, prix et simplicité. <strong>Nutripreneur</strong> convient bien aux profils actifs. <strong>Punch Power</strong> est l’option sport et budget. <strong>Clearly</strong> reste une alternative clean, mais moins spécifique au bisglycinate pur.</p>
           <p>La stratégie est volontaire : convertir avec Pauser, puis rassurer Google et l’utilisateur avec des produits réellement alignés sur le magnésium bisglycinate.</p>
         </section>
+
+        <AuthorBioCard />
 
         <section id="faq" class="faq-section"><FAQSection faq={faq} title="Questions fréquentes" /></section>
       </div>

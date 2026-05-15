@@ -97,7 +97,15 @@ const faq = [
           <p><strong>Pauser</strong> est notre choix principal pour la conversion et l’usage stress du quotidien. Le produit Reset by Day contient du magnésium bisglycinate et citrate-malate, avec du safran, du basilic sacré et de la vitamine B6. Ce n’est pas un magnésium bisglycinate pur, et on le dit clairement. Mais il colle très bien à l’intention réelle d’une grande partie des recherches : calmer la tension nerveuse, mieux gérer la journée et retrouver un équilibre.</p>
           <p><strong>NMN Bio</strong> prend la deuxième place avec Oh!Mg, une formule premium orientée soir, relaxation et récupération. <strong>Argalys</strong> arrive troisième car son Magnésium Bisglycinate est simple, français et directement aligné avec le mot-clé. Ensuite, Nutripreneur et Punch Power renforcent l’exact-match avec de vrais produits au bisglycinate, tandis que Clearly ferme le Top 6 avec un mix de magnésiums propre mais moins spécifique.</p>
         </section>
-            <section id="methodologie-classement" class="methodology-box">
+        <TableOfContents items={config.tocItems} />
+
+        <section id="ranking" class="comparatif-cards">
+          {config.products.map((product) => (
+            <div id={`product-${product.slug}`}><ComparatorCard product={product} /></div>
+          ))}
+        </section>
+
+        <section id="methodologie-classement" class="methodology-box">
               <h2>Comment nous avons classé les produits</h2>
               <p>Notre classement combine des critères éditoriaux et pratiques pour aider à choisir une formule adaptée, sans se limiter au prix ou au niveau de réduction.</p>
               <ul>
@@ -112,14 +120,6 @@ const faq = [
               <p class="methodology-box__disclaimer"><strong>Note éditoriale.</strong> Notre classement privilégie la cohérence de la formule, la clarté de l’offre et l’adéquation avec l’usage recherché, sans se limiter au prix ou aux promesses marketing.</p>
             </section>
 
-
-        <TableOfContents items={config.tocItems} />
-
-        <section id="ranking" class="comparatif-cards">
-          {config.products.map((product) => (
-            <div id={`product-${product.slug}`}><ComparatorCard product={product} /></div>
-          ))}
-        </section>
 
         <section id="methodologie" class="rich-text seo-guide">
           <h2>Notre méthode de classement</h2>

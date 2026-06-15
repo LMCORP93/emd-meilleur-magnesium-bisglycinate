@@ -195,7 +195,7 @@ const config: SiteConfig = {
   ],
   pages: [
     { type: 'comparatif', label: 'Comparatif', slug: '/', image: '/images/content/magnesium-bisglycinate-hero.webp' },
-    { type: 'blog', label: 'Avis', slug: '/avis-magnesium-bisglycinate/', image: '/images/content/magnesium-bisglycinate-hero.webp' },
+    { type: 'blog', label: 'Avis magnésium bisglycinate', slug: '/avis-magnesium-bisglycinate/', image: '/images/content/magnesium-bisglycinate-hero.webp' },
     { type: 'blog', label: 'Pharmacie', slug: '/magnesium-bisglycinate-pharmacie/', image: '/images/content/magnesium-pharmacie.webp' },
     { type: 'blog', label: 'Effets secondaires', slug: '/magnesium-bisglycinate-effets-secondaires/', image: '/images/content/magnesium-effets-secondaires.webp' },
     { type: 'blog', label: 'Posologie', slug: '/magnesium-bisglycinate-posologie/', image: '/images/content/magnesium-routine.webp' },

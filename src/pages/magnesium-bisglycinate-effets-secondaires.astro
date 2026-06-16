@@ -14,8 +14,8 @@ import AuthorBioCard from '@/components/AuthorBioCard.astro';
 import ArticleGrid from '@/components/ArticleGrid.astro';
 
 const topProduct = config.products[0];
-const pageTitle = 'Magnésium bisglycinate : effets secondaires et dangers';
-const pageDescription = 'Effets secondaires du magnésium bisglycinate : digestion, contre-indications, grossesse, reins, traitements, dosage et précautions avant une cure.';
+const pageTitle = 'Magnésium bisglycinate effets secondaires : ce qu’il faut savoir avant d’en prendre';
+const pageDescription = 'Effets secondaires du bisglycinate de magnésium : digestion, contre-indications, grossesse, reins et interactions. Les vrais signaux à surveiller.';
 const tocItems = [
   { id: 'en-bref', label: 'En bref' },
   { id: 'effets', label: 'Effets secondaires' },
@@ -31,6 +31,9 @@ const faq = [
   { question: 'Le magnésium bisglycinate est-il dangereux ?', answer: 'Chez un adulte en bonne santé, utilisé dans les doses recommandées, il n’est pas considéré comme dangereux. Le risque augmente surtout en cas de pathologie rénale, de traitement médical, de grossesse, d’allaitement ou de surdosage.' },
   { question: 'Qui doit demander un avis médical avant une cure ?', answer: 'Les femmes enceintes ou allaitantes, les personnes sous traitement, les personnes avec maladie rénale, maladie chronique, troubles cardiaques, prise de diurétiques ou supplémentation multiple doivent demander un avis professionnel.' },
   { question: 'Faut-il prendre le magnésium bisglycinate le soir ?', answer: 'Le soir est fréquent pour les routines détente, mais ce n’est pas obligatoire. Certaines formules anti-stress se prennent plutôt en journée. Le plus important est de respecter l’étiquette et de choisir un moment bien toléré.' },
+  { question: 'Le bisglycinate de magnésium est-il dangereux pour les reins ?', answer: 'Chez les personnes avec une fonction rénale normale, le magnésium est généralement bien éliminé. En cas de pathologie rénale confirmée ou suspectée, toute supplémentation doit être validée par un médecin, car les reins contrôlent l’élimination du magnésium excédentaire.' },
+  { question: 'Peut-on prendre du bisglycinate de magnésium pendant la grossesse ?', answer: 'La supplémentation en magnésium pendant la grossesse existe, mais elle doit être encadrée. Le produit, la dose, le moment de prise et la formule complète doivent être discutés avec un professionnel de santé.' },
+  { question: 'Quelle est la posologie habituelle du magnésium bisglycinate ?', answer: 'Elle dépend du produit et de la quantité de magnésium élémentaire par prise. Il faut suivre l’étiquette, éviter les cumuls avec d’autres compléments et ne pas dépasser la dose recommandée sans avis professionnel.' },
 ];
 const schema = {
   '@context': 'https://schema.org',
@@ -72,8 +75,8 @@ const schema = {
           tag="En bref"
           heading="Magnésium bisglycinate effets secondaires : rare, mais à surveiller"
           paragraphs={[
-          'Le magnésium bisglycinate est généralement bien toléré, mais il peut provoquer gêne digestive, nausée légère ou selles plus molles, surtout si la dose est trop élevée ou si plusieurs compléments sont cumulés. Naturel ne veut pas dire sans contexte.',
-          'Notre avis : il ne faut ni dramatiser, ni banaliser. Une formule comme Pauser peut être pertinente pour le stress, mais le choix du produit, la dose et votre situation personnelle restent essentiels. En cas de doute santé, l’avis médical ou pharmaceutique passe avant l’achat.'
+          'Le bisglycinate de magnésium est l’une des formes les mieux tolérées sur le plan digestif, mais “bien toléré” ne signifie pas neutre pour tout le monde. Les effets secondaires les plus fréquents sont digestifs : gêne légère, selles plus molles, nausée ou inconfort, surtout en cas de dosage trop élevé ou de cumul avec d’autres compléments.',
+          'Les personnes enceintes, allaitantes, sous traitement médical, avec pathologie rénale ou maladie chronique doivent demander un avis professionnel avant toute cure. Cette page décrit les signaux à connaître, les profils à surveiller et les bons réflexes avant achat, sans dramatiser et sans minimiser.'
         ]}
           assets={[
           'Message rassurant sans minimiser les vrais profils à risque',
@@ -128,6 +131,7 @@ const schema = {
           <p>La première situation à surveiller est la maladie rénale. Si vous avez une insuffisance rénale, un suivi néphrologique ou une consigne médicale sur les minéraux, ne prenez pas de magnésium sans avis. C’est le profil le plus important à citer, car le risque n’est pas comparable à celui d’un adulte en bonne santé.</p>
           <p>La deuxième situation concerne les traitements médicaux. Antibiotiques, traitements cardiaques, diurétiques, traitements chroniques ou médicaments avec horaires stricts peuvent nécessiter un espacement ou une vérification. Je ne donne pas ici de règle universelle, parce que ce serait dangereux. Le bon conseil dépend du médicament, de la dose et de votre dossier.</p>
           <p>La grossesse et l’allaitement demandent aussi de la prudence. Le magnésium peut être conseillé dans certains contextes, mais ce n’est pas une raison pour choisir seul une formule en ligne, surtout si elle contient aussi des plantes, de la vitamine B6 ou d’autres actifs. La formule complète compte autant que le magnésium.</p>
+          <p>La posologie recommandée varie selon les produits et la quantité de magnésium élémentaire par prise. Beaucoup de compléments se situent autour d’une logique de prise quotidienne, mais ce n’est pas une règle médicale universelle. Un dépassement régulier augmente surtout le risque d’effets digestifs. Le danger réel reste faible chez un adulte sain, mais il devient plus sérieux en cas d’insuffisance rénale, où l’élimination du magnésium est ralentie.</p>
           <p>Enfin, prudence si vous avez une forte sensibilité digestive, une maladie inflammatoire digestive, un historique de diarrhées fréquentes ou une supplémentation déjà chargée. Dans ces cas, la question n’est pas seulement “bisglycinate ou citrate”, mais “est-ce le bon moment, la bonne dose et la bonne formule pour moi ?”.</p>
         </section>
 

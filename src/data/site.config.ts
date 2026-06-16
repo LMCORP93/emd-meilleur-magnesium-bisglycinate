@@ -79,9 +79,9 @@ const products: Product[] = [
     origin: '🇫🇷 France',
     availability: 'Livraison en France possible via la boutique officielle ou un revendeur',
     productType: 'Magnésium bisglycinate en gélules avec zinc et vitamine B6',
-    pros: ['Produit exact sur la requête magnésium bisglycinate', 'Prix très accessible', 'Marque française et formulation simple', 'Bon support SEO pour l’exact-match'],
+    pros: ['Produit clair pour chercher du magnésium bisglycinate', 'Prix très accessible', 'Marque française et formulation simple', 'Bon produit pour un choix bisglycinate simple'],
     cons: ['Moins premium que Pauser ou NMN Bio', 'Packaging plus classique', 'Moins orienté storytelling conversion'],
-    description: 'Argalys est le pilier exact-match du Top 3. Le produit est clair, accessible et directement aligné avec la recherche meilleur magnésium bisglycinate.'
+    description: 'Argalys est le pilier bisglycinate simple du Top 3. Le produit est clair, accessible et directement aligné avec la recherche meilleur magnésium bisglycinate.'
   },
   {
     rank: 4,
@@ -143,7 +143,7 @@ const products: Product[] = [
     availability: 'Livraison en France possible via la boutique officielle ou un revendeur',
     productType: 'Mix de magnésium citrate, malate et glycinate',
     pros: ['Très bon rating partenaire', 'Formule multi-formes intéressante', 'Prix correct', 'Marque clean et transparente'],
-    cons: ['Ce n’est pas un bisglycinate pur', 'Marque non française', 'Moins aligné exact-match que Argalys, Nutripreneur ou Punch Power'],
+    cons: ['Ce n’est pas un bisglycinate pur', 'Marque non française', 'Moins centré sur le bisglycinate pur qu’Argalys, Nutripreneur ou Punch Power'],
     description: 'Clearly ferme le Top 6 comme alternative propre et polyvalente. Le produit contient du glycinate dans un mix de formes, mais il est moins exact que les vrais bisglycinates du classement.'
   }
 ];
@@ -171,13 +171,13 @@ const config: SiteConfig = {
   analyticsMeasurementId: 'G-ML32J40DPR',
   breadcrumbs: [{ label: 'Accueil', href: '/' }],
   quickSummary: {
-    assets: ['Pauser est notre choix principal pour stress et équilibre quotidien.', 'Argalys, Nutripreneur et Punch Power portent l’exact-match bisglycinate.', 'NMN Bio est l’option premium orientée sommeil et récupération.'],
+    assets: ['Pauser est notre choix principal pour stress et équilibre quotidien.', 'Argalys, Nutripreneur et Punch Power couvrent le besoin de bisglycinate simple.', 'NMN Bio est l’option premium orientée sommeil et récupération.'],
     considerations: ['Ne pas confondre bisglycinate pur et complexe de magnésium.', 'Vérifier dose de magnésium élémentaire, tolérance digestive et moment de prise.', 'Demander un avis médical en cas de traitement, grossesse ou pathologie rénale.'],
   },
   pros: ['Top 6 basé sur des produits disponibles et vérifiables', 'Classement orienté conversion mais sans mentir sur les formes', 'Comparatif utile pour stress, sommeil, crampes et récupération'],
   cons: ['Pauser est un complexe avec magnésium, pas un bisglycinate pur', 'La réponse dépend du besoin : stress, sommeil, sport ou prix'],
   faq: [
-    { question: 'Quel est le meilleur magnésium bisglycinate ?', answer: 'Pour une intention stress et équilibre quotidien, notre choix numéro 1 est Pauser. Pour un produit plus strictement exact-match magnésium bisglycinate, Argalys, Nutripreneur et Punch Power sont les options les plus directes.' },
+    { question: 'Quel est le meilleur magnésium bisglycinate ?', answer: 'Pour une intention stress et équilibre quotidien, notre choix numéro 1 est Pauser. Pour un produit plus strictement centré sur le magnésium bisglycinate, Argalys, Nutripreneur et Punch Power sont les options les plus directes.' },
     { question: 'Pourquoi Pauser est premier alors que ce n’est pas un bisglycinate pur ?', answer: 'Parce que l’intention réelle derrière la recherche est souvent le stress, la fatigue nerveuse et le calme. Pauser contient du magnésium bisglycinate dans une formule anti-stress plus complète, ce qui en fait le meilleur choix conversion sans masquer la nuance.' },
     { question: 'Magnésium bisglycinate ou citrate : lequel choisir ?', answer: 'Le bisglycinate est souvent préféré pour la tolérance digestive et l’usage stress/sommeil. Le citrate peut être intéressant mais peut être moins confortable chez certaines personnes sensibles.' },
     { question: 'Quand prendre le magnésium bisglycinate ?', answer: 'Le soir est fréquent pour relaxation et sommeil. En journée, une formule comme Pauser peut être pertinente si l’objectif est la gestion du stress. Suivez toujours les conseils du fabricant.' },

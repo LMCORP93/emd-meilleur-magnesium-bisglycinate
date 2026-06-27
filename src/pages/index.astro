@@ -56,7 +56,7 @@ const productSchema = (p: typeof config.products[number]) => ({
       returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility'
     }
   },
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: p.rating, bestRating: 10, worstRating: 1, reviewCount: p.reviewCount }
+  review: { '@type': 'Review', author: { '@type': 'Organization', name: config.siteName }, reviewRating: { '@type': 'Rating', ratingValue: p.rating, bestRating: 10, worstRating: 1 } }
 });
 const faq = [
   { question: 'Quel est le meilleur magnésium bisglycinate en 2026 ?', answer: 'Notre choix principal est Pauser pour l’usage stress et équilibre quotidien. Si vous cherchez un produit plus strictement centré sur le bisglycinate, Argalys, Nutripreneur et Punch Power sont les options les plus directes du classement.' },

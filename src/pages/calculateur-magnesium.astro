@@ -1,0 +1,570 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogHero from '@/components/BlogHero.astro';
+import SidebarCTA from '@/components/SidebarCTA.astro';
+import FAQSection from '@/components/FAQSection.astro';
+import AuthorBioCard from '@/components/AuthorBioCard.astro';
+import ArticleGrid from '@/components/ArticleGrid.astro';
+import config from '@/data/site.config';
+
+const topProduct = config.products[0];
+const pageTitle = 'Calculateur de magnésium : combien avez-vous besoin par jour ?';
+const pageDescription = 'Calculez votre besoin quotidien en magnésium selon votre poids, âge, activité et situation. Résultat personnalisé + recommandations produits.';
+const faq = [
+  { question: 'Comment est calculé mon besoin en magnésium ?', answer: 'Le calcul se base sur les recommandations de l\'ANSES (Agence nationale de sécurité sanitaire) : environ 6 mg par kilo de poids corporel par jour pour un adulte, ajusté selon le sexe, l\'activité physique, le niveau de stress et des situations comme la grossesse ou l\'allaitement.' },
+  { question: 'Ce calculateur remplace-t-il un avis médical ?', answer: 'Non. C\'est un outil indicatif pour vous donner un ordre de grandeur. Seul un professionnel de santé peut poser un diagnostic de carence (via prise de sang) et adapter la posologie à votre situation personnelle.' },
+  { question: 'Pourquoi le bisglycinate est-il recommandé ?', answer: 'Le magnésium bisglycinate est une forme chélatée reconnue pour sa bonne biodisponibilité et sa tolérance digestive. Contrairement au magnésium marin ou à l\'oxyde, il provoque rarement des troubles intestinaux.' },
+  { question: 'Puis-je dépasser la dose calculée ?', answer: 'Il est déconseillé de dépasser 350 mg/jour de magnésium sous forme de complément alimentaire (recommandation EFSA) sans avis médical. Le reste doit venir de l\'alimentation (légumes verts, oléagineux, légumineuses, eau minérale).' },
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: pageTitle,
+  description: pageDescription,
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'All',
+  author: { '@type': 'Person', name: config.author.name },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" slot="json-ld" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(i => ({ '@type': 'Question', name: i.question, acceptedAnswer: { '@type': 'Answer', text: i.answer } })) })} />
+
+  <BlogHero
+    title={pageTitle}
+    description="Entrez vos informations pour obtenir une estimation personnalisée de votre besoin quotidien en magnésium, basée sur les recommandations officielles (ANSES/EFSA)."
+    author={config.author.name}
+    authorAvatar={config.author.avatar}
+    date="7 août 2026"
+    readingTime="Outil interactif"
+    breadcrumbs={[{ label: 'Comparatif', href: '/' }, { label: 'Calculateur', href: '/calculateur-magnesium/' }]}
+    bannerImage="/images/content/magnesium-routine.webp"
+    heroButton={{ text: 'Calculer mon besoin', href: '#calculateur' }}
+    showOfferBlock={false}
+  />
+
+  <main style="background-color:#fcfbf7;">
+    <div class="container-large padding-global">
+      <div class="padding-section-medium">
+        <div class="blog-grid">
+          <div class="content-column">
+
+            <!-- ═══ CALCULATEUR ═══ -->
+            <section id="calculateur" class="calc-wrapper">
+              <div class="calc-card">
+                <div class="calc-header">
+                  <span class="calc-badge">Outil gratuit</span>
+                  <h2 class="calc-title">Calculez votre besoin en magnésium</h2>
+                  <p class="calc-sub">Remplissez les champs ci-dessous. Le calcul suit les recommandations ANSES (~6 mg/kg/j, ajusté selon profil).</p>
+                </div>
+
+                <form id="mg-form" class="calc-form" autocomplete="off">
+                  <div class="form-grid">
+                    <!-- Poids -->
+                    <div class="field">
+                      <label for="weight">Poids (kg)</label>
+                      <input type="number" id="weight" min="30" max="200" step="1" placeholder="70" required />
+                    </div>
+                    <!-- Âge -->
+                    <div class="field">
+                      <label for="age">Âge</label>
+                      <input type="number" id="age" min="18" max="99" step="1" placeholder="35" required />
+                    </div>
+                    <!-- Sexe -->
+                    <div class="field">
+                      <label for="sex">Sexe</label>
+                      <select id="sex" required>
+                        <option value="f">Femme</option>
+                        <option value="m">Homme</option>
+                      </select>
+                    </div>
+                    <!-- Activité -->
+                    <div class="field">
+                      <label for="activity">Activité physique</label>
+                      <select id="activity" required>
+                        <option value="low">Sédentaire</option>
+                        <option value="moderate">Modérée (2-3x/sem)</option>
+                        <option value="high">Intense (4-6x/sem)</option>
+                        <option value="athlete">Sportif de haut niveau</option>
+                      </select>
+                    </div>
+                    <!-- Stress -->
+                    <div class="field">
+                      <label for="stress">Niveau de stress</label>
+                      <select id="stress" required>
+                        <option value="low">Faible</option>
+                        <option value="moderate">Modéré</option>
+                        <option value="high">Élevé / chronique</option>
+                      </select>
+                    </div>
+                    <!-- Situation -->
+                    <div class="field">
+                      <label for="situation">Situation particulière</label>
+                      <select id="situation">
+                        <option value="none">Aucune</option>
+                        <option value="pregnant">Grossesse</option>
+                        <option value="breastfeeding">Allaitement</option>
+                        <option value="senior">Senior (+60 ans)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="calc-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/><line x1="16" y1="18" x2="16" y2="18.01"/><line x1="8" y1="10" x2="16" y2="10"/></svg>
+                    Calculer mon besoin
+                  </button>
+                </form>
+
+                <!-- Résultat -->
+                <div id="result" class="calc-result" style="display:none;">
+                  <div class="result-header">
+                    <span class="result-label">Votre besoin estimé</span>
+                    <div class="result-dose">
+                      <span id="dose-value" class="dose-num">0</span>
+                      <span class="dose-unit">mg / jour</span>
+                    </div>
+                  </div>
+
+                  <div class="result-bar-wrap">
+                    <div class="result-bar">
+                      <div id="bar-diet" class="bar-seg bar-diet" style="width:0%"></div>
+                      <div id="bar-suppl" class="bar-seg bar-suppl" style="width:0%"></div>
+                    </div>
+                    <div class="bar-legend">
+                      <span class="leg-item"><span class="leg-dot diet"></span> Alimentation (~<span id="diet-val">0</span> mg)</span>
+                      <span class="leg-item"><span class="leg-dot suppl"></span> Complément (~<span id="suppl-val">0</span> mg)</span>
+                    </div>
+                  </div>
+
+                  <div id="result-details" class="result-details"></div>
+
+                  <div class="result-disclaimer">
+                    Estimation indicative basée sur les recommandations ANSES/EFSA. Ne remplace pas un avis médical. En cas de doute, consultez votre médecin.
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ═══ PRODUITS RECOMMANDÉS ═══ -->
+            <section id="produits" class="reco-section" style="display:none;">
+              <h2 class="text-h3 font-primary mb-4" style="margin-top:2.5rem;">Nos recommandations pour combler votre besoin</h2>
+              <p class="text-text-muted text-paragraph mb-6">Sélectionnés selon la qualité, la forme (bisglycinate pour une meilleure absorption) et le rapport qualité-prix.</p>
+              <div id="reco-cards" class="reco-grid"></div>
+            </section>
+
+            <!-- ═══ CONTENU SEO ═══ -->
+            <section class="seo-content" style="margin-top:3rem;">
+              <h2 class="text-h3 font-primary mb-3">Comment calculer son besoin en magnésium ?</h2>
+              <div class="prose-emd">
+                <p>Le magnésium est un minéral essentiel impliqué dans plus de 300 réactions enzymatiques. L'ANSES recommande un apport d'environ <strong>6 mg par kilo de poids corporel par jour</strong> pour un adulte en bonne santé. Cette valeur de base est ensuite ajustée selon plusieurs facteurs.</p>
+
+                <h3>Les facteurs qui augmentent le besoin</h3>
+                <p><strong>L'activité physique</strong> augmente les pertes de magnésium par la sueur et le métabolisme musculaire. Un sportif régulier peut avoir besoin de 10 à 20 % de magnésium en plus. Les athlètes de haut niveau peuvent nécessiter jusqu'à 7-8 mg/kg/jour.</p>
+                <p><strong>Le stress chronique</strong> est un facteur souvent sous-estimé. Le cortisol favorise l'excrétion rénale du magnésium, créant un cercle vicieux : le stress épuise le magnésium, et le manque de magnésium amplifie la réponse au stress.</p>
+                <p><strong>La grossesse et l'allaitement</strong> augmentent significativement les besoins. L'ANSES recommande 400 mg/jour pendant la grossesse et 390 mg/jour pendant l'allaitement, contre 360 mg/jour pour une femme adulte en temps normal.</p>
+                <p><strong>L'âge</strong> joue également un rôle. L'absorption intestinale du magnésium diminue avec le temps, et certains médicaments courants chez les seniors (diurétiques, IPP) augmentent les pertes.</p>
+
+                <h3>Alimentation vs complémentation</h3>
+                <p>En France, l'alimentation moyenne apporte environ 250 à 300 mg de magnésium par jour. Les meilleures sources alimentaires sont les oléagineux (amandes, noix de cajou), les légumineuses, les céréales complètes, le chocolat noir et certaines eaux minérales (Hépar, Contrex, Rozana).</p>
+                <p>Si votre besoin calculé dépasse ce que votre alimentation apporte, la différence peut être couverte par un complément alimentaire. Le <strong>magnésium bisglycinate</strong> est la forme la plus souvent recommandée pour la complémentation en raison de sa bonne biodisponibilité et de sa tolérance digestive.</p>
+
+                <h3>La limite de sécurité</h3>
+                <p>L'EFSA fixe une limite de sécurité de <strong>350 mg/jour sous forme de complément</strong>. Au-delà, le risque d'effets secondaires digestifs (diarrhée, crampes) augmente. Le magnésium alimentaire, en revanche, n'a pas de limite supérieure définie car il est mieux régulé par l'organisme.</p>
+              </div>
+            </section>
+
+            <!-- FAQ -->
+            <div style="margin-top:2.5rem;">
+              <FAQSection faq={faq} />
+            </div>
+
+            <div style="margin-top:2rem;">
+              <AuthorBioCard name={config.author.name} avatar={config.author.avatar} bio={config.author.bio} />
+            </div>
+
+            <div style="margin-top:2rem;">
+              <ArticleGrid currentPath="/calculateur-magnesium/" />
+            </div>
+
+          </div>
+
+          <!-- Sidebar -->
+          <div class="sidebar-column">
+            <SidebarCTA
+              logoSrc={topProduct.brandLogo}
+              promoCode={topProduct.promoCode}
+              promoPercent={topProduct.promoPercent}
+              originalPrice={topProduct.originalPrice}
+              discountPrice={topProduct.discountPrice}
+              ctaLink={topProduct.affiliateLink}
+              heroImage={topProduct.image}
+              rating={topProduct.rating}
+              reviewCount={topProduct.reviewCount}
+              productName={topProduct.name}
+              brandName={topProduct.brand}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style is:global>
+/* ═══ CALCULATOR STYLES ═══ */
+.calc-wrapper { margin-top: 0.5rem; }
+.calc-card {
+  background: #f9f8f5;
+  border: 1px solid #e8e3db;
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+}
+.calc-header { margin-bottom: 1.5rem; }
+.calc-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #ef7a1a;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+.calc-title {
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.calc-sub {
+  font-size: 14px;
+  color: rgba(0,0,0,0.6);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 480px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.7);
+}
+.field input, .field select {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  padding: 10px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fff;
+  color: #1c1917;
+  transition: border-color 0.15s;
+}
+.field input:focus, .field select:focus {
+  outline: none;
+  border-color: #ef7a1a;
+  box-shadow: 0 0 0 3px rgba(239,122,26,0.12);
+}
+.field input::placeholder { color: #aaa; }
+
+.calc-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #ef7a1a;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.calc-btn:hover { background: #d66a10; }
+.calc-btn:active { transform: scale(0.98); }
+
+/* Result */
+.calc-result {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #ef7a1a;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.result-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.result-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(0,0,0,0.5);
+}
+.result-dose { display: flex; align-items: baseline; gap: 6px; }
+.dose-num {
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  font-weight: 700;
+  color: #ef7a1a;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.dose-unit {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.5);
+}
+
+.result-bar-wrap { margin-bottom: 1.25rem; }
+.result-bar {
+  height: 12px;
+  background: #e8e3db;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+}
+.bar-seg { height: 100%; transition: width 0.6s ease; }
+.bar-diet { background: #73a942; }
+.bar-suppl { background: #ef7a1a; }
+.bar-legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+  font-size: 12px;
+  color: rgba(0,0,0,0.6);
+}
+.leg-item { display: flex; align-items: center; gap: 5px; }
+.leg-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.leg-dot.diet { background: #73a942; }
+.leg-dot.suppl { background: #ef7a1a; }
+
+.result-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 480px) { .result-details { grid-template-columns: 1fr; } }
+.detail-card {
+  background: #fff;
+  border: 1px solid #e8e3db;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.detail-label { font-size: 11px; color: rgba(0,0,0,0.5); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+.detail-value { font-size: 18px; font-weight: 700; color: #1c1917; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.detail-note { font-size: 12px; color: rgba(0,0,0,0.5); margin-top: 2px; }
+
+.result-disclaimer {
+  font-size: 11px;
+  color: rgba(0,0,0,0.4);
+  border-top: 1px solid #e8e3db;
+  padding-top: 0.75rem;
+  line-height: 1.5;
+}
+
+/* Reco cards */
+.reco-section h2 { color: #1c1917; }
+.reco-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.reco-card {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e8e3db;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.reco-card:hover { border-color: #ef7a1a; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.reco-card .rc-img {
+  width: 100px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f8f8f8;
+}
+.reco-card .rc-info { min-width: 0; }
+.reco-card .rc-rank {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ef7a1a;
+}
+.reco-card .rc-name { font-size: 14px; font-weight: 700; margin-top: 2px; }
+.reco-card .rc-brand { font-size: 12px; color: rgba(0,0,0,0.5); }
+.reco-card .rc-note { font-size: 13px; font-weight: 600; color: #ef7a1a; margin-top: 4px; }
+.reco-card .rc-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 100px;
+}
+.reco-card .rc-price-old { font-size: 12px; color: rgba(0,0,0,0.4); text-decoration: line-through; }
+.reco-card .rc-price { font-size: 16px; font-weight: 700; color: #1c1917; }
+.reco-card .rc-code {
+  font-size: 10px;
+  font-weight: 700;
+  background: #fef3e8;
+  color: #ef7a1a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+.reco-card .rc-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: #ef7a1a;
+  padding: 6px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.reco-card .rc-link:hover { background: #d66a10; }
+@media (max-width: 540px) {
+  .reco-card { grid-template-columns: 1fr; text-align: center; }
+  .reco-card .rc-img { margin: 0 auto; }
+  .reco-card .rc-cta { align-items: center; }
+}
+
+/* SEO prose */
+.prose-emd p { font-size: 14px; line-height: 1.7; margin-bottom: 1rem; color: rgba(0,0,0,0.75); }
+.prose-emd h3 { font-size: 1.125rem; font-weight: 700; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+.prose-emd strong { color: #1c1917; }
+</style>
+
+<script is:inline>
+(function(){
+  const products = [
+    { rank: 1, name: 'Magnésium Bisglycinate', brand: 'Cuure', image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/6a74a27c0f7e181d3f840e0f_Magn%25C3%25A9sium%2520Bisglycinate-converti-depuis-png.webp', rating: 9.4, promoCode: 'LMC20', promoPercent: 20, originalPrice: '19.90€', discountPrice: '15.92€', affiliateLink: 'https://cuure.com/produits/magnesium-bisglycinate?utm_medium=partnership&utm_source=LMC&ae=222' },
+    { rank: 2, name: 'Reset by Day', brand: 'Pauser', image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/69b2073ab892c6afb4ef863c_RESET_1.webp', rating: 9.1, promoCode: 'ELIASBAHIA', promoPercent: 10, originalPrice: '35.00€', discountPrice: '31.50€', affiliateLink: 'https://pauser.fr/collections/produits/products/reset-by-day-anti-stress?ref=LMC' },
+    { rank: 3, name: 'Magnésium Bisglycinate', brand: 'Argalys', image: 'https://cdn.prod.website-files.com/68c02c2c477fdd467e6e08a1/698ba3efad7a944cdaee9e25_magnesiumbisglycinate.webp', rating: 8.5, promoCode: 'LMC10', promoPercent: 10, originalPrice: '15.50€', discountPrice: '13.95€', affiliateLink: 'https://www.argalys.com/products/magnesium?ae=160' },
+  ];
+
+  const form = document.getElementById('mg-form');
+  const resultDiv = document.getElementById('result');
+  const recoSection = document.getElementById('produits');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const w = parseFloat(document.getElementById('weight').value);
+    const age = parseInt(document.getElementById('age').value);
+    const sex = document.getElementById('sex').value;
+    const activity = document.getElementById('activity').value;
+    const stress = document.getElementById('stress').value;
+    const situation = document.getElementById('situation').value;
+
+    if(!w || !age) return;
+
+    let base = w * 6;
+    if(sex === 'm') base = Math.max(base, 420);
+    else base = Math.max(base, 360);
+
+    const activityMult = { low: 1, moderate: 1.1, high: 1.2, athlete: 1.3 };
+    base *= (activityMult[activity] || 1);
+
+    const stressAdd = { low: 0, moderate: 30, high: 60 };
+    base += (stressAdd[stress] || 0);
+
+    if(situation === 'pregnant') base = Math.max(base, 400);
+    if(situation === 'breastfeeding') base = Math.max(base, 390);
+    if(situation === 'senior' || age >= 60) base *= 1.1;
+
+    const total = Math.round(base);
+    const dietAvg = 270;
+    const supplement = Math.max(0, total - dietAvg);
+    const supplementCapped = Math.min(supplement, 350);
+
+    document.getElementById('dose-value').textContent = total;
+    const dietPct = Math.round((dietAvg / total) * 100);
+    const supplPct = 100 - dietPct;
+    document.getElementById('bar-diet').style.width = dietPct + '%';
+    document.getElementById('bar-suppl').style.width = supplPct + '%';
+    document.getElementById('diet-val').textContent = dietAvg;
+    document.getElementById('suppl-val').textContent = supplementCapped;
+
+    const details = document.getElementById('result-details');
+    const tips = [];
+    if(activity === 'high' || activity === 'athlete') tips.push('Sportif : pertes accrues par la sueur');
+    if(stress === 'high') tips.push('Stress chronique : le cortisol augmente les pertes');
+    if(situation === 'pregnant') tips.push('Grossesse : besoins accrus (ANSES 400 mg/j)');
+    if(situation === 'breastfeeding') tips.push('Allaitement : besoins accrus (ANSES 390 mg/j)');
+    if(age >= 60) tips.push('Senior : absorption intestinale réduite');
+
+    let html = '';
+    html += '<div class="detail-card"><div class="detail-label">Besoin total</div><div class="detail-value">' + total + ' mg/j</div><div class="detail-note">Base : ' + w + ' kg x 6 mg' + (tips.length ? ' + ajustements' : '') + '</div></div>';
+    html += '<div class="detail-card"><div class="detail-label">Alimentation moyenne</div><div class="detail-value">~' + dietAvg + ' mg/j</div><div class="detail-note">Moyenne adulte francais (SU.VI.MAX)</div></div>';
+    html += '<div class="detail-card"><div class="detail-label">Complément suggéré</div><div class="detail-value">' + supplementCapped + ' mg/j</div><div class="detail-note">' + (supplement > 350 ? 'Plafonné à 350 mg (limite EFSA)' : 'Pour combler le déficit estimé') + '</div></div>';
+    html += '<div class="detail-card"><div class="detail-label">Forme recommandée</div><div class="detail-value">Bisglycinate</div><div class="detail-note">Meilleure tolérance digestive</div></div>';
+
+    if(tips.length){
+      html += '<div class="detail-card" style="grid-column:1/-1;"><div class="detail-label">Facteurs identifiés</div><div style="margin-top:4px;">';
+      tips.forEach(function(t){ html += '<div style="font-size:13px;color:rgba(0,0,0,0.65);padding:2px 0;">• ' + t + '</div>'; });
+      html += '</div></div>';
+    }
+    details.innerHTML = html;
+
+    resultDiv.style.display = 'block';
+
+    // Product cards
+    let cardsHtml = '';
+    products.forEach(function(p){
+      cardsHtml += '<div class="reco-card">';
+      cardsHtml += '<img class="rc-img" src="' + p.image + '" alt="' + p.name + '" loading="lazy" />';
+      cardsHtml += '<div class="rc-info"><div class="rc-rank">#' + p.rank + ' du classement</div><div class="rc-name">' + p.name + '</div><div class="rc-brand">' + p.brand + '</div><div class="rc-note">' + p.rating + '/10</div></div>';
+      cardsHtml += '<div class="rc-cta"><div class="rc-price-old">' + p.originalPrice + '</div><div class="rc-price">' + p.discountPrice + '</div>';
+      if(p.promoCode && p.promoPercent) cardsHtml += '<div class="rc-code">Code ' + p.promoCode + ' -' + p.promoPercent + '%</div>';
+      cardsHtml += '<a class="rc-link" href="' + p.affiliateLink + '" target="_blank" rel="noopener noreferrer nofollow" data-aff="1" data-brand="' + p.brand + '">Voir l\'offre</a></div>';
+      cardsHtml += '</div>';
+    });
+    document.getElementById('reco-cards').innerHTML = cardsHtml;
+    recoSection.style.display = 'block';
+
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if(typeof gtag === 'function'){
+      gtag('event', 'calculator_complete', { event_category: 'engagement', event_label: 'magnesium_calculator', value: total });
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('[data-aff]');
+    if(link && typeof gtag === 'function'){
+      gtag('event', 'affiliate_click', { event_category: 'conversion', event_label: link.getAttribute('data-brand') || 'unknown', transport_type: 'beacon' });
+    }
+  });
+})();
+</script>
